@@ -1,9 +1,12 @@
-﻿using Hubl.Core.Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Hubl.Core.Service
 {
-    public interface ISeesion
+    interface ISeesion
     {
-        User CurrentUser { get; }
     }
 }

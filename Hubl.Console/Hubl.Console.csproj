@@ -21,7 +21,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Externalconsole>true</Externalconsole>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -30,7 +29,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Externalconsole>true</Externalconsole>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Optimize>false</Optimize>
@@ -53,10 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hubl.Core\Hubl.Core.csproj">
-      <Project>{A84F13D5-86E6-43E1-8846-A6E4D879953E}</Project>
+      <Project>{583462BA-12EF-4FA2-88CA-EFBA3ECFF212}</Project>
       <Name>Hubl.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MessageRouter\MessageRouter\MessageRouter.csproj">
+    <ProjectReference Include="..\MessageRouter\MessageRouter.csproj">
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>MessageRouter</Name>
     </ProjectReference>
