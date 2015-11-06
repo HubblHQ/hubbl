@@ -24,12 +24,12 @@ namespace Hubl.Mobile
 
 		public Task StartListeningAsync ()
 		{
-			_listener.StartListeningAsync (_settings.ListenPort);
+			return _listener.StartListeningAsync (_settings.ListenPort);
 		}
 
 		public Task StopListeningAsync ()
 		{
-			_listener.StopListeningAsync ();
+			return _listener.StopListeningAsync ();
 		}
 		#endregion
 

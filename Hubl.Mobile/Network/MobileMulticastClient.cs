@@ -5,14 +5,14 @@ using Sockets.Plugin;
 
 namespace Hubl.Mobile
 {
-	public class MulticastClient: IMulticastClient
+	public class MobileMulticastClient: IMulticastClient
 	{
 
-		private IUdpSocketMulticastClient _udpClient;
+		private readonly IUdpSocketMulticastClient _udpClient;
 
 		private readonly MobileNetworkSettings _settings;
 
-		public MulticastClient (MobileNetworkSettings settings)
+		public MobileMulticastClient (MobileNetworkSettings settings)
 		{
 			_settings = settings;
 			
@@ -27,7 +27,7 @@ namespace Hubl.Mobile
 
 		public System.Threading.Tasks.Task JoinMulticastGroupAsync ()
 		{
-			return _udpClient.JoinMulticastGroupAsync (_settings.MulticastAdress, _settings.MulticastPort);
+			return _udpClient.JoinMulticastGroupAsync (_settings.MulticastAdress, _settings.MulticastPort, _settings.Adapters);
 		}
 
 		public System.Threading.Tasks.Task DisconnectAsync ()

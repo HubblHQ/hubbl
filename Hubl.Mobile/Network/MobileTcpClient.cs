@@ -24,33 +24,12 @@ namespace Hubl.Mobile
 			_client = client;
 		}
 
-
-		public void Dispose()
-		{
-			_client.Dispose();
-		}
-
-		public async Task ConnectAsync(string userId)
-		{
-			var user = _usersService.Get(userId);
-			if (user == null)
-				return;
-			await _client.ConnectAsync(user.IpAddress, user.Port);
-			ReadStream = _client.GetStream();
-			WriteStream = ReadStream;
-		}
-
-		public Task DisconnectAsync()
-		{
-			return _client.DisconnectAsync ();
-		}
-
-
 		#region ITcpClient implementation
 
 		public Task ConnectAsync (string userId)
 		{
-			return _client.ConnectAsync ();
+			var user = _usersService.Get (userId);
+			return _client.ConnectAsync(user.IpAddress, user.Port, false);
 		}
 
 		public Task DisconnectAsync ()

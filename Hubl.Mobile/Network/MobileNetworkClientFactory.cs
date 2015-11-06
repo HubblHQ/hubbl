@@ -13,23 +13,9 @@ namespace Hubl.Mobile
 		public MobileNetworkClientFactory(MobileNetworkSettings networkSettings, UsersService usersService)
 		{
 			_networkSettings = networkSettings;
-			_usersService = usersService
+			_usersService = usersService;
 		}
 
-		public IMulticastClient CreateMulticastClient()
-		{
-			return new MobileMulticastClient(_networkSettings);
-		}
-
-		public ITcpListener CreateListener()
-		{
-			return new MobileTcpListener(_networkSettings, _usersService);
-		}
-
-		public ITcpClient CreateTcpClient()
-		{
-			return new MobileTcpClient(_usersService);
-		}
 		#region INetworkClientFactory implementation
 
 		public IMulticastClient CreateMulticastClient ()
@@ -44,7 +30,7 @@ namespace Hubl.Mobile
 
 		public ITcpClient CreateTcpClient ()
 		{
-			return new MobileTcpClient (_networkSettings);
+			return new MobileTcpClient (_usersService);
 		}
 
 		#endregion
