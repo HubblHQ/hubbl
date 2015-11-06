@@ -26,16 +26,12 @@ namespace Hubl.Mobile.UITests
 		}
 
 		[Test]
-		public void ClickingButtonTwiceShouldChangeItsLabel ()
+		public void WelcomeTextIsDisplayed ()
 		{
-			Func<AppQuery, AppQuery> button = c => c.Button ("myButton");
+			AppResult[] results = app.WaitForElement (c => c.Marked ("Welcome to Xamarin Forms!"));
+			app.Screenshot ("Welcome screen.");
 
-			app.Tap (button);
-			app.Tap (button);
-			AppResult[] results = app.Query (button);
-			app.Screenshot ("Button clicked twice.");
-
-			Assert.AreEqual ("2 clicks!", results [0].Text ?? results [0].Label);
+			Assert.IsTrue (results.Any ());
 		}
 	}
 }
