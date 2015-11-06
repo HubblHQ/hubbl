@@ -46,7 +46,7 @@ namespace Hubl.Mobile
 		#region IDisposable implementation
 		public void Dispose ()
 		{
-			throw new NotImplementedException ();
+			_listener.Dispose ();
 		}
 		#endregion
 	}

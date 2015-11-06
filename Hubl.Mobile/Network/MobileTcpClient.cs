@@ -4,6 +4,7 @@ using Sockets.Plugin.Abstractions;
 using Sockets.Plugin;
 using System.IO;
 using System.Threading.Tasks;
+using Hubl.Core.Service;
 
 namespace Hubl.Mobile
 {
@@ -11,13 +12,13 @@ namespace Hubl.Mobile
 	{
 
 		private readonly UsersService _usersService;
-		private readonly ITcpClient _client;
+		private readonly TcpSocketClient _client;
 
-		public MobileTcpClient(UsersService usersService) : this(usersService, new TcpClient())
+		public MobileTcpClient(UsersService usersService) : this(usersService, new TcpSocketClient())
 		{
 		}
 
-		public MobileTcpClient(UsersService usersService, TcpClient client)
+		public MobileTcpClient(UsersService usersService, TcpSocketClient client)
 		{
 			_usersService = usersService;
 			_client = client;
@@ -28,10 +29,6 @@ namespace Hubl.Mobile
 		{
 			_client.Dispose();
 		}
-
-		public Stream ReadStream { get; private set; }
-
-		public Stream WriteStream { get; private set; }
 
 		public async Task ConnectAsync(string userId)
 		{
@@ -45,31 +42,31 @@ namespace Hubl.Mobile
 
 		public Task DisconnectAsync()
 		{
-			return Task.Run(() => _client.Close());
+			return _client.DisconnectAsync ();
 		}
 
 
 		#region ITcpClient implementation
 
-		public System.Threading.Tasks.Task ConnectAsync (string userId)
+		public Task ConnectAsync (string userId)
 		{
-			throw new NotImplementedException ();
+			return _client.ConnectAsync ();
 		}
 
-		public System.Threading.Tasks.Task DisconnectAsync ()
+		public Task DisconnectAsync ()
 		{
-			throw new NotImplementedException ();
+			return _client.DisconnectAsync ();
 		}
 
-		public System.IO.Stream ReadStream {
-			get {
-				throw new NotImplementedException ();
+		public Stream ReadStream {
+			get {	
+				return _client.ReadStream;
 			}
 		}
 
-		public System.IO.Stream WriteStream {
+		public Stream WriteStream {
 			get {
-				throw new NotImplementedException ();
+				return _client.WriteStream;
 			}
 		}
 
@@ -79,14 +76,11 @@ namespace Hubl.Mobile
 
 		public void Dispose ()
 		{
-			throw new NotImplementedException ();
+			_client.Dispose ();
 		}
 
 		#endregion
 
-		public TcpClient ()
-		{
-		}
 	}
 }
 
