@@ -21,6 +21,7 @@ namespace Hubl.Core.Model
         [DataMember]
         public TimeSpan Current { get; set; }
 
-
+		[DataMember]
+		public string Source { get; set; }
     }
 }

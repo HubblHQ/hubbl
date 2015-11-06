@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hubl.Core.Service
+﻿namespace Hubl.Core.Service
 {
-    class IMusicPlayer
+	public interface IMusicPlayer
     {
+
     }
 }
