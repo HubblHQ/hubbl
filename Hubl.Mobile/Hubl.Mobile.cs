@@ -4,22 +4,16 @@ using Xamarin.Forms;
 
 namespace Hubl.Mobile
 {
+	public class User {
+		public string Name {get; set; }
+		public Guid Guid {get; set; }
+	}
 	public class App : Application
-	{
+	{		
+		public static User User {get; set; }
 		public App ()
-		{
-			// The root page of your application
-			MainPage = new ContentPage {
-				Content = new StackLayout {
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						new Label {
-							XAlign = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
-					}
-				}
-			};
+		{	
+			MainPage = new NavigationPage (new Hubl.Mobile.NickPage ());
 		}
 
 		protected override void OnStart ()
