@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace Hubl.Mobile
 {
-	public class NetworkSettings
+	public class MobileNetworkSettings
 	{
 		public int TTL {get;set;}
 
@@ -14,7 +14,7 @@ namespace Hubl.Mobile
 		public int MulticastPort { get; set;}
 
 
-		public NetworkSettings ()
+		public MobileNetworkSettings ()
 		{
 			TTL = 5;
 			MulticastPort = 30307;

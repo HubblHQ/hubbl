@@ -10,9 +10,9 @@ namespace Hubl.Mobile
 
 		private IUdpSocketMulticastClient _udpClient;
 
-		private readonly NetworkSettings _settings;
+		private readonly MobileNetworkSettings _settings;
 
-		public MulticastClient (NetworkSettings settings)
+		public MulticastClient (MobileNetworkSettings settings)
 		{
 			_settings = settings;
 			

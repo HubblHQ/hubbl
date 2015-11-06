@@ -33,11 +33,11 @@
     <Compile Include="Hubl.Mobile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Network\MobileNetworkClientFactory.cs" />
-    <Compile Include="Network\MulticastClient.cs" />
-    <Compile Include="Network\TcpClient.cs" />
-    <Compile Include="Network\TcpListener.cs" />
     <Compile Include="Network\TcpRemoteClient.cs" />
-    <Compile Include="Network\NetworkSettings.cs" />
+    <Compile Include="Network\MobileTcpClient.cs" />
+    <Compile Include="Network\MobileTcpListener.cs" />
+    <Compile Include="Network\MobileMulticastClient.cs" />
+    <Compile Include="Network\MobileNetworkSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
