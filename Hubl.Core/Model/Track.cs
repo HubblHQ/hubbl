@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Hubl.Core.Model
 {
@@ -6,10 +7,19 @@ namespace Hubl.Core.Model
     public class Track
     {
         [DataMember]
+        public Guid Id { get; set; }
+
+        [DataMember]
         public string Artist { get; set; }
 
         [DataMember]
         public string Name { get; set; }
+
+        [DataMember]
+        public TimeSpan Duration { get; set; }
+
+        [DataMember]
+        public TimeSpan Current { get; set; }
 
 
     }

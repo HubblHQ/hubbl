@@ -28,8 +28,23 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\MessageRouter\MessageRouter.csproj">
+      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
+      <Name>MessageRouter</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Messages\AddLocalTrackMessage.cs" />
+    <Compile Include="Messages\EchoMessage.cs" />
+    <Compile Include="Messages\HelloMessage.cs" />
+    <Compile Include="Messages\MessageGroups.cs" />
+    <Compile Include="Messages\AddCloudTrackMessage.cs" />
+    <Compile Include="Messages\NextTrackMessage.cs" />
+    <Compile Include="Messages\PauseMessage.cs" />
+    <Compile Include="Messages\PlayTrackMessage.cs" />
+    <Compile Include="Messages\ResponsePlayingTrackMessage.cs" />
+    <Compile Include="Messages\ResponsePlaylistMessage.cs" />
     <Compile Include="Model\SourceType.cs" />
     <Compile Include="Model\Track.cs" />
     <Compile Include="Service\IMusicPlayer.cs" />
