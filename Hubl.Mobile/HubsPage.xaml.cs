@@ -27,6 +27,9 @@ namespace Hubl.Mobile
 			HubsView.ItemSelected += (sender, e) => {
 				Navigation.PushAsync(new OneHubPage());
 			};
+			AddHub.Clicked += (sender, e) => {
+				Navigation.PushAsync(new NewHubPage(), true);
+			};
 		}
 	}
 }
