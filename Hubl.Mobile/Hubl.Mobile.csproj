@@ -67,7 +67,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
+
     <Folder Include="Network\" />
   </ItemGroup>
   <ItemGroup>
@@ -79,7 +79,7 @@
       <Project>{A84F13D5-86E6-43E1-8846-A6E4D879953E}</Project>
       <Name>Hubl.Core</Name>
     </ProjectReference>
-=======
+
     <EmbeddedResource Include="HubsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -92,6 +92,6 @@
     <EmbeddedResource Include="SourcesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
->>>>>>> interface
+
   </ItemGroup>
 </Project>
