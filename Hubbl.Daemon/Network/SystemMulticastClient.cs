@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
-using MessageRouter.Network;
 using System.Threading.Tasks;
+using MessageRouter.Network;
 
 namespace Hubl.Daemon.Network
 {

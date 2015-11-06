@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Threading;
-using MessageRouter.Network;
-using Hubl.Daemon.Network;
-using Hubl.Daemon.Message;
 using Autofac;
 using Hubl.Core.Service;
+using Hubl.Daemon.Message;
+using Hubl.Daemon.Network;
+using MessageRouter.Network;
 
-namespace Hubl.Daemon.Network
+namespace Hubl.Daemon
 {
 	class MainClass
 	{
-		static IContainer container;
+		static IContainer _container;
 
-		static IContainer createContainer()
+		static IContainer CreateContainer()
 		{
 			var builder = new ContainerBuilder ();
 			builder.RegisterModule <NetworkModule> ();
@@ -23,13 +23,14 @@ namespace Hubl.Daemon.Network
 
 		public static void Main (string[] args)
 		{
-			container = createContainer ();
-			container.Resolve <NetworkSettings> ().TTL = 5;
+			_container = CreateContainer ();
+		    var networkSettings = _container.Resolve <NetworkSettings> ();
+		    networkSettings.TTL = 5;
 
-			var router = container.Resolve<INetworkMessageRouter> ();
+			var router = _container.Resolve<INetworkMessageRouter> ();
 
 			router.Subscribe<StringMessage> ().OnSuccess ((ep, m) => {
-				Console.WriteLine ("Get message {0} from {1}", m.StrMessage, ep.Address);
+				Console.WriteLine ("Get message {0} from {1}:{2}", m.StrMessage, ep.Address, ep.Port);
 			});
 
 
@@ -42,7 +43,7 @@ namespace Hubl.Daemon.Network
 				// Console.WriteLine (str);
 				router.Publish (new StringMessage (str)).Run ();
 				Console.WriteLine ("published");
-				Thread.Sleep (1000);
+				//Thread.Sleep (1000);
 			}
 		}
 	}
