@@ -1,30 +1,50 @@
 ﻿using System;
 using MessageRouter.Network;
+using Hubl.Core.Service;
 
 namespace Hubl.Mobile
 {
 	public class MobileNetworkClientFactory: INetworkClientFactory
 	{
 
-		public MobileNetworkClientFactory ()
+		private readonly MobileNetworkSettings _networkSettings;
+		private readonly UsersService _usersService;
+
+		public MobileNetworkClientFactory(MobileNetworkSettings networkSettings, UsersService usersService)
 		{
+			_networkSettings = networkSettings;
+			_usersService = usersService
 		}
 
+		public IMulticastClient CreateMulticastClient()
+		{
+			return new MobileMulticastClient(_networkSettings);
+		}
+
+		public ITcpListener CreateListener()
+		{
+			return new MobileTcpListener(_networkSettings, _usersService);
+		}
+
+		public ITcpClient CreateTcpClient()
+		{
+			return new MobileTcpClient(_usersService);
+		}
 		#region INetworkClientFactory implementation
 
 		public IMulticastClient CreateMulticastClient ()
 		{
-			throw new NotImplementedException ();
+			return new MobileMulticastClient (_networkSettings);
 		}
 
 		public ITcpListener CreateListener ()
 		{
-			throw new NotImplementedException ();
+			return new MobileTcpListener (_networkSettings, _usersService);
 		}
 
 		public ITcpClient CreateTcpClient ()
 		{
-			throw new NotImplementedException ();
+			return new MobileTcpClient (_networkSettings);
 		}
 
 		#endregion
