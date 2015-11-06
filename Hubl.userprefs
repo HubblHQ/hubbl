@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="UITests/Hubl.Mobile.UITests.csproj" RefactoringSettings.EnableRefactorings="True" GitUserInfo="UsingGIT">
+﻿<Properties StartupItem="Hubbl.Daemon/Hubl.Daemon.csproj" RefactoringSettings.EnableRefactorings="True" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.Workbench ActiveDocument="UITests/Tests.cs">
     <Files>
