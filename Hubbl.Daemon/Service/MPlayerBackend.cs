@@ -6,7 +6,7 @@ using Hubl.Core.Service;
 using Hubl.Core.Model;
 using System.Threading.Tasks;
 
-namespace Hubl.Daemon
+namespace Hubl.Daemon.Service
 {
 	public class MPlayerBackend : IMusicPlayerBackend
 	{
@@ -88,7 +88,6 @@ namespace Hubl.Daemon
 				_currentTrack = null;
 			if (_currentTask != null) {
 				_taskCancellationTokenSource.Cancel ();
-				_currentTask.Dispose ();
 				_currentTask = null;
 			}
 
@@ -98,7 +97,7 @@ namespace Hubl.Daemon
 			_currentTrack = track;
 			_currentTrackStartTime = new TimeSpan ();
 			_currentTrack.Current = new TimeSpan(0);
-			Task.Run (() => {
+			_currentTask = Task.Run (() => {
 				Process mplayer = new Process ();
 				mplayer.StartInfo.UseShellExecute = false;
 				mplayer.StartInfo.ErrorDialog = false;
