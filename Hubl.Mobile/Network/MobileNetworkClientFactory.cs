@@ -5,6 +5,11 @@ namespace Hubl.Mobile
 {
 	public class MobileNetworkClientFactory: INetworkClientFactory
 	{
+
+		public MobileNetworkClientFactory ()
+		{
+		}
+
 		#region INetworkClientFactory implementation
 
 		public IMulticastClient CreateMulticastClient ()
@@ -24,9 +29,6 @@ namespace Hubl.Mobile
 
 		#endregion
 
-		public MobileNetworkClientFactory ()
-		{
-		}
 	}
 }
 

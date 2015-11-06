@@ -2,45 +2,35 @@
 using MessageRouter.Network;
 using System.Threading.Tasks;
 using Sockets.Plugin;
+using Hubl.Core.Service;
 
 namespace Hubl.Mobile
 {
-	public class MobileTcpListener : ITcpClient
+	public class MobileTcpListener : ITcpListener
 	{
-		
-
 		private readonly MobileNetworkSettings _settings;
-		private TcpSocketListener _listener;
+		private readonly TcpSocketListener _listener;
+		private readonly UsersService _userService;
 
-		public MobileTcpListener (MobileNetworkSettings settings)
+
+		public MobileTcpListener (MobileNetworkSettings settings, UsersService userService)
 		{
 			_settings = settings;
 			_listener = new TcpSocketListener ();
+			_userService = userService;
 		}
+		#region ITcpListener
+		public event EventHandler<ListenerConnectEventArgs> ConnectionReceived;
 
-		#region ITcpClient implementation
-		public Task ConnectAsync (string userId)
+		public Task StartListeningAsync ()
 		{
-			throw new NotImplementedException ();
+			_listener.StartListeningAsync (_settings.ListenPort);
 		}
 
-		public Task DisconnectAsync ()
+		public Task StopListeningAsync ()
 		{
-			throw new NotImplementedException ();
+			_listener.StopListeningAsync ();
 		}
-
-		public System.IO.Stream ReadStream {
-			get {
-				throw new NotImplementedException ();
-			}
-		}
-
-		public System.IO.Stream WriteStream {
-			get {
-				throw new NotImplementedException ();
-			}
-		}
-
 		#endregion
 
 		#region IDisposable implementation
