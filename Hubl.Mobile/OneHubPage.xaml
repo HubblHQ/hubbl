@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Hubl.Mobile.OneHubPage">
+	<ContentPage.Content>
+	<StackLayout>
+		<Label x:Name="CurrentSong" Text="{Binding local:Current}"/>
+		<ProgressBar x:Name="SongProgress" Progress="{Binding Progress}"/>
+		<Label x:Name="RemainingTime" Text="{Binding Remaining}"/>
+		<ListView  x:Name="SongsView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout BackgroundColor="#eee"
+                        Orientation="Vertical">                            
+                           <Label Text="{Binding Name}"
+                                TextColor="#f35e20" />
+                           <Label Text="{Binding Author}"
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="#503026" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+	</StackLayout>
+
+	</ContentPage.Content>
+</ContentPage>

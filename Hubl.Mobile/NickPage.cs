@@ -10,25 +10,29 @@ namespace Hubl.Mobile
 		public NickPage ()
 		{
 			rand = new Random ();
-			var refresh = new Button ();
-			refresh.Text = "Обновить";
-			refresh.Clicked += (sender, e) => {
-				var name = GenerateNewName();
-				refresh.Text = name;
-			};
 			var nickLabel = new Label{ 
 				Text = GenerateNewName (),
 				XAlign = TextAlignment.Center,
 				FontSize = 24.0,
 			};
+
+			var refresh = new Button ();
+			refresh.Text = "Обновить";
+			refresh.Clicked += (sender, e) => {
+				var name = GenerateNewName();
+				nickLabel.Text = name;
+			};
+
 			var continueButton = new Button ();
 			continueButton.Text = "Продолжить";
 			continueButton.Clicked += (sender, e) => {
-				var user = new User() {Name = refresh.Text, Guid = Guid.NewGuid()};
+				var user = new User() {Name = nickLabel.Text, Guid = Guid.NewGuid()};
 				App.User = user;
 				Navigation.PushAsync(new HubsPage());
 			};
-			Content = new StackLayout { 
+
+			Content = new StackLayout { 				
+				VerticalOptions = LayoutOptions.End,
 				Children = {
 					nickLabel,
 					refresh,
