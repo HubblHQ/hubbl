@@ -8,8 +8,13 @@ namespace Hubl.Core.Service
 		// IMusicPlayer (IMusicPlayerBackend backend);
 
 		PlaylistEntry QueueTrack (User user, Track track);
-		PlaylistEntry CurrentPlayedEntry { get;  } // rules of sorting by priority are not applied to this track, i think it should be given separately from the playlist
-		Queue<PlaylistEntry> Playlist { get;  } //TODO: queue??
+
+		// rules of sorting by priority are not applied to this track, i think it should be given separately from the playlist
+		PlaylistEntry CurrentPlayedEntry { get;  } 
+
+		//TODO: queue??
+		Queue<PlaylistEntry> Playlist { get;  } 
+
 		Track GetTrackInfo (string path);
 
 		void Play ();
