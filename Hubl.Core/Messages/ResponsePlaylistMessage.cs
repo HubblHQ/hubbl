@@ -3,7 +3,6 @@ using System.Runtime.Serialization;
 using Hubl.Core.Model;
 using MessageRouter.Message;
 using MessageRouter.Network;
-using System.Dynamic;
 
 namespace Hubl.Core.Messages
 {
