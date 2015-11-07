@@ -45,6 +45,9 @@ namespace Hubl.Mobile
 					}).OnException(m => {
 						var aa = m;
 					});
+					Router.Subscribe<EchoMessage>().OnSuccess(m => {
+						var ss = m;
+					});
 				}
 				);
 			}
