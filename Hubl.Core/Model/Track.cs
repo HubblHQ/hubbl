@@ -7,7 +7,7 @@ namespace Hubl.Core.Model
     public class Track
     {
         [DataMember]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [DataMember]
         public string Artist { get; set; }

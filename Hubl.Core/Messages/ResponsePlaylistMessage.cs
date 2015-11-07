@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 using Hubl.Core.Model;
 using MessageRouter.Message;
 using MessageRouter.Network;
+using System.Dynamic;
 
 namespace Hubl.Core.Messages
 {
@@ -11,5 +12,8 @@ namespace Hubl.Core.Messages
     {
         [DataMember]
         public IEnumerable<Track> Playlist { get; set; }
+
+		[DataMember]
+		public Track PlayingTrack { get; set;}
     }
 }
