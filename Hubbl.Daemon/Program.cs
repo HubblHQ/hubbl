@@ -56,6 +56,7 @@ namespace Hubl.Daemon
 		        _container.Resolve<UsersService>().Add(m.Sender);
                 router.PublishFor(new []{m.Sender.Id}, new EchoMessage(_container.Resolve<ISession>().CurrentUser)).First().Run();
 		    });
+
 		    router.Subscribe<EchoMessage>()
 		        .OnSuccess((ep, m) =>
 		        {
@@ -63,11 +64,11 @@ namespace Hubl.Daemon
 		            m.Sender.IpAddress = ep.Address;
 		            _container.Resolve<UsersService>().Add(m.Sender);
 		        });
+
 		    router.Subscribe<TextMessage>()
 		        .OnSuccess((rp, m) =>
 		        {
 		            var user = _container.Resolve<UsersService>().Get(rp);
-            
                     Console.WriteLine("{0}:{1}", user != null ? user.Title: Properties.Resources.UnknowUser, m.Text);
 		        });
 
