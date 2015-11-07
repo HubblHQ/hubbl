@@ -50,6 +50,9 @@
     <Compile Include="Service\IMusicPlayerBackend.cs" />
     <Compile Include="Service\ISession.cs" />
     <Compile Include="Service\UsersService.cs" />
+    <Compile Include="ExternalModules\VkModule\VkSettings.cs" />
+    <Compile Include="ExternalModules\VkModule\VkApiService.cs" />
+    <Compile Include="ExternalModules\VkModule\VkUserInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -57,5 +60,17 @@
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>MessageRouter</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ExternalModules\" />
+    <Folder Include="ExternalModules\VkModule\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

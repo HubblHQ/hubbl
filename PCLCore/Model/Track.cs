@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Newtonsoft.Json.Serialization;
 
 namespace Hubl.Core.Model
 {
     [DataContract]
     public class Track
     {
-        [DataMember]
+		[DataMember]
         public string Id { get; set; }
 
-        [DataMember]
+		[DataMember]
         public string Artist { get; set; }
 
-        [DataMember]
+		[DataMember]
         public string Name { get; set; }
 
-        [DataMember]
+		[DataMember]
         public TimeSpan Duration { get; set; }
 
         [DataMember]
@@ -23,5 +24,12 @@ namespace Hubl.Core.Model
 
 		[DataMember]
 		public string Source { get; set; }
+
+		[DataMember]
+		public SourceType SourceType { get; set; }
+
+		[DataMember]
+		public string Genre { get; set; }
+
     }
 }

@@ -1,13 +1,10 @@
 ﻿<Properties StartupItem="iOS/Hubl.Mobile.iOS.csproj" RefactoringSettings.EnableRefactorings="True" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Pavel's iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Hubl.Mobile/NewHubPage.xaml.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/AppDelegate.cs">
     <Files>
-      <File FileName="Hubl.Core/Service/IMusicPlayerBackend.cs" Line="1" Column="1" />
-      <File FileName="Hubl.Core/Service/IMusicPlayer.cs" Line="1" Column="1" />
       <File FileName="Hubbl.Daemon/Service/MPlayerBackend.cs" Line="1" Column="1" />
-      <File FileName="iOS/Info.plist" />
-      <File FileName="iOS/Entitlements.plist" />
-      <File FileName="Hubl.Mobile/NewHubPage.xaml.cs" Line="29" Column="4" />
+      <File FileName="Hubl.Mobile/NewHubPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="iOS/AppDelegate.cs" Line="22" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

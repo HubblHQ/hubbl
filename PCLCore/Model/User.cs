@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using PCLCore;
 
 namespace Hubl.Core.Model
 {
@@ -17,6 +18,7 @@ namespace Hubl.Core.Model
         [DataMember]
         public string Id { get; set; }
 
-
+		[DataMember]
+		public VkUserInfo VkUserInfo { get; set;}
     }
 }
