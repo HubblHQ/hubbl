@@ -20,10 +20,14 @@ namespace Hubl.Core.Model
 
 		[DataMember]
 		public VkUserInfo VkUserInfo { get; set;}
+
+		[DataMember]
 		public bool IsHub {get; set; }
 
 		[DataMember]
 		public SCUserInfo SoundCloud { get; set; }
+
+		[DataMember]
 		public string Hub {get; set; }
     }
 }

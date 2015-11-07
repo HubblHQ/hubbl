@@ -7,6 +7,7 @@ using Hubl.Core.Model;
 using Hubl.Core.Messages;
 using Autofac;
 using Hubl.Core.Service;
+using PCLCore;
 
 namespace Hubl.Mobile
 {
@@ -24,13 +25,24 @@ namespace Hubl.Mobile
 		{
 			LoadSongsFromVK ();
 			SongsView.ItemsSource = songs;
-			songs.Add (new Song(){Track = new Track{Name = "123"}});
+			//songs.Add (new Song(){Track = new Track{Name = "123"}});
 			base.OnAppearing ();
 		}
-
+		bool shown;
 		async void LoadSongsFromVK()
 		{
-			
+			var user = App.Container.Resolve<ISession> ().CurrentUser;
+			if (user.VkUserInfo == null && !shown) {
+				Navigation.PushAsync (new AuthPage());
+				shown = true;
+			}
+			else {
+				var service = new VkApiService (user);
+				var tracks = await service.GetUserAudioList (0, 25);
+				songs.Clear ();
+				foreach (var t in tracks)
+					songs.Add (new Song{Track = t});
+			}
 		}
 
 		protected override void OnDisappearing ()
@@ -41,7 +53,6 @@ namespace Hubl.Mobile
 				msg.Sender = App.Container.Resolve<ISession> ().CurrentUser;
 				App.Router.PublishFor (new string[]{hub.Id}, msg).First ().Run ();
 			}
-			Navigation.PopAsync ();
 
 			base.OnDisappearing ();
 		}
