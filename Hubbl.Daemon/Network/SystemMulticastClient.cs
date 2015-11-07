@@ -28,7 +28,7 @@ namespace Hubl.Daemon.Network
 
         public void Dispose()
         {
-            _client.DropMulticastGroup(IPAddress.Parse(_settings.MulticastAddress));
+            //_client.DropMulticastGroup(IPAddress.Parse(_settings.MulticastAddress));
             _client.Close();
         }
 

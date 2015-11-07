@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Hubl.Core.Model;
 using System.Threading.Tasks;
 using System.Threading;
@@ -15,8 +16,8 @@ namespace Hubl.Core.Service
 		public HubblPlayer (IMusicPlayerBackend backend)
 		{
 			_backend = backend;
-			Playlist = new Queue<PlaylistEntry> ();
-			_cancellationTokenSource = new CancellationTokenSource ();
+			Playlist = new List<PlaylistEntry> ();
+		   _cancellationTokenSource = new CancellationTokenSource ();
 		}
 
 
@@ -31,7 +32,7 @@ namespace Hubl.Core.Service
 		//TODO: ask my c sharp guru about methods to make it immutable
 		//TODO: private set
 		public PlaylistEntry CurrentPlayedEntry { get; private set; }
-		public Queue<PlaylistEntry> Playlist { get; private set; }
+		public IEnumerable<PlaylistEntry> Playlist { get; private set; }
 
 		Track IMusicPlayer.GetTrackInfo (string path)
 		{

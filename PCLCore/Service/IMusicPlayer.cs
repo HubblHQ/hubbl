@@ -5,7 +5,7 @@ namespace Hubl.Core.Service
 {
 	public interface IMusicPlayer
     {
-		// IMusicPlayer (IMusicPlayerBackend backend);
+		IMusicPlayer (IMusicPlayerBackend backend);
 
 		PlaylistEntry QueueTrack (User user, Track track);
 
@@ -13,7 +13,7 @@ namespace Hubl.Core.Service
 		PlaylistEntry CurrentPlayedEntry { get;  } 
 
 		//TODO: queue??
-		Queue<PlaylistEntry> Playlist { get;  } 
+		IEnumerable<PlaylistEntry> Playlist { get;  } 
 
 		Track GetTrackInfo (string path);
 
