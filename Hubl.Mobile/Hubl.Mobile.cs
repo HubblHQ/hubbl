@@ -91,7 +91,7 @@ namespace Hubl.Mobile
 		protected override void OnResume ()
 		{
 			try {
-				Router.StartAsync ().Wait();
+				Router.StartAsync ();
 			}
 			catch (Exception e) {
 				var a = 4;

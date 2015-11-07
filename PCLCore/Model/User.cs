@@ -49,6 +49,7 @@ namespace Hubl.Core.Model
 				var file = FileSystem.Current.LocalStorage.GetFileAsync ("user", token).Result;			
 				var sUser = file.ReadAllTextAsync ().Result;
 				var user = JsonConvert.DeserializeObject<User>(sUser);
+				user.IsHub = false;
 				return user;
 			} catch (Exception e) {
 				return null;

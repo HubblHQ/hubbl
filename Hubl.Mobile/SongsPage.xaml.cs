@@ -28,13 +28,12 @@ namespace Hubl.Mobile
 			//songs.Add (new Song(){Track = new Track{Name = "123"}});
 			base.OnAppearing ();
 		}
-		bool shown;
+
 		async void LoadSongsFromVK()
 		{
 			var user = App.Container.Resolve<ISession> ().CurrentUser;
-			if (user.VkUserInfo == null && !shown) {
+			if (user.VkUserInfo == null) {
 				Navigation.PushAsync (new AuthPage());
-				shown = true;
 			}
 			else {
 				var service = new VkApiService (user);
