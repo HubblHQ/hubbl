@@ -45,6 +45,7 @@
     <Compile Include="Messages\PlayTrackMessage.cs" />
     <Compile Include="Messages\ResponsePlayingTrackMessage.cs" />
     <Compile Include="Messages\ResponsePlaylistMessage.cs" />
+    <Compile Include="Messages\TextMessage.cs" />
     <Compile Include="Model\SourceType.cs" />
     <Compile Include="Model\Track.cs" />
     <Compile Include="Service\IMusicPlayer.cs" />
