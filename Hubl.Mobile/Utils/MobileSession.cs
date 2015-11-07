@@ -2,6 +2,7 @@
 using System.Linq;
 using Hubl.Core.Model;
 using Hubl.Core.Service;
+using Hubl.Mobile.Network;
 
 
 namespace Hubl.Mobile

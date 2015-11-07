@@ -1,10 +1,11 @@
 ﻿using System;
-using MessageRouter.Network;
 using System.Threading.Tasks;
-using Sockets.Plugin;
 using Hubl.Core.Service;
+using MessageRouter.Network;
+using Sockets.Plugin;
+using Sockets.Plugin.Abstractions;
 
-namespace Hubl.Mobile
+namespace Hubl.Mobile.Network
 {
 	public class MobileTcpListener : ITcpListener
 	{
@@ -18,8 +19,21 @@ namespace Hubl.Mobile
 			_settings = settings;
 			_listener = new TcpSocketListener ();
 			_userService = userService;
+            _listener.ConnectionReceived = OnConnectionReceived;
 		}
-		#region ITcpListener
+
+	    private void OnConnectionReceived(object sender, TcpSocketListenerConnectEventArgs e)
+	    {
+	        if (ConnectionReceived != null)
+	        {
+                var remotePoint = new RemotePoint(e.SocketClient.RemotePort, e.SocketClient.RemoteAddress);
+	            ConnectionReceived(this,
+	                new ListenerConnectEventArgs(remotePoint.Address, remotePoint.Port,
+	                    new MobileTcpRemoteClient(remotePoint, e.SocketClient)));
+	        }
+	    }
+
+	    #region ITcpListener
 		public event EventHandler<ListenerConnectEventArgs> ConnectionReceived;
 
 		public Task StartListeningAsync ()

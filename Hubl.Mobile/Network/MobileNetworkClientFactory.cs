@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Hubl.Core.Service;
 using MessageRouter.Network;
-using Hubl.Core.Service;
 
-namespace Hubl.Mobile
+namespace Hubl.Mobile.Network
 {
 	public class MobileNetworkClientFactory: INetworkClientFactory
 	{

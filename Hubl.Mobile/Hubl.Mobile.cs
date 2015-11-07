@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
 using Hubl.Core.Service;
-
+using Hubl.Mobile.Network;
 using Xamarin.Forms;
 
 namespace Hubl.Mobile

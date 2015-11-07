@@ -1,9 +1,7 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
-using Sockets.Plugin;
 
-namespace Hubl.Mobile
+namespace Hubl.Mobile.Network
 {
 	public class MobileNetworkSettings
 	{
