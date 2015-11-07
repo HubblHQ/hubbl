@@ -1,25 +1,31 @@
 ﻿using System;
+using Autofac;
+using Hubl.Core.Service;
 
 using Xamarin.Forms;
 
 namespace Hubl.Mobile
 {
 	public class App : Application
-	{
-		public App ()
+	{	
+		public static IContainer Container {get; private set;}
+		static IContainer CreateContainer()
 		{
-			// The root page of your application
-			MainPage = new ContentPage {
-				Content = new StackLayout {
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						new Label {
-							XAlign = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
-					}
-				}
-			};
+			var builder = new ContainerBuilder ();
+			builder.RegisterModule <NetworkModule> ();
+			builder.RegisterType<UsersService>()
+				.SingleInstance();
+
+			builder.RegisterType<MobileSession>()
+				.As<ISession>()
+				.SingleInstance();
+
+			return builder.Build ();
+		}
+
+		public App ()
+		{				
+			MainPage = new NavigationPage (new Hubl.Mobile.NickPage ());
 		}
 
 		protected override void OnStart ()
