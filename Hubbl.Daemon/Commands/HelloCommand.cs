@@ -13,9 +13,9 @@ namespace Hubl.Daemon.Commands
     class HelloCommand:ICommand
     {
         private readonly INetworkMessageRouter _router;
-        private readonly ISeesion _session;
+        private readonly ISession _session;
 
-        public HelloCommand(INetworkMessageRouter router, ISeesion session)
+        public HelloCommand(INetworkMessageRouter router, ISession session)
         {
             _router = router;
             _session = session;

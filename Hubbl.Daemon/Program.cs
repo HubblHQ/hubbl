@@ -53,7 +53,7 @@ namespace Hubl.Daemon
 		        Console.WriteLine("Get message {0} from {1}:{2}", m, ep.Address, ep.Port);
 		        m.Sender.IpAddress = ep.Address;
 		        _container.Resolve<UsersService>().Add(m.Sender);
-                router.PublishFor(new []{m.Sender.Id}, new EchoMessage(_container.Resolve<ISeesion>().CurrentUser)).First().Run();
+                router.PublishFor(new []{m.Sender.Id}, new EchoMessage(_container.Resolve<ISession>().CurrentUser)).First().Run();
 		    });
 		    router.Subscribe<EchoMessage>()
 		        .OnSuccess((ep, m) =>

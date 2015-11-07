@@ -1,18 +1,24 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+using Hubl.Core.Model;
 using MessageRouter.Message;
 using MessageRouter.Network;
 
 namespace Hubl.Core.Messages
 {
-    [DataContract, Message(MessageGroups.Other)]
-    public class TextMessage : IMessage
+    [DataContract, Message(MessageGroups.System)]
+    public class EchoMessage:IMessage
     {
-        public TextMessage(string text)
+        public EchoMessage(User sender)
         {
-            Text = text;
+            Sender = sender;
         }
 
         [DataMember]
-        public string Text { get; set; }
+        public User Sender { get; set; }
     }
 }

@@ -37,7 +37,13 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CommandsModule.cs" />
+    <Compile Include="Commands\HelloCommand.cs" />
+    <Compile Include="Commands\HelpCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\QuitCommand.cs" />
+    <Compile Include="Commands\SendTextCommand.cs" />
+    <Compile Include="Commands\UserListCommand.cs" />
     <Compile Include="ConsoleSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,10 +55,20 @@
     <Compile Include="Network\TcpRemoteClient.cs" />
     <Compile Include="Network\NetworkModule.cs" />
     <Compile Include="Message\StringMessage.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Service\MPlayerBackend.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
@@ -60,6 +76,10 @@
     <ProjectReference Include="..\MessageRouter\MessageRouter.csproj">
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>MessageRouter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PCLCore\Hubl.Core.csproj">
+      <Project>{f5fa13cd-343d-4be6-902b-f01f1daae635}</Project>
+      <Name>Hubl.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
