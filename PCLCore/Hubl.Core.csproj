@@ -53,6 +53,10 @@
     <Compile Include="ExternalModules\VkModule\VkSettings.cs" />
     <Compile Include="ExternalModules\VkModule\VkApiService.cs" />
     <Compile Include="ExternalModules\VkModule\VkUserInfo.cs" />
+    <Compile Include="ExternalModules\SoundCloudModule\SCApiService.cs" />
+    <Compile Include="ExternalModules\SoundCloudModule\SCSettings.cs" />
+    <Compile Include="ExternalModules\SoundCloudModule\SCUserInfo.cs" />
+    <Compile Include="ExternalModules\Authorization.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -64,6 +68,7 @@
   <ItemGroup>
     <Folder Include="ExternalModules\" />
     <Folder Include="ExternalModules\VkModule\" />
+    <Folder Include="ExternalModules\SoundCloudModule\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

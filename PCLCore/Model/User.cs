@@ -20,5 +20,8 @@ namespace Hubl.Core.Model
 
 		[DataMember]
 		public VkUserInfo VkUserInfo { get; set;}
+
+		[DataMember]
+		public SCUserInfo SoundCloud { get; set; }
     }
 }

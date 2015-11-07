@@ -5,7 +5,7 @@ namespace PCLCore
 {
 	public class VkUserInfo
 	{
-		private readonly string _token;
+		public readonly string _token;
 
 		public readonly string VkUserId;
 
