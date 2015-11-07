@@ -3,6 +3,8 @@ using System.Linq;
 using Hubl.Core.Model;
 using Hubl.Core.Service;
 using Hubl.Mobile.Network;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 
 namespace Hubl.Mobile
@@ -11,7 +13,7 @@ namespace Hubl.Mobile
 	{
 		private readonly MobileNetworkSettings _settings;
 		private readonly User _user;
-
+		private ObservableCollection<Track> playlist;
 		public MobileSession(MobileNetworkSettings settings)
 		{			
 			_settings = settings;
@@ -21,6 +23,7 @@ namespace Hubl.Mobile
 				Id = Guid.NewGuid().ToString(),
 				Title = "staff"
 			};
+			playlist = new ObservableCollection<Track> ();
 
 		}
 
@@ -32,5 +35,13 @@ namespace Hubl.Mobile
 				return _user;
 			}
 		}
+		public ObservableCollection<Track> Playlist
+		{
+			get
+			{
+				return playlist;
+			}
+		}
+
 	}
 }

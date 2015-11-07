@@ -56,6 +56,9 @@
     <Compile Include="Network\MobileTcpRemoteClient.cs" />
     <Compile Include="Network\MobileNetworkModule.cs" />
     <Compile Include="Utils\MobileSession.cs" />
+    <Compile Include="SongsPage.xaml.cs">
+      <DependentUpon>SongsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -104,5 +107,8 @@
       <Project>{F5FA13CD-343D-4BE6-902B-F01F1DAAE635}</Project>
       <Name>Hubl.Core</Name>
     </ProjectReference>
+    <EmbeddedResource Include="SongsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

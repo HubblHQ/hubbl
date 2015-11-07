@@ -60,6 +60,13 @@ namespace Hubl.Mobile
 					Router.Subscribe<EchoMessage>().OnSuccess(m => {
 						var ss = m;
 					});
+					Router.Subscribe<AddCloudTrackMessage> ().OnSuccess ((ep, m) => {
+						var currentUser = App.Container.Resolve<ISession> ().CurrentUser;
+						if (currentUser.IsHub) {
+							var playlist = App.Container.Resolve<ISession>().Playlist;
+							playlist.Add (m.Track);
+						}
+					});
 				}
 				);
 			}

@@ -10,5 +10,8 @@ namespace Hubl.Core.Messages
     {
         [DataMember]
         public Track Track { get; set; }
+
+		[DataMember]
+		public User Sender { get; set; }
     }
 }
