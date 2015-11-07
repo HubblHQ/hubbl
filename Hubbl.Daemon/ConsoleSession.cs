@@ -6,7 +6,7 @@ using Hubl.Daemon.Network;
 
 namespace Hubl.Daemon
 {
-    class ConsoleSession : ISeesion
+    class ConsoleSession : ISession
     {
         private readonly NetworkSettings _settings;
         private readonly User _user;

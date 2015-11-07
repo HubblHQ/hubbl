@@ -1,18 +1,31 @@
 ﻿using System;
+using Autofac;
+using Hubl.Core.Service;
 
 using Xamarin.Forms;
 
 namespace Hubl.Mobile
 {
-	public class User {
-		public string Name {get; set; }
-		public Guid Guid {get; set; }
-	}
 	public class App : Application
-	{		
-		public static User User {get; set; }
+	{	
+		public static IContainer Container {get; private set;}
+		static IContainer CreateContainer()
+		{
+			var builder = new ContainerBuilder ();
+			builder.RegisterModule <NetworkModule> ();
+			builder.RegisterType<UsersService>()
+				.SingleInstance();
+
+			builder.RegisterType<MobileSession>()
+				.As<ISession>()
+				.SingleInstance();
+
+			return builder.Build ();
+		}
+
 		public App ()
 		{	
+			
 			MainPage = new NavigationPage (new Hubl.Mobile.NickPage ());
 		}
 

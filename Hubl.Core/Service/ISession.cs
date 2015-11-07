@@ -2,7 +2,7 @@
 
 namespace Hubl.Core.Service
 {
-    public interface ISeesion
+    public interface ISession
     {
         User CurrentUser { get; }
     }
