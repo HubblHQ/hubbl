@@ -16,15 +16,18 @@ namespace Hubl.Mobile.Network
 
 		public MobileNetworkSettings ()
 		{
-			TTL = 5;
+			TTL = 10;
 			MulticastPort = 30307;
-			ListenPort = 30308;
-			MulticastAdress = "224.0.0.1";
+			ListenPort = 30303;
+			MulticastAdress = "239.0.0.222";
 			Adapters = null;
 			var interfaces = Sockets.Plugin.CommsInterface.GetAllInterfacesAsync ().Result;
 			foreach (var i in interfaces) {
-				var ss = 3;
-			}			
+				if (i.IsUsable && !i.IsLoopback) {
+					//Adapters = i;
+					break;
+				}			
+			}
 		}
 	}
 }

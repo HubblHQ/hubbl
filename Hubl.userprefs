@@ -1,12 +1,36 @@
-﻿<Properties StartupItem="Hubbl.Daemon/Hubl.Daemon.csproj" RefactoringSettings.EnableRefactorings="True" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="UITests/Tests.cs">
+﻿<Properties StartupItem="iOS/Hubl.Mobile.iOS.csproj" RefactoringSettings.EnableRefactorings="True" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="Android.MonoForAndroid_API_10" />
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="UITests/Tests.cs" Line="4" Column="7" />
+      <File FileName="Hubl.Mobile/NewHubPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="iOS/AppDelegate.cs" Line="18" Column="25" />
+      <File FileName="PCLCore/Service/UsersService.cs" Line="1" Column="1" />
+      <File FileName="PCLCore/Model/User.cs" Line="1" Column="36" />
+      <File FileName="PCLCore/Model/Track.cs" Line="10" Column="17" />
+      <File FileName="PCLCore/Model/SourceType.cs" Line="1" Column="1" />
+      <File FileName="PCLCore/Model/PlaylistEntry.cs" Line="11" Column="20" />
+      <File FileName="Hubbl.Daemon/ConsoleSession.cs" Line="3" Column="12" />
+      <File FileName="Hubl.Mobile/Hubl.Mobile.cs" Line="18" Column="28" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Hubl" expanded="True">
+            <Node name="Hubl.Core" expanded="True" />
+            <Node name="Hubl.Mobile" expanded="True" />
+            <Node name="Hubl.Mobile.Droid" expanded="True" />
+            <Node name="Hubl.Mobile.iOS" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>Hubbl.Daemon/Hubl.Daemon.csproj</String>
+    <String>Droid/Hubl.Mobile.Droid.csproj</String>
+  </DisabledProjects>
 </Properties>

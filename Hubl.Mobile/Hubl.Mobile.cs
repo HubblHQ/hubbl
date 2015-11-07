@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
 using Hubl.Core.Service;
-
+using System.Linq;
 using Hubl.Core.Model;
 using MessageRouter.Network;
 
@@ -42,10 +42,18 @@ namespace Hubl.Mobile
 		{	
 			try {				
 				Router.StartAsync().ContinueWith((a) => {
-					Router.Subscribe<HelloMessage>().OnSuccess(m => {
+					Router.Subscribe<HelloMessage>().OnSuccess((ep,m) => {
+						m.Sender.IpAddress = ep.Address;
 						Container.Resolve<UsersService>().Add(m.Sender);
 						var echo = new EchoMessage(Container.Resolve<ISession>().CurrentUser);
-						Router.PublishFor(new string[]{m.Sender.Id}, echo);
+						var echoTask = Router.PublishFor(new string[] {m.Sender.Id}, echo).First ();
+						echoTask.OnException ((e) => {
+							var aa = e;
+						}).OnSuccess ((me) => {
+							var sd = me;
+						});
+						echoTask.Run ();
+
 					}).OnException(m => {
 						var aa = m;
 					});
