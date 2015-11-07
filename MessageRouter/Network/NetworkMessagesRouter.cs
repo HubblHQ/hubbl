@@ -69,16 +69,16 @@ namespace MessageRouter.Network
 			}
 		}
 
-		public async void Stop()
+		public async Task StopAsync()
 		{
 			await _multicastClient.DisconnectAsync();
 			await _listener.StopListeningAsync();
 		}
-
-		public void Start()
+			
+		public async Task StartAsync()
 		{
-			_listener.StartListeningAsync();
-			_multicastClient.JoinMulticastGroupAsync();
+			await _listener.StartListeningAsync();
+			await _multicastClient.JoinMulticastGroupAsync();
 		}
 
 		public INetworkTask<TMessage> Publish<TMessage>(TMessage message) 

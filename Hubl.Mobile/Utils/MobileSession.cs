@@ -11,14 +11,14 @@ namespace Hubl.Mobile
 		private readonly MobileNetworkSettings _settings;
 		private readonly User _user;
 
-		public MobileSession(MobileNetworkSettings settings, string userTitle)
+		public MobileSession(MobileNetworkSettings settings)
 		{			
 			_settings = settings;
 
 			_user = new User
 			{
 				Id = Guid.NewGuid().ToString(),
-				Title = userTitle
+				Title = "staff"
 			};
 
 		}

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Hubl.Core.Messages;
+using Autofac;
+using Hubl.Core.Service;
 
 using Xamarin.Forms;
 
@@ -19,7 +22,17 @@ namespace Hubl.Mobile
 		public HubsPage ()
 		{
 			InitializeComponent ();
+			var message = new HelloMessage ();
+			message.Sender = App.Container.Resolve<ISession> ().CurrentUser;
 
+			var task = App.Router.Publish (message);
+			task.OnSuccess (m => {
+				var a = 3;
+			});
+			task.OnException (e => {
+				var a = 3;
+			});
+			task.Run ();
 			hubs.Add (new Hub{ Name = "Rap", Admin = "Pasha", CurrentSong = "Eminem - Lose yourself" });
 			hubs.Add(new Hub{Name = "Rock", Admin = "Danil", CurrentSong = "Scorpions - Wind of change"});
 			HubsView.ItemsSource = hubs;
