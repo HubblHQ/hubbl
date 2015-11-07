@@ -1,6 +1,5 @@
 ﻿using System.Net;
 
-
 namespace Hubl.Daemon.Network
 {
     public class NetworkSettings
@@ -9,7 +8,7 @@ namespace Hubl.Daemon.Network
         {
             MulticastPort = 30307;
             ListenPort = 30303;
-			MulticastAddress = IPAddress.Any.ToString ();
+			MulticastAddress = "224.0.0.1";
         }
         public int TTL { get; set; }
 

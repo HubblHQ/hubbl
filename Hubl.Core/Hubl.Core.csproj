@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -29,11 +29,34 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Service\" />
-    <Folder Include="Model\" />
+    <ProjectReference Include="..\MessageRouter\MessageRouter.csproj">
+      <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
+      <Name>MessageRouter</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Messages\AddLocalTrackMessage.cs" />
+    <Compile Include="Messages\EchoMessage.cs" />
+    <Compile Include="Messages\HelloMessage.cs" />
+    <Compile Include="Messages\MessageGroups.cs" />
+    <Compile Include="Messages\AddCloudTrackMessage.cs" />
+    <Compile Include="Messages\NextTrackMessage.cs" />
+    <Compile Include="Messages\PauseMessage.cs" />
+    <Compile Include="Messages\PlayTrackMessage.cs" />
+    <Compile Include="Messages\ResponsePlayingTrackMessage.cs" />
+    <Compile Include="Messages\ResponsePlaylistMessage.cs" />
+    <Compile Include="Model\SourceType.cs" />
+    <Compile Include="Model\Track.cs" />
+    <Compile Include="Service\IMusicPlayer.cs" />
+    <Compile Include="Service\ISession.cs" />
     <Compile Include="Service\UsersService.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\PlaylistEntry.cs" />
+    <Compile Include="Service\HubblPlayer.cs" />
+    <Compile Include="Service\IMusicPlayerBackend.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
 </Project>

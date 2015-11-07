@@ -1,6 +1,6 @@
 ﻿using System;
-using MessageRouter.Message;
 using System.Runtime.Serialization;
+using MessageRouter.Message;
 using MessageRouter.Network;
 
 namespace Hubl.Daemon.Message
