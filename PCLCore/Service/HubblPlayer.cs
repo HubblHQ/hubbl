@@ -10,7 +10,8 @@ namespace Hubl.Core.Service
 	{
 		private IMusicPlayerBackend _backend;
 		private Task _playerTask;
-		private CancellationTokenSource _cancellationTokenSource;
+		private readonly CancellationTokenSource _cancellationTokenSource;
+
 		public HubblPlayer (IMusicPlayerBackend backend)
 		{
 			_backend = backend;

@@ -23,6 +23,11 @@ namespace Hubl.Daemon.Service
 		// private CancellationToken _currentTaskCancellationToken;
 		private TimeSpan _currentTrackStartTime;
 
+		public void PauseCurrentTrack ()
+		{
+			throw new NotImplementedException ();
+		}
+
 		#region IMusicPlayerBackend implementation
 
 		Track IMusicPlayerBackend.GetTrackInfo (string path)
