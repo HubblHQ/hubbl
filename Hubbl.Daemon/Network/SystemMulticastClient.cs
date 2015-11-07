@@ -15,7 +15,7 @@ namespace Hubl.Daemon.Network
         {
             
             _settings = settings;
-            _client = new UdpClient(settings.MulticastPort, AddressFamily.InterNetwork) {Ttl = ((short) _settings.TTL)};
+            _client = new UdpClient(settings.ListenPort, AddressFamily.InterNetwork) {Ttl = ((short) _settings.TTL)};
             _client.MulticastLoopback = true;
         }
 

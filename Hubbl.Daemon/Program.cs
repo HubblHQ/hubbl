@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Autofac;
 using Hubl.Core.Messages;
+using Hubl.Core.Model;
 using Hubl.Core.Service;
 using Hubl.Daemon.Commands;
 using Hubl.Daemon.Network;
@@ -14,7 +15,7 @@ namespace Hubl.Daemon
 {
 	class MainClass
 	{
-		static IContainer _container;
+        static IContainer _container;
 	    private static bool _runing;
 
 		static IContainer CreateContainer()
@@ -44,7 +45,7 @@ namespace Hubl.Daemon
             builder.Update(_container);
 
             var networkSettings = _container.Resolve <NetworkSettings> ();
-		    networkSettings.TTL = 5;
+		    networkSettings.TTL = 10;
 
 			var router = _container.Resolve<INetworkMessageRouter> ();
 
