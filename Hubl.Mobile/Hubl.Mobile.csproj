@@ -58,20 +58,13 @@
     <Folder Include="Network\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MessageRouter\MessageRouter\MessageRouter.csproj">
+    <ProjectReference Include="..\Hubl.Core\Hubl.Core.csproj">
+      <Project>{583462BA-12EF-4FA2-88CA-EFBA3ECFF212}</Project>
+      <Name>Hubl.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MessageRouter\MessageRouter.csproj">
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>MessageRouter</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Hubl.Core\Hubl.Core.csproj">
-      <Project>{A84F13D5-86E6-43E1-8846-A6E4D879953E}</Project>
-      <Name>Hubl.Core</Name>
-    </ProjectReference>
   </ItemGroup>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
 </Project>
