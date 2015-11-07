@@ -54,7 +54,6 @@
     <Compile Include="Network\SystemTcpListener.cs" />
     <Compile Include="Network\TcpRemoteClient.cs" />
     <Compile Include="Network\NetworkModule.cs" />
-    <Compile Include="Message\StringMessage.cs" />
     <Compile Include="Properties\Resources1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

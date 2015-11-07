@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading;
 using Autofac;
 using Hubl.Core.Messages;
-using Hubl.Core.Model;
 using Hubl.Core.Service;
 using Hubl.Daemon.Commands;
-using Hubl.Daemon.Message;
 using Hubl.Daemon.Network;
+using Hubl.Daemon.Service;
 using MessageRouter.Network;
 
 namespace Hubl.Daemon
@@ -26,6 +24,9 @@ namespace Hubl.Daemon
 		    builder.RegisterModule<CommandsModule>();
 			builder.RegisterType<UsersService>()
 				.SingleInstance();
+		    builder.RegisterType<MPlayerBackend>()
+                .As<IMusicPlayerBackend>()
+               .SingleInstance();
 		    
             builder.RegisterType<ConsoleSession>()
 		        .As<ISession>()
