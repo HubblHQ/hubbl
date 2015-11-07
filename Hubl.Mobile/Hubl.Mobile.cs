@@ -1,8 +1,12 @@
 ﻿using System;
 using Autofac;
 using Hubl.Core.Service;
+
 using Hubl.Core.Model;
 using MessageRouter.Network;
+
+using Hubl.Mobile.Network;
+
 using Xamarin.Forms;
 using Hubl.Core.Messages;
 

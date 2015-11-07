@@ -1,9 +1,9 @@
 ﻿using System;
 using MessageRouter.Network;
-using Sockets.Plugin.Abstractions;
 using Sockets.Plugin;
+using Sockets.Plugin.Abstractions;
 
-namespace Hubl.Mobile
+namespace Hubl.Mobile.Network
 {
 	public class MobileMulticastClient: IMulticastClient
 	{
@@ -15,13 +15,19 @@ namespace Hubl.Mobile
 		public MobileMulticastClient (MobileNetworkSettings settings)
 		{
 			_settings = settings;
-			
-			_udpClient = new UdpSocketMulticastClient();
-			_udpClient.TTL = settings.TTL;
+
+		    _udpClient = new UdpSocketMulticastClient {TTL = settings.TTL};
+            _udpClient.MessageReceived = OnMessageReceived;
 
 		}
 
-		#region IMulticastClient implementation
+	    private void OnMessageReceived(object sender, UdpSocketMessageReceivedEventArgs e)
+	    {
+            if(MessageReceived != null)
+                MessageReceived(sender, new DatagramReceivedEventArgs(e.RemoteAddress, int.Parse(e.RemotePort), e.ByteData));
+	    }
+
+	    #region IMulticastClient implementation
 
 		public event EventHandler<DatagramReceivedEventArgs> MessageReceived;
 

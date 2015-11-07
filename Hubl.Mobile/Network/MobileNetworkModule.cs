@@ -2,7 +2,7 @@
 using MessageRouter.Message;
 using MessageRouter.Network;
 
-namespace Hubl.Mobile
+namespace Hubl.Mobile.Network
 {
 	class NetworkModule:Module
 	{

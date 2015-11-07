@@ -9,6 +9,11 @@ namespace Hubl.Core.Messages
     [Message(MessageGroups.System)]
     public class HelloMessage : IMessage
     {
+        public HelloMessage(User user)
+        {
+            Sender = user;
+        }
+
         [DataMember]
         public User Sender { get; set; }
     }

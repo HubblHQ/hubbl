@@ -1,12 +1,10 @@
-﻿using System;
-using MessageRouter.Network;
-using Sockets.Plugin.Abstractions;
-using Sockets.Plugin;
-using System.IO;
+﻿using System.IO;
 using System.Threading.Tasks;
 using Hubl.Core.Service;
+using MessageRouter.Network;
+using Sockets.Plugin;
 
-namespace Hubl.Mobile
+namespace Hubl.Mobile.Network
 {
 	public class MobileTcpClient : ITcpClient
 	{
