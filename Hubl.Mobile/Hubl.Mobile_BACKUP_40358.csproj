@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -69,6 +69,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+
     <Folder Include="Network\" />
   </ItemGroup>
   <ItemGroup>
@@ -76,14 +77,8 @@
       <Project>{583462BA-12EF-4FA2-88CA-EFBA3ECFF212}</Project>
       <Name>Hubl.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MessageRouter\MessageRouter.csproj">
-      <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
-      <Name>MessageRouter</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Hubl.Core\Hubl.Core.csproj">
-      <Project>{583462BA-12EF-4FA2-88CA-EFBA3ECFF212}</Project>
-      <Name>Hubl.Core</Name>
-    </ProjectReference>
+<<<<<<< HEAD
+
     <EmbeddedResource Include="HubsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -96,5 +91,12 @@
     <EmbeddedResource Include="SourcesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+
+=======
+    <ProjectReference Include="..\MessageRouter\MessageRouter.csproj">
+      <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
+      <Name>MessageRouter</Name>
+    </ProjectReference>
+>>>>>>> master
   </ItemGroup>
 </Project>

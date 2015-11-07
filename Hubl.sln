@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hubl.Mobile.UITests", "UITests\Hubl.Mobile.UITests.csproj", "{2483BD4C-153D-47DA-AB03-0B727DA57AF1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hubl.Mobile", "Hubl.Mobile\Hubl.Mobile.csproj", "{0742BD85-E181-4DAB-B8C0-5C37D34B1256}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hubl.Mobile.iOS", "iOS\Hubl.Mobile.iOS.csproj", "{72B99D4F-F251-4D6C-BB89-239833DBC35D}"
@@ -53,22 +51,6 @@ Global
 		{0742BD85-E181-4DAB-B8C0-5C37D34B1256}.Release|iPhone.Build.0 = Release|Any CPU
 		{0742BD85-E181-4DAB-B8C0-5C37D34B1256}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{0742BD85-E181-4DAB-B8C0-5C37D34B1256}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Default|Any CPU.ActiveCfg = Debug|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Default|Any CPU.Build.0 = Debug|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Default|iPhone.ActiveCfg = Debug|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Default|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Release|iPhone.Build.0 = Release|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{2483BD4C-153D-47DA-AB03-0B727DA57AF1}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{583462BA-12EF-4FA2-88CA-EFBA3ECFF212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{583462BA-12EF-4FA2-88CA-EFBA3ECFF212}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{583462BA-12EF-4FA2-88CA-EFBA3ECFF212}.Debug|iPhone.ActiveCfg = Debug|Any CPU

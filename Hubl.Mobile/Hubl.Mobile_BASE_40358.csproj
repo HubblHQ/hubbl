@@ -10,8 +10,6 @@
     <AssemblyName>Hubl.Mobile</AssemblyName>
     <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,20 +32,6 @@
   <ItemGroup>
     <Compile Include="Hubl.Mobile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NickPage.cs" />
-    <Compile Include="HubsPage.xaml.cs">
-      <DependentUpon>HubsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="OneHubPage.xaml.cs">
-      <DependentUpon>OneHubPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="NewHubPage.xaml.cs">
-      <DependentUpon>NewHubPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SourcesPage.xaml.cs">
-      <DependentUpon>SourcesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ISongsPicker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.1.6471\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -72,29 +56,13 @@
     <Folder Include="Network\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Hubl.Core\Hubl.Core.csproj">
-      <Project>{583462BA-12EF-4FA2-88CA-EFBA3ECFF212}</Project>
-      <Name>Hubl.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MessageRouter\MessageRouter.csproj">
+    <ProjectReference Include="..\..\MessageRouter\MessageRouter\MessageRouter.csproj">
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>MessageRouter</Name>
     </ProjectReference>
     <ProjectReference Include="..\Hubl.Core\Hubl.Core.csproj">
-      <Project>{583462BA-12EF-4FA2-88CA-EFBA3ECFF212}</Project>
+      <Project>{A84F13D5-86E6-43E1-8846-A6E4D879953E}</Project>
       <Name>Hubl.Core</Name>
     </ProjectReference>
-    <EmbeddedResource Include="HubsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OneHubPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewHubPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SourcesPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>
