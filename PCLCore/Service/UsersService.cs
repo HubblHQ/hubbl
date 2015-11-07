@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Hubl.Core.Model;
+using MessageRouter.Network;
 
 namespace Hubl.Core.Service
 {
@@ -25,6 +27,16 @@ namespace Hubl.Core.Service
                 return true;
             }
             return false;
+        }
+
+        public IEnumerable<User> GetList()
+        {
+            return _users.Values.ToList();
+        }
+
+        public User Get(RemotePoint remotePoint)
+        {
+            return _users.Values.FirstOrDefault(m => m.IpAddress == remotePoint.Address);
         }
     }
 }

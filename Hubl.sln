@@ -13,13 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageRouter", "MessageRou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hubl.Daemon", "Hubbl.Daemon\Hubl.Daemon.csproj", "{5DFCCD93-BA0F-4794-A62B-6FB5A0FBA29B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{89C32294-1B5D-499E-9DA1-384B1EDD044D}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hubl.Core", "PCLCore\Hubl.Core.csproj", "{F5FA13CD-343D-4BE6-902B-F01F1DAAE635}"
 EndProject
 Global
@@ -135,8 +128,6 @@ Global
 		{FD878E56-3D67-4D48-B838-3AE4DDD58D6A}.Release|iPhone.Build.0 = Release|Any CPU
 		{FD878E56-3D67-4D48-B838-3AE4DDD58D6A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{FD878E56-3D67-4D48-B838-3AE4DDD58D6A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

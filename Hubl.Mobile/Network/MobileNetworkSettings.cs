@@ -1,9 +1,7 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
-using Sockets.Plugin;
 
-namespace Hubl.Mobile
+namespace Hubl.Mobile.Network
 {
 	public class MobileNetworkSettings
 	{
@@ -18,10 +16,18 @@ namespace Hubl.Mobile
 
 		public MobileNetworkSettings ()
 		{
-			TTL = 5;
+			TTL = 10;
 			MulticastPort = 30307;
-			MulticastAdress = "224.0.0.1";
-			Adapters = new CommsInterface ();
+			ListenPort = 30303;
+			MulticastAdress = "239.0.0.222";
+			Adapters = null;
+			var interfaces = Sockets.Plugin.CommsInterface.GetAllInterfacesAsync ().Result;
+			foreach (var i in interfaces) {
+				if (i.IsUsable && !i.IsLoopback) {
+					//Adapters = i;
+					break;
+				}			
+			}
 		}
 	}
 }

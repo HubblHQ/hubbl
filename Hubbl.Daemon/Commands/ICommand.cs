@@ -7,5 +7,7 @@ namespace Hubl.Daemon.Commands
         bool Execute(params string[] args);
 
         IEnumerable<string> Shortcuts { get; }
+
+        string Description { get; }
     }
 }

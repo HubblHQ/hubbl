@@ -1,4 +1,4 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 using PCLCore;
 
 namespace Hubl.Core.Model
@@ -20,8 +20,10 @@ namespace Hubl.Core.Model
 
 		[DataMember]
 		public VkUserInfo VkUserInfo { get; set;}
+		public bool IsHub {get; set; }
 
 		[DataMember]
 		public SCUserInfo SoundCloud { get; set; }
+		public string Hub {get; set; }
     }
 }
