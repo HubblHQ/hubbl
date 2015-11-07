@@ -22,8 +22,7 @@ namespace Hubl.Mobile
 		public HubsPage ()
 		{
 			InitializeComponent ();
-			var message = new HelloMessage ();
-			message.Sender = App.Container.Resolve<ISession> ().CurrentUser;
+			var message = new HelloMessage (App.Container.Resolve<ISession> ().CurrentUser);
 
 			var task = App.Router.Publish (message);
 			task.OnSuccess (m => {
