@@ -26,8 +26,6 @@ namespace Hubl.Mobile
 			var continueButton = new Button ();
 			continueButton.Text = "Продолжить";
 			continueButton.Clicked += (sender, e) => {
-				var user = new User() {Name = nickLabel.Text, Guid = Guid.NewGuid()};
-				App.User = user;
 				Navigation.PushAsync(new HubsPage());
 			};
 

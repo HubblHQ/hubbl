@@ -24,8 +24,7 @@ namespace Hubl.Mobile
 		}
 
 		public App ()
-		{	
-			
+		{				
 			MainPage = new NavigationPage (new Hubl.Mobile.NickPage ());
 		}
 

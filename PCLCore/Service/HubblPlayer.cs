@@ -54,7 +54,7 @@ namespace Hubl.Core.Service
 						CurrentPlayedEntry = Playlist.Dequeue ();
 						_backend.PlayTrack (CurrentPlayedEntry.Track);
 					}
-					Thread.Sleep (100);
+					Task.Delay(100).RunSynchronously();
 				}
 				CurrentPlayedEntry = null;
 				_backend.PlayTrack (null);
