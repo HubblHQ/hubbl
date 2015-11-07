@@ -61,6 +61,10 @@
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>MessageRouter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PCLCore\Hubl.Core.csproj">
+      <Project>{F5FA13CD-343D-4BE6-902B-F01F1DAAE635}</Project>
+      <Name>Hubl.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Service\" />
