@@ -33,8 +33,6 @@ namespace Hubl.Daemon.Network
         public async Task StartListeningAsync()
         {
             _listener.Start();
-            var ipEndPoint = (IPEndPoint) _listener.LocalEndpoint;
-            _settings.ListenPort = ipEndPoint.Port;
             while (true)
             {
                 var r = await _listener.AcceptTcpClientAsync();

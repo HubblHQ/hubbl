@@ -15,8 +15,9 @@ namespace Hubl.Daemon.Network
         {
             
             _settings = settings;
-            _client = new UdpClient(settings.ListenPort, AddressFamily.InterNetwork) {Ttl = ((short) _settings.TTL)};
+            _client = new UdpClient(new IPEndPoint(IPAddress.Any, settings.MulticastPort)) {Ttl = ((short) settings.TTL)};
             _client.MulticastLoopback = true;
+            //_client.EnableBroadcast = true;
         }
 
         private void OnMessageReceived(object sender, DatagramReceivedEventArgs e)
@@ -27,7 +28,7 @@ namespace Hubl.Daemon.Network
 
         public void Dispose()
         {
-            //_client.DropMulticastGroup(IPAddress.Parse(_settings.MulticastAddress));
+            _client.DropMulticastGroup(IPAddress.Parse(_settings.MulticastAddress));
             _client.Close();
         }
 

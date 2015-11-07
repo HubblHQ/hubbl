@@ -7,8 +7,8 @@ namespace Hubl.Daemon.Network
         public NetworkSettings()
         {
             MulticastPort = 30307;
-            ListenPort = 0;
-			MulticastAddress = "239.192.0.1";
+            ListenPort = 30303;
+            MulticastAddress = "239.0.0.222";
         }
         public int TTL { get; set; }
 

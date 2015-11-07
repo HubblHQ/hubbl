@@ -45,7 +45,7 @@ namespace Hubl.Daemon
             builder.Update(_container);
 
             var networkSettings = _container.Resolve <NetworkSettings> ();
-		    networkSettings.TTL = 10;
+		    networkSettings.TTL = 5;
 
 			var router = _container.Resolve<INetworkMessageRouter> ();
 
