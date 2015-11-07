@@ -28,7 +28,7 @@ namespace Hubl.Daemon
 				.SingleInstance();
 		    
             builder.RegisterType<ConsoleSession>()
-		        .As<ISeesion>()
+		        .As<ISession>()
 		        .SingleInstance();
 
 			return builder.Build ();
