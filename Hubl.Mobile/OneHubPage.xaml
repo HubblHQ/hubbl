@@ -1,22 +1,21 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Hubl.Mobile.OneHubPage">
 	<ContentPage.Content>
-	<StackLayout Orientation="Vertical" BackgroundColor="White">
+	<StackLayout Orientation="Vertical" BackgroundColor="White" Padding="5" Spacing="5">		
+			<Label x:Name="CurrentSong" FontSize = "18.0"/>
+			<Label x:Name="Author" FontSize="14.0"/>
+		
 		<StackLayout Orientation="Horizontal">
-			<Label x:Name="CurrentSong" FontSize = "24.0"/>
-			<Label x:Name="Author" FontSize="18.0"/>
-		</StackLayout>
-		<StackLayout Orientation="Horizontal">
-			<Label x:Name="ElapsedTime" Width = "30" />
-			<ProgressBar x:Name="SongProgress" />
-			<Label x:Name="RemainingTime" Width = "30" />				
+			<Label x:Name="ElapsedTime" WidthRequest = "50" HorizontalOptions="Start" FontSize="12" VerticalOptions="Center"/>
+			<ProgressBar x:Name="SongProgress" HorizontalOptions="FillAndExpand" MinimumHeightRequest="10" VerticalOptions="CenterAndExpand"/>
+			<Label x:Name="RemainingTime" WidthRequest = "50" HorizontalOptions="End" FontSize="12" VerticalOptions="Center"/>				
 		</StackLayout>
 
-		<ListView  x:Name="SongsView">
+		<ListView  x:Name="SongsView" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout BackgroundColor="#eee"
+                        <StackLayout
                         Orientation="Vertical">                            
                            <Label Text="{Binding Name}"
                                 TextColor="#f35e20" />

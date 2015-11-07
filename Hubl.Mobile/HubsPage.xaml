@@ -3,16 +3,16 @@
 	<ContentPage.Content>
 	<StackLayout>
 		<Button x:Name="AddHub" Text="Добавить хаб"/>
-		<ListView  x:Name="HubsView">
+		<ListView  x:Name="HubsView" SeparatorVisibility="None">
 	            <ListView.ItemTemplate>
 	                <DataTemplate>
 	                    <ViewCell>
 	                        <StackLayout BackgroundColor="#eee"
 	                        Orientation="Vertical">
 	                            <StackLayout Orientation="Horizontal">
-	                                <Label Text="{Binding Name}"
+	                                <Label Text="{Binding Hub}"
 	                                TextColor="#f35e20" />
-	                                <Label Text="{Binding Admin}"/>
+	                                <Label Text="{Binding Title}"/>
 
 	                           </StackLayout>
 	                           <Label Text="{Binding CurrentSong}"

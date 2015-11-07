@@ -30,10 +30,10 @@ namespace Hubl.Mobile
 			songs.Add (new Song{ Name = "Lose yourself", Author = "Eminem" });
 			songs.Add (new Song{ Name = "Remember the name", Author = "Fort Minor" });
 			SongsView.ItemsSource = songs;
-			Current = "staff";
-			Progress = 0.5;
-			Remaining = DateTime.Now;
-			SongProgress.ProgressTo (0.5, 1, Easing.CubicOut);
+			CurrentSong.Text = "Current song";
+			ElapsedTime.Text = TimeSpan.FromSeconds (100).ToString (@"mm\:ss");
+			RemainingTime.Text = TimeSpan.FromSeconds (150).ToString (@"mm\:ss");
+			SongProgress.ProgressTo (100.0/250, 5, Easing.CubicOut);
 		}
 	}
 }

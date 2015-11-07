@@ -10,6 +10,8 @@
 
         public string Id { get; set; }
 
+		public bool IsHub {get; set; }
 
+		public string Hub {get; set; }
     }
 }
