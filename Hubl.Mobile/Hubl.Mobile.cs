@@ -35,7 +35,13 @@ namespace Hubl.Mobile
 			Container = CreateContainer ();
 			Router = Container.Resolve<INetworkMessageRouter> ();
 
-			MainPage = new NavigationPage (new Hubl.Mobile.NickPage ());
+			var user = User.LoadUser ();
+			if (user != null) {
+				Container.Resolve<ISession> ().CurrentUser = user;
+				MainPage = new NavigationPage (new HubsPage ());
+			} else {
+				MainPage = new NavigationPage (new NickPage ());
+			}
 		}
 
 		protected override void OnStart ()

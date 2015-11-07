@@ -12,7 +12,7 @@ namespace Hubl.Mobile
 	class MobileSession : ISession
 	{
 		private readonly MobileNetworkSettings _settings;
-		private readonly User _user;
+		private User _user;
 		private ObservableCollection<Track> playlist;
 		public MobileSession(MobileNetworkSettings settings)
 		{			
@@ -33,6 +33,10 @@ namespace Hubl.Mobile
 			{
 				_user.Port = _settings.ListenPort;
 				return _user;
+			}
+			set
+			{ 
+				_user = value;	
 			}
 		}
 		public ObservableCollection<Track> Playlist

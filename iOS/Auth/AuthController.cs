@@ -49,6 +49,7 @@ namespace Hubl.Mobile.iOS
 					var user = App.Container.Resolve<ISession> ().CurrentUser;
 					user.VkUserInfo = new VkUserInfo(token, userId);
 					auth.OnSucceeded (ee.Account);
+					user.Save ();
 					//this.DismissViewController (true, null);
 					page.Navigation.PopAsync ();
 				}

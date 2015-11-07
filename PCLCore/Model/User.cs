@@ -1,5 +1,8 @@
 using System.Runtime.Serialization;
 using PCLCore;
+using PCLStorage;
+using Newtonsoft.Json;
+using System;
 
 namespace Hubl.Core.Model
 {
@@ -29,5 +32,27 @@ namespace Hubl.Core.Model
 
 		[DataMember]
 		public string Hub {get; set; }
+
+		public void Save()
+		{
+			var source = new System.Threading.CancellationTokenSource (10000);
+			var token = source.Token;
+			var file = FileSystem.Current.LocalStorage.CreateFileAsync ("user", CreationCollisionOption.ReplaceExisting, token).Result;
+			var jUser = JsonConvert.SerializeObject (this);
+			file.WriteAllTextAsync (jUser);
+		}
+		public static User LoadUser()
+		{
+			var source = new System.Threading.CancellationTokenSource (10000);
+			var token = source.Token;
+			try {
+				var file = FileSystem.Current.LocalStorage.GetFileAsync ("user", token).Result;			
+				var sUser = file.ReadAllTextAsync ().Result;
+				var user = JsonConvert.DeserializeObject<User>(sUser);
+				return user;
+			} catch (Exception e) {
+				return null;
+			}
+		}
     }
 }
