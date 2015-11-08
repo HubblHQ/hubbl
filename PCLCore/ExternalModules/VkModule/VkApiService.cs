@@ -32,21 +32,17 @@ namespace PCLCore
 					{"access_token", _user.VkUserInfo._token},
 					{"count", count.ToString ()}
 				});
-			var responceRaw = await request.PostAsync (_baseUrl + "audio.get",content);
 			string responceString = "";
 			try {
+				var responceRaw = await request.PostAsync (_baseUrl + "audio.get",content);
 				var bytes = await responceRaw.Content.ReadAsByteArrayAsync();
 				responceString = System.Text.Encoding.GetEncoding ("windows-1251").GetString (bytes, 0, bytes.Length);
-			}
-			catch (Exception e) {
-				var a = 4;
-			}
+			
 
 			JArray VkAudioListJSon = (JArray)JObject.Parse (responceString) ["response"] ;
 
 			var responce = new List<Track>();
-
-
+			
 			foreach (var i in VkAudioListJSon.Skip (1)) {
 				try {
 				var track = new Track ();
@@ -64,8 +60,13 @@ namespace PCLCore
 					continue;
 				}
 			}
+				return responce;
+			}
+			catch (Exception e) {
+				return new List<Track> ();
+			}
 
-			return responce;
+
 			}
 		}
 

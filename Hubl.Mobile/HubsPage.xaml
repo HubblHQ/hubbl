@@ -1,28 +1,29 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Hubl.Mobile.HubsPage">
 	<ContentPage.Content>
-	<StackLayout>
-		<Button x:Name="AddHub" Text="Добавить хаб"/>
-		<ListView  x:Name="HubsView" SeparatorVisibility="None">
+	<StackLayout Padding="5" Spacing="10" BackgroundColor="#efeff4">		
+		<ListView  x:Name="HubsView" SeparatorVisibility="None" RowHeight="120">
 	            <ListView.ItemTemplate>
 	                <DataTemplate>
 	                    <ViewCell>
-	                        <StackLayout BackgroundColor="#eee"
-	                        Orientation="Vertical">
-	                            <StackLayout Orientation="Horizontal">
-	                                <Label Text="{Binding Hub}"
-	                                TextColor="#f35e20" />
-	                                <Label Text="{Binding Title}"/>
-
+	                        <StackLayout BackgroundColor="White" HeightRequest="100"
+	                        Orientation="Horizontal">
+	                        <Image WidthRequest = "100" HeightRequest="100" Source="album-artwork-missing@2x.png"/>
+	                            <StackLayout Orientation="Vertical">
+	                                <Label Text="{Binding Hub}" FontSize="18"
+	                                TextColor="Black" />
+	                                <Label Text="{Binding CurrentSong}" FontSize="14"
+	                                TextColor="Gray"/>
 	                           </StackLayout>
-	                           <Label Text="{Binding CurrentSong}"
-	                                HorizontalOptions="EndAndExpand"
-	                                TextColor="#503026" />
 	                        </StackLayout>
 	                    </ViewCell>
 	                </DataTemplate>
 	            </ListView.ItemTemplate>
 	        </ListView>
-        </StackLayout>
+	        <Label Text="Хабы, расположенные поблизости, будут найдены мгновенно" TextColor="Gray" XAlign="Center" FontSize="12"/>
+	        <Image Source="airdrop-white@2x.png" HeightRequest="50" WidthRequest="50"/>
+	        <BoxView MinimumHeightRequest="50"/>
+	        <Button x:Name="AddHub" Text="Создать хаб" TextColor="Lime" BackgroundColor="White" FontSize="18"/>
+        </StackLayout> 
 	</ContentPage.Content>
 </ContentPage>

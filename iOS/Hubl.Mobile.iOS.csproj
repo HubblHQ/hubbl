@@ -59,6 +59,9 @@
     <MtouchDebug>true</MtouchDebug>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchI18n>cjk,mideast,other,rare,west</MtouchI18n>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -98,23 +101,61 @@
     <Reference Include="PCLStorage.Abstractions">
       <HintPath>..\packages\PCLStorage.1.0.2\lib\portable-Xamarin.iOS+Xamarin.Mac\PCLStorage.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\Default-Portrait.png" />
-    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+    <BundleResource Include="Resources\testsound.mp3" />
+    <BundleResource Include="Resources\add-track-blue.png" />
+    <BundleResource Include="Resources\add-track-blue%402x.png" />
+    <BundleResource Include="Resources\album-artwork-missing.png" />
+    <BundleResource Include="Resources\album-artwork-missing%402x.png" />
+    <BundleResource Include="Resources\app-icon-rounded.png" />
+    <BundleResource Include="Resources\app-icon-rounded%402x.png" />
+    <BundleResource Include="Resources\app-icon.png" />
+    <BundleResource Include="Resources\app-icon%402x.png" />
+    <BundleResource Include="Resources\app-logo-square-black.png" />
+    <BundleResource Include="Resources\app-logo-square-black%402x.png" />
+    <BundleResource Include="Resources\app-logo-square-white.png" />
+    <BundleResource Include="Resources\app-logo-square-white%402x.png" />
+    <BundleResource Include="Resources\app-logo-wide-black.png" />
+    <BundleResource Include="Resources\app-logo-wide-black%402x.png" />
+    <BundleResource Include="Resources\app-logo-wide-white.png" />
+    <BundleResource Include="Resources\app-logo-wide-white%402x.png" />
+    <BundleResource Include="Resources\cog-blue.png" />
+    <BundleResource Include="Resources\cog-blue%402x.png" />
+    <BundleResource Include="Resources\cross-blue.png" />
+    <BundleResource Include="Resources\cross-blue%402x.png" />
+    <BundleResource Include="Resources\cross-white.png" />
+    <BundleResource Include="Resources\cross-white%402x.png" />
+    <BundleResource Include="Resources\dropbox.png" />
+    <BundleResource Include="Resources\dropbox%402x.png" />
+    <BundleResource Include="Resources\heart-red.png" />
+    <BundleResource Include="Resources\heart-red%402x.png" />
+    <BundleResource Include="Resources\heart-white.png" />
+    <BundleResource Include="Resources\heart-white%402x.png" />
+    <BundleResource Include="Resources\hubbl.css" />
+    <BundleResource Include="Resources\pause-black.png" />
+    <BundleResource Include="Resources\pause-black%402x.png" />
+    <BundleResource Include="Resources\play-black.png" />
+    <BundleResource Include="Resources\play-black%402x.png" />
+    <BundleResource Include="Resources\plus-green.png" />
+    <BundleResource Include="Resources\plus-green%402x.png" />
+    <BundleResource Include="Resources\plus-white.png" />
+    <BundleResource Include="Resources\plus-white%402x.png" />
+    <BundleResource Include="Resources\reload-blue.png" />
+    <BundleResource Include="Resources\reload-blue%402x.png" />
+    <BundleResource Include="Resources\star-golden.png" />
+    <BundleResource Include="Resources\star-golden%402x.png" />
+    <BundleResource Include="Resources\star-white.png" />
+    <BundleResource Include="Resources\star-white%402x.png" />
+    <BundleResource Include="Resources\trash-can-white.png" />
+    <BundleResource Include="Resources\trash-can-white%402x.png" />
+    <BundleResource Include="Resources\vk.png" />
+    <BundleResource Include="Resources\vk%402x.png" />
+    <BundleResource Include="Resources\yandex-music.png" />
+    <BundleResource Include="Resources\yandex-music%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
-    <BundleResource Include="Resources\Icon-60%403x.png" />
-    <BundleResource Include="Resources\Icon-76.png" />
-    <BundleResource Include="Resources\Icon-76%402x.png" />
-    <BundleResource Include="Resources\Icon-Small.png" />
-    <BundleResource Include="Resources\Icon-Small%402x.png" />
-    <BundleResource Include="Resources\Icon-Small%403x.png" />
-    <BundleResource Include="Resources\Icon-Small-40.png" />
-    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
-    <BundleResource Include="Resources\Icon-Small-40%403x.png" />
+    <BundleResource Include="Resources\airdrop-white%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -132,6 +173,7 @@
     <Compile Include="Auth\AuthController.designer.cs">
       <DependentUpon>AuthController.cs</DependentUpon>
     </Compile>
+    <Compile Include="iOSPlayerBackend.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="ITunesArtwork" />

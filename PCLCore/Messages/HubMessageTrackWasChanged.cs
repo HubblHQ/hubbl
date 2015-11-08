@@ -10,7 +10,10 @@ namespace Hubl.Core.Messages
 	public class HubMessageTrackReputationWasChanged:IMessage
 	{
 		[DataMember]
-		public PlaylistEntry entry;
+		public PlaylistEntry Entry { get; set;}
+
+		[DataMember]
+		public User User{ get; set; }
 	}
 }
 
