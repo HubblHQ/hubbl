@@ -10,6 +10,8 @@ namespace Hubl.Daemon.Service
 {
 	public class MPlayerBackend : IMusicPlayerBackend
 	{
+		private const string MPLAYER_COMMAND = "mplayer";
+
 		public MPlayerBackend ()
 		{
 			_currentTrack = null;
@@ -40,7 +42,7 @@ namespace Hubl.Daemon.Service
 			mplayer.StartInfo.RedirectStandardInput = true;
 			mplayer.StartInfo.RedirectStandardError = true;
 
-			mplayer.StartInfo.FileName = "mplayer";
+			mplayer.StartInfo.FileName = MPLAYER_COMMAND;
 			mplayer.StartInfo.Arguments = "-vo null -ao null -frames 0 -identify " + path; 
 			//mplayer.StartInfo.Arguments = "-identify " + filename; 
 
@@ -110,7 +112,7 @@ namespace Hubl.Daemon.Service
 				mplayer.StartInfo.RedirectStandardInput = true;
 				mplayer.StartInfo.RedirectStandardError = true;
 
-				mplayer.StartInfo.FileName = "mplayer";
+				mplayer.StartInfo.FileName = MPLAYER_COMMAND;
 				mplayer.StartInfo.Arguments = track.Source; 
 
 				cancellationToken.ThrowIfCancellationRequested ();

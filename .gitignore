@@ -15,6 +15,7 @@
 /packages/*
 
 Hubl.userprefs
+*.userprefs
 
 =======
 #Autosave files
@@ -46,7 +47,7 @@ autom4te.cache/
 tarballs/
 test-results/
 Thumbs.db
-
+*..userprefs
 #Mac bundle stuff
 *.dmg
 *.app
