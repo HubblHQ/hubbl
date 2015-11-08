@@ -58,6 +58,8 @@
     <Compile Include="ExternalModules\SoundCloudModule\SCSettings.cs" />
     <Compile Include="ExternalModules\SoundCloudModule\SCUserInfo.cs" />
     <Compile Include="ExternalModules\Authorization.cs" />
+    <Compile Include="Messages\HubMessagePlaylistWasUpdated.cs" />
+    <Compile Include="Messages\HubMessageTrackWasChanged.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
