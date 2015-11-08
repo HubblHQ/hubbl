@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Autofac;
 
 using Xamarin.Forms;
+using Hubl.Core.Service;
 
 namespace Hubl.Mobile
 {
@@ -12,20 +14,21 @@ namespace Hubl.Mobile
 		public NewHubPage ()
 		{
 			InitializeComponent ();
-			Source.Clicked += Source_Clicked;
+
 			Done.Clicked += Done_Clicked;
 			FirstSongs.ItemsSource = songs;
+			Name.TextChanged += Name_TextChanged;
+		}
+
+		void Name_TextChanged (object sender, TextChangedEventArgs e)
+		{
+			App.Container.Resolve<ISession> ().CurrentUser.Hub = e.NewTextValue;
 		}
 
 		void Done_Clicked (object sender, EventArgs e)
 		{
-			
-		}
-
-		void Source_Clicked (object sender, EventArgs e)
-		{
-			var picker = DependencyService.Get<ISongsPicker> ();
-			picker.StartPicking ();
+			App.Container.Resolve<ISession> ().CurrentUser.IsHub = true;
+			Navigation.PopAsync ();
 		}
 	}
 }

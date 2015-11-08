@@ -1,4 +1,7 @@
 ﻿using System;
+using Hubl.Core.Model;
+using Hubl.Core.Service;
+using Autofac;
 
 using Xamarin.Forms;
 
@@ -25,7 +28,9 @@ namespace Hubl.Mobile
 
 			var continueButton = new Button ();
 			continueButton.Text = "Продолжить";
-			continueButton.Clicked += (sender, e) => {
+			continueButton.Clicked += (sender, e) => {				
+				var session = App.Container.Resolve<ISession>();
+				session.CurrentUser.Title = nickLabel.Text;
 				Navigation.PushAsync(new HubsPage());
 			};
 

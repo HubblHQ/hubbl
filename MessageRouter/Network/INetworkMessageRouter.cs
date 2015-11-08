@@ -6,9 +6,9 @@ namespace MessageRouter.Network
 {
 	public interface INetworkMessageRouter : IDisposable
 	{
-		void Start();
+		System.Threading.Tasks.Task StartAsync();
 
-		void Stop();
+		System.Threading.Tasks.Task StopAsync();
 
 		INetworkTask<TMessage> Publish<TMessage>(TMessage message)
 			where TMessage : class, IMessage;
