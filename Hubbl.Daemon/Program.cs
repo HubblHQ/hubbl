@@ -105,7 +105,7 @@ namespace Hubl.Daemon
 						PlayingTrack = player.CurrentPlayedEntry,
 						Playlist = player.Playlist
 					});
-				Thread.Sleep (100);
+				Thread.Sleep (1500);
 			}
 
 			while (_runing)
