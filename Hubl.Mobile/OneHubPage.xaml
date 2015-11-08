@@ -11,6 +11,12 @@
 			<Label x:Name="RemainingTime" WidthRequest = "50" HorizontalOptions="End" FontSize="12" VerticalOptions="Center"/>				
 		</StackLayout>
 
+		<StackLayout Orientation="Horizontal">
+			<Button />
+			<Button x:Name="Play" Text="Играть"/>
+			<Button />
+		</StackLayout>
+
 		<ListView  x:Name="SongsView" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
