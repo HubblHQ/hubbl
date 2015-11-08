@@ -110,36 +110,6 @@ namespace Hubl.Daemon
 			var users = _container.Resolve<UsersService> ();
 			var player = _container.Resolve<IMusicPlayer> ();
 
-			Task (() => {
-				while (true) {
-					var ids = users.GetUserIds ();
-					var msg = new HubMessagePlaylistWasUpdated () {
-						User = _container.Resolve<ISession> ().CurrentUser,
-						PlayingTrack = player.CurrentPlayedEntry,
-
-						// Playlist = player.Playlist.ToArray ()
-
-					};
-					if (player.Playlist.Count > 0)
-						msg.FirstTrack = player.Playlist [0];
-					if (player.Playlist.Count > 1)
-						msg.SecondTrack = player.Playlist [1];
-					
-					// Console.WriteLine ("I HUB, SUCH LOL, {0}", ids);
-					var publishes = router.PublishFor (ids, msg); 
-					foreach (var publish in publishes) {
-						publish.OnException ((e) => {
-							Console.WriteLine ("Эксепшон!\n(0)", e);
-
-						});
-					}
-					foreach (var publish in publishes)
-						publish.Run ();
-					dumpPlaylist (player.Playlist);
-					Thread.Sleep (5000);
-				}
-			}).Run ();
-
 			while (_runing)
 			{
 			    Console.Write("hubl>: ");

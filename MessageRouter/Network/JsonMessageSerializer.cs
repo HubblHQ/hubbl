@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace MessageRouter.Network
 {
@@ -8,14 +10,23 @@ namespace MessageRouter.Network
 	{
 		public async Task<TMessage> ReadMessage<TMessage>(Stream stream)
 		{
-			var serializer = new DataContractJsonSerializer(typeof(TMessage));
-		    return await Task.Run(() => ((TMessage) serializer.ReadObject(stream)));
+		    using (var reader = new StreamReader(stream, Encoding.UTF8))
+		    {
+		        return await Task.Run(() => JsonConvert.DeserializeObject<TMessage>(reader.ReadToEnd()));
+		    }
+            
 		}
 
 		public Task WriteMessage<TMessage>(TMessage message, Stream stream)
 		{
-			var serializer = new DataContractJsonSerializer(typeof(TMessage));
-			return Task.Factory.StartNew(() => serializer.WriteObject(stream, message));
+			return Task.Run(() =>
+			{
+			    var result = JsonConvert.SerializeObject(message);
+			    using (var writer = new StreamWriter(stream, Encoding.UTF8))
+			    {
+			        writer.WriteLine(result);
+			    }
+			});
 		}
 	}
 }
