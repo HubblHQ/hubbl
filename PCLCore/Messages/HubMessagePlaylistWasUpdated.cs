@@ -3,8 +3,8 @@ using MessageRouter.Message;
 using System.Runtime.Serialization;
 using System.Collections.Generic;
 using Hubl.Core.Model;
-using System.ServiceModel.Channels;
 using Hubl.Core.Messages;
+using MessageRouter.Network;
 
 namespace Hubl.Core
 {
