@@ -33,13 +33,18 @@ namespace Hubl.Daemon.Network
         public async Task StartListeningAsync()
         {
             _listener.Start();
-            while (true)
+            await Task.Factory.StartNew(async () =>
             {
-                var r = await _listener.AcceptTcpClientAsync();
-                var remoteEndPoint = (IPEndPoint) r.Client.RemoteEndPoint;
-                OnConnectionReceived(_listener, new ListenerConnectEventArgs(remoteEndPoint.Address.ToString(), remoteEndPoint.Port, new TcpRemoteClient(r)));
-               
-            }
+                while (true)
+                {
+                    var r = await _listener.AcceptTcpClientAsync();
+                    var remoteEndPoint = (IPEndPoint) r.Client.RemoteEndPoint;
+                    OnConnectionReceived(_listener,
+                        new ListenerConnectEventArgs(remoteEndPoint.Address.ToString(), remoteEndPoint.Port,
+                            new TcpRemoteClient(r)));
+
+                }
+            });
         }
 
         public Task StopListeningAsync()

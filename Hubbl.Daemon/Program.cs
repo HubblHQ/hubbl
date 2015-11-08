@@ -38,7 +38,8 @@ namespace Hubl.Daemon
 			return builder.Build ();
 		}
 
-		public static async Task<int> Main (string[] args)
+        [MTAThread]
+		public static int Main (string[] args)
 		{
 			_container = CreateContainer ();
             var builder = new ContainerBuilder();
@@ -75,13 +76,15 @@ namespace Hubl.Daemon
                     Console.WriteLine("{0}:{1}", user != null ? user.Title: Properties.Resources.UnknowUser, m.Text);
 		        });
 
-			await router.StartAsync();
+
+            Task.Factory.StartNew(async () => await router.StartAsync());
+
             Console.CancelKeyPress += ConsoleOnCancelKeyPress;
 		    _runing = true;
 			while (_runing)
 			{
 			    Console.Write("hubl>: ");
-			    var commandLine = Regex.Split(Console.ReadLine(), "\\s");
+			    var commandLine = Regex.Split(Console.ReadLine() ?? string.Empty, "\\s");
 			    var commands = _container.Resolve<IEnumerable<ICommand>>();
 			    var cmd = commands.FirstOrDefault(m => m.Shortcuts.Contains(commandLine.FirstOrDefault()));
 			    if (cmd != null)
@@ -92,10 +95,13 @@ namespace Hubl.Daemon
                 else Console.WriteLine(Properties.Resources.InvalidCommand);
 
 			}
-            await router.StopAsync();
+            Task.Factory.StartNew(() => router.StopAsync()).Wait();
+		    
 		    _container.Dispose();
             return 0;
 		}
+
+        
 
 	    private static void ConsoleOnCancelKeyPress(object sender, ConsoleCancelEventArgs e)
 	    {
