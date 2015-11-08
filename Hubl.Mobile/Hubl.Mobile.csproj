@@ -107,12 +107,12 @@
     <EmbeddedResource Include="SourcesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="SongsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <ProjectReference Include="..\PCLCore\Hubl.Core.csproj">
       <Project>{F5FA13CD-343D-4BE6-902B-F01F1DAAE635}</Project>
       <Name>Hubl.Core</Name>
     </ProjectReference>
-    <EmbeddedResource Include="SongsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

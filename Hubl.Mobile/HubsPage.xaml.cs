@@ -36,6 +36,9 @@ namespace Hubl.Mobile
 			AddHub.Clicked += (sender, e) => {
 				Navigation.PushAsync(new NewHubPage(), true);
 			};
+			ToolbarItems.Add (new ToolbarItem ("Обновить", "", () => {
+				LoadHubs ();
+			}));
 		}
 		void LoadHubs()
 		{

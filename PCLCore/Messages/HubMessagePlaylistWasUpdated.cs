@@ -16,16 +16,11 @@ namespace Hubl.Core.Messages
 		public IEnumerable<PlaylistEntry> Playlist { get; set; }
 
 		[DataMember]
-		public Track PlayingTrack { get; set;}
-
-		[DataMember]
 		public User User { get; set;}
 
 		[DataMember]
 		public PlaylistEntry PlayingTrack { get; set;}
 
-		[DataMember]
-		public User User { get; set; }
 	}
 }
 
