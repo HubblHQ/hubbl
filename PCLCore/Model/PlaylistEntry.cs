@@ -8,6 +8,9 @@ namespace Hubl.Core.Model
 	public class PlaylistEntry
 	{
 		[DataMember]
+		public int Id { get; set; }
+
+		[DataMember]
 		public Track Track { get; set; }
 
         [DataMember]

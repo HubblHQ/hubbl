@@ -8,13 +8,9 @@ namespace Hubl.Core.Service
 
 		PlaylistEntry QueueTrack (User user, Track track);
 
-		// rules of sorting by priority are not applied to this track, i think it should be given separately from the playlist
-		PlaylistEntry CurrentPlayedEntry { get;  } 
+		PlaylistEntry CurrentPlayedEntry { get; }
 
-		//TODO: queue??
-		IEnumerable<PlaylistEntry> Playlist { get;  } 
-
-		Track GetTrackInfo (string path);
+		List<PlaylistEntry> Playlist { get; }
 
 		void Play ();
 		void Stop ();

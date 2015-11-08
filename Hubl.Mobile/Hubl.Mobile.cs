@@ -31,7 +31,7 @@ namespace Hubl.Mobile
 		}
 
 		public App ()
-		{			
+		{				
 			Container = CreateContainer ();
 			Router = Container.Resolve<INetworkMessageRouter> ();
 
@@ -41,11 +41,11 @@ namespace Hubl.Mobile
 				MainPage = new NavigationPage (new HubsPage ());
 			} else {
 				MainPage = new NavigationPage (new NickPage ());
-			}
+		}
 		}
 
 		protected override void OnStart ()
-		{	
+		{
 			try {				
 				Router.StartAsync().ContinueWith((a) => {
 					Router.Subscribe<HelloMessage>().OnSuccess((ep,m) => {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Autofac;
 using Hubl.Core.Messages;
@@ -16,7 +17,7 @@ namespace Hubl.Daemon
 {
 	class MainClass
 	{
-        static IContainer _container;
+		static IContainer _container;
 	    private static bool _runing;
 
 		static IContainer CreateContainer()
