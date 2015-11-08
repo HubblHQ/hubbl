@@ -9,6 +9,7 @@ using Autofac.Core.Lifetime;
 using System.Linq;
 using System.Diagnostics;
 using Hubl.Core;
+using Hubl.Core.Messages;
 
 namespace Hubl.Mobile
 {	
@@ -31,15 +32,15 @@ namespace Hubl.Mobile
 	{
 		User hub;
 		bool isPlaying;
-		ObservableCollection<Track> tracks;
-		Track currentTrack;
+		ObservableCollection<PlaylistEntry> tracks;
+		PlaylistEntry currentTrack;
 		public OneHubPage (User hub)
 		{
 			this.hub = hub;
 			InitializeComponent ();
 			BindingContext = this;
 			Play.Clicked += Play_Clicked;
-			tracks = App.Container.Resolve<ISession> ().Playlist;
+			tracks = new ObservableCollection<PlaylistEntry> (App.Container.Resolve<ISession> ().Playlist);
 			SongsView.ItemsSource = tracks;
 			tracks.CollectionChanged += Tracks_CollectionChanged;
 			this.Title = hub.Hub;
@@ -63,18 +64,18 @@ namespace Hubl.Mobile
 					tracks.Add (t);
 				}
 				currentTrack = m.PlayingTrack;
-
+				SetCurrentTrack ();
 			});
 			base.OnAppearing ();
 		}
 
 		void SetCurrentTrack()
 		{
-			CurrentSongLabel.Text = currentTrack.Name;
-			CurrentSongAuthor.Text = currentTrack.Artist;
-			ElapsedTime.Text = currentTrack.Current.ToString (@"mm\:ss");
-			RemainingTime.Text = currentTrack.Duration.Subtract (currentTrack.Current).ToString (@"mm\:ss");
-			var progress = (double)currentTrack.Current.TotalSeconds / currentTrack.Duration.TotalSeconds;
+			CurrentSongLabel.Text = currentTrack.Track.Name;
+			CurrentSongAuthor.Text = currentTrack.Track.Artist;
+			ElapsedTime.Text = currentTrack.Track.Current.ToString (@"mm\:ss");
+			RemainingTime.Text = currentTrack.Track.Duration.Subtract (currentTrack.Track.Current).ToString (@"mm\:ss");
+			var progress = (double)currentTrack.Track.Current.TotalSeconds / currentTrack.Track.Duration.TotalSeconds;
 			SongProgress.ProgressTo (progress, 1, Easing.SinOut);
 		}
 
@@ -89,11 +90,7 @@ namespace Hubl.Mobile
 
 		void Play_Clicked (object sender, EventArgs e)
 		{
-			if (isPlaying) {
-				DependencyService.Get<IMusicPlayerBackend> ().PauseCurrentTrack ();
-			} else {
-				DependencyService.Get<IMusicPlayerBackend> ().PlayTrack (currentTrack);
-			}
+			
 		}
 	}
 }
