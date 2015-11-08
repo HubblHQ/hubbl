@@ -12,6 +12,8 @@ using Hubl.Daemon.Commands;
 using Hubl.Daemon.Network;
 using Hubl.Daemon.Service;
 using MessageRouter.Network;
+using Hubl.Core;
+using System.Threading;
 
 namespace Hubl.Daemon
 {
@@ -30,11 +32,16 @@ namespace Hubl.Daemon
 		    builder.RegisterType<MPlayerBackend>()
                 .As<IMusicPlayerBackend>()
                .SingleInstance();
+
+		    builder.RegisterType<HubblPlayer>()
+		        .As<IMusicPlayer>()
+		        .SingleInstance();
 		    
             builder.RegisterType<ConsoleSession>()
 		        .As<ISession>()
 		        .SingleInstance();
 
+            
 			return builder.Build ();
 		}
 
@@ -76,11 +83,31 @@ namespace Hubl.Daemon
                     Console.WriteLine("{0}:{1}", user != null ? user.Title: Properties.Resources.UnknowUser, m.Text);
 		        });
 
+			router.Subscribe<AddCloudTrackMessage> ()
+				.OnSuccess((rp, m) =>
+					{
+						Console.WriteLine ("Cloud track request " + m.Track.Source);
+						_container.Resolve<IMusicPlayer> ().QueueTrack (m.Sender, m.Track);
+					});
+
 
             Task.Factory.StartNew(async () => await router.StartAsync());
 
             Console.CancelKeyPress += ConsoleOnCancelKeyPress;
 		    _runing = true;
+
+			var users = _container.Resolve<UsersService> ();
+			var player = _container.Resolve<IMusicPlayer> ();
+			while (true) {
+				router.PublishFor (users.GetUserIds (), 
+					new HubMessagePlaylistWasUpdated () {
+						User = _container.Resolve<ISession> ().CurrentUser,
+						PlayingTrack = player.CurrentPlayedEntry,
+						Playlist = player.Playlist
+					});
+				Thread.Sleep (100);
+			}
+
 			while (_runing)
 			{
 			    Console.Write("hubl>: ");

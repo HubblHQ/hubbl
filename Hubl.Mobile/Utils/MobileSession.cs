@@ -13,7 +13,7 @@ namespace Hubl.Mobile
 	{
 		private readonly MobileNetworkSettings _settings;
 		private User _user;
-		private ObservableCollection<Track> playlist;
+		private ObservableCollection<PlaylistEntry> playlist;
 		public MobileSession(MobileNetworkSettings settings)
 		{			
 			_settings = settings;
@@ -23,7 +23,7 @@ namespace Hubl.Mobile
 				Id = Guid.NewGuid().ToString(),
 				Title = "staff"
 			};
-			playlist = new ObservableCollection<Track> ();
+			playlist = new ObservableCollection<PlaylistEntry> ();
 
 		}
 
@@ -39,11 +39,11 @@ namespace Hubl.Mobile
 				_user = value;	
 			}
 		}
-		public ObservableCollection<Track> Playlist
+		public List<PlaylistEntry> Playlist
 		{
 			get
 			{
-				return playlist;
+				return playlist.ToList();
 			}
 		}
 

@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace Hubl.Core.Service
 {
-	internal struct UserActivitiesRecord {
+	internal class UserActivitiesRecord {
 		public double basePriority;
 		public int activitiesCount;
 		public DateTime lastActivityTime;
@@ -39,13 +39,13 @@ namespace Hubl.Core.Service
 			_usersMarkedByEntryId = new Dictionary<int, List<string>> ();
 			_playlistEntries = new List<PlaylistEntry> ();
 			_activeUsersCount = 0;
-			_freeEntryId = 1;
+			_freeEntryId = 0;
 
 			_playing = false;
 		}
 			
 		#region IMusicPlayer implementation
-		PlaylistEntry IMusicPlayer.QueueTrack (User user, Track track)
+		public PlaylistEntry QueueTrack (User user, Track track)
 		{
 			UpdateUserPriorities ();
 
@@ -71,7 +71,7 @@ namespace Hubl.Core.Service
 				Priority = activitiesRecord.basePriority
 			};
 			activitiesRecord.basePriority *= Math.Pow (0.5, track.Duration.TotalMilliseconds / AVG_TRACK_LENGTH_MS);
-			_usersMarkedByEntryId [entry.Id] = new List<string> ();
+			_usersMarkedByEntryId.Add (entry.Id, new List<string> ());
 			_usersMarkedByEntryId [entry.Id].Add (user.Id);
 
 			Playlist.Add (entry);
@@ -90,19 +90,21 @@ namespace Hubl.Core.Service
 			foreach (var activitiesRecordKV in _usersActivities) {
 				var activitiesRecord = activitiesRecordKV.Value;
 				if (_activeUsersCount > 0)
-					activitiesRecord.basePriority = Math.Max (activitiesRecord.basePriority * Math.Pow (2, 0.5 * (now - activitiesRecord.lastActivityTime).TotalMilliseconds / (_activeUsersCount * AVG_TRACK_LENGTH_MS)), 1.0);
+					activitiesRecord.basePriority = Math.Min (activitiesRecord.basePriority * Math.Pow (2, 0.5 * (now - activitiesRecord.lastActivityTime).TotalMilliseconds / (_activeUsersCount * AVG_TRACK_LENGTH_MS)), 1.0);
 				activitiesRecord.lastActivityTime = now;
 			}
 		}
 
 		private void NextTrack () {
 			UpdateUserPriorities ();
-			if (CurrentPlayedEntry != null)
+			if (CurrentPlayedEntry != null) {
 				foreach (var userId in _usersMarkedByEntryId [CurrentPlayedEntry.Id]) {
 					var activitiesRecord = _usersActivities [userId];
 					if (--activitiesRecord.activitiesCount == 0)
 						--_activeUsersCount;
 				}
+				CurrentPlayedEntry = null;
+			}
 			if (Playlist.Count > 0) {
 				CurrentPlayedEntry = Playlist [0];
 				_backend.PlayTrack (CurrentPlayedEntry.Track);
@@ -110,7 +112,7 @@ namespace Hubl.Core.Service
 			}
 		}
 
-		private void LikeTrack (User user, int entryId) {
+		public void LikeTrack (User user, int entryId) {
 			foreach (var userMarkedId in _usersMarkedByEntryId [entryId])
 				if (userMarkedId == user.Id)
 					return;
@@ -131,12 +133,12 @@ namespace Hubl.Core.Service
 
 			var entry = _playlistEntries [entryId];
 			++entry.LikesNum;
-			entry.Priority *= _activeUsersCount / (_activeUsersCount - 1.0);
+			entry.Priority *= (double)_activeUsersCount / (_activeUsersCount - 1.0);
 
 			Playlist.Sort (comparePlaylistEntries);
 		}
 
-		private void DislikeTrack (User user, int entryId) {
+		public void DislikeTrack (User user, int entryId) {
 			foreach (var userMarkedId in _usersMarkedByEntryId [entryId])
 				if (userMarkedId == user.Id)
 					return;
@@ -157,14 +159,14 @@ namespace Hubl.Core.Service
 
 			var entry = _playlistEntries [entryId];
 			++entry.DislikesNum;
-			entry.Priority *= (_activeUsersCount - 1.0) / _activeUsersCount;
+			entry.Priority *= (double)(_activeUsersCount - 1.0) / _activeUsersCount;
 
 			Playlist.Sort (comparePlaylistEntries);
 		}
 
 		private int comparePlaylistEntries (PlaylistEntry e1, PlaylistEntry e2) {
-			return e1.Priority == e2.Priority ? e1.Id - e2.Id:
-				e1.Priority < e2.Priority ? -1: 1;
+			return e1.Priority == e2.Priority ? e2.Id - e1.Id:
+				e2.Priority < e1.Priority ? -1: 1;
 		}
 
 
@@ -186,7 +188,8 @@ namespace Hubl.Core.Service
 				{
 					var track = _backend.CurrentPlayedTrack;
 					if (track == null) NextTrack ();
-					Task.Delay(100).RunSynchronously();
+					// Threa.Sleep (100);
+					Task.Delay(100).Wait();
 				}
 				CurrentPlayedEntry = null;
 				_backend.PlayTrack (null);

@@ -34,6 +34,14 @@ namespace Hubl.Core.Service
             return _users.Values.ToList();
         }
 
+		public IEnumerable<string> GetUserIds()
+		{
+			var list = new List<string> ();
+			foreach (var user in _users.Values)
+				list.Add (user.Id);
+			return list;
+		}
+
         public User Get(RemotePoint remotePoint)
         {
             return _users.Values.FirstOrDefault(m => m.IpAddress == remotePoint.Address);
