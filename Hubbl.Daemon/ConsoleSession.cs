@@ -23,7 +23,8 @@ namespace Hubl.Daemon
             {
                 Id = interfaces.First().Id,
                 Title = Environment.MachineName,
-				IsHub = true
+				IsHub = true,
+				Hub = Environment.MachineName
             };
 
         }

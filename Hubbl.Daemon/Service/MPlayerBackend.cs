@@ -113,7 +113,7 @@ namespace Hubl.Daemon.Service
 				mplayer.StartInfo.RedirectStandardError = true;
 
 				mplayer.StartInfo.FileName = MPLAYER_COMMAND;
-				mplayer.StartInfo.Arguments = track.Source + " -endpos 00:00:25"; 
+				mplayer.StartInfo.Arguments = track.Source; 
 
 				// cancellationToken.ThrowIfCancellationRequested ();
 				mplayer.Start ();
