@@ -8,19 +8,25 @@ namespace Hubl.Core.Model
 	public class PlaylistEntry
 	{
 		[DataMember]
+		public int Id { get; set; }
+
+		[DataMember]
 		public Track Track { get; set; }
+
+        [DataMember]
+	    public bool IsCached { get; set; }
 
 		[DataMember]
 		public User User { get; set; }
 
 		[DataMember]
-		int LikesNum { get; set; }
+		public int LikesNum { get; set; }
 
 		[DataMember]
-		int DislikesNum { get; set; }
+		public int DislikesNum { get; set; }
 
 		[DataMember]
-		double Priority { get; set; }
+		public double Priority { get; set; }
 	}
 }
 

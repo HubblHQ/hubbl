@@ -15,8 +15,9 @@ namespace Hubl.Daemon.Network
         {
             
             _settings = settings;
-            _client = new UdpClient(settings.MulticastPort, AddressFamily.InterNetwork) {Ttl = ((short) _settings.TTL)};
+            _client = new UdpClient(new IPEndPoint(IPAddress.Any, settings.MulticastPort)) {Ttl = ((short) settings.TTL)};
             _client.MulticastLoopback = true;
+            //_client.EnableBroadcast = true;
         }
 
         private void OnMessageReceived(object sender, DatagramReceivedEventArgs e)
@@ -37,19 +38,23 @@ namespace Hubl.Daemon.Network
         public async Task JoinMulticastGroupAsync()
         {
             await Task.Run(() => _client.JoinMulticastGroup(IPAddress.Parse(_settings.MulticastAddress)));
-            while (true)
+            await Task.Factory.StartNew(async () =>
             {
-                var result = await _client.ReceiveAsync();
-                OnMessageReceived(_client,
-					new DatagramReceivedEventArgs(result.RemoteEndPoint.Address.ToString (),
-                        result.RemoteEndPoint.Port, result.Buffer));
-            }
-            
+                while (true)
+                {
+                    var result = await _client.ReceiveAsync();
+                    OnMessageReceived(_client,
+                        new DatagramReceivedEventArgs(result.RemoteEndPoint.Address.ToString(),
+                            result.RemoteEndPoint.Port, result.Buffer));
+                }
+            });
+
         }
 
         public Task DisconnectAsync()
         {
-            return Task.Run(() => _client.DropMulticastGroup(IPAddress.Parse(_settings.MulticastAddress)));
+           // return Task.Run(() => _client.DropMulticastGroup(IPAddress.Parse(_settings.MulticastAddress)));
+            return Task.Run(() => { });
         }
 
         public Task SendMulticastAsync(byte[] data)
