@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Autofac;
 using Hubl.Core.Messages;
 using Hubl.Core.Model;
@@ -36,7 +37,7 @@ namespace Hubl.Daemon
 			return builder.Build ();
 		}
 
-		public static int Main (string[] args)
+		public static async Task<int> Main (string[] args)
 		{
 			_container = CreateContainer ();
             var builder = new ContainerBuilder();
@@ -73,7 +74,7 @@ namespace Hubl.Daemon
                     Console.WriteLine("{0}:{1}", user != null ? user.Title: Properties.Resources.UnknowUser, m.Text);
 		        });
 
-			router.Start ();
+			await router.StartAsync();
             Console.CancelKeyPress += ConsoleOnCancelKeyPress;
 		    _runing = true;
 			while (_runing)
@@ -90,7 +91,7 @@ namespace Hubl.Daemon
                 else Console.WriteLine(Properties.Resources.InvalidCommand);
 
 			}
-            router.Stop();
+            await router.StopAsync();
 		    _container.Dispose();
             return 0;
 		}

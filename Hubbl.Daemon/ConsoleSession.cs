@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Hubl.Core.Model;
 using Hubl.Core.Service;
@@ -9,7 +10,7 @@ namespace Hubl.Daemon
     class ConsoleSession : ISession
     {
         private readonly NetworkSettings _settings;
-        private readonly User _user;
+        private User _user;
 
         public ConsoleSession(NetworkSettings settings)
         {
@@ -20,6 +21,7 @@ namespace Hubl.Daemon
                 Id = interfaces.First().Id,
                 Title = Environment.MachineName
             };
+            Playlist = new ObservableCollection<Track>();
 
         }
 
@@ -30,6 +32,9 @@ namespace Hubl.Daemon
                 _user.Port = _settings.ListenPort;
                 return _user;
             }
+            set { _user = value; }
         }
+
+        public ObservableCollection<Track> Playlist { get; private set; }
     }
 }

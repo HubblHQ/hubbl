@@ -5,7 +5,6 @@ namespace Hubl.Core.Service
 {
 	public interface IMusicPlayer
     {
-		IMusicPlayer (IMusicPlayerBackend backend);
 
 		PlaylistEntry QueueTrack (User user, Track track);
 
