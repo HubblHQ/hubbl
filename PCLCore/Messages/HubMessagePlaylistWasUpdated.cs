@@ -6,16 +6,16 @@ using Hubl.Core.Model;
 using Hubl.Core.Messages;
 using MessageRouter.Network;
 
-namespace Hubl.Core
+namespace Hubl.Core.Messages
 {
 	[DataContract, Message(MessageGroups.Player)]
 	public class HubMessagePlaylistWasUpdated:IMessage
 	{
 		[DataMember]
-		public IEnumerable<Track> Playlist { get; set; }
+		public IEnumerable<PlaylistEntry> Playlist { get; set; }
 
 		[DataMember]
-		public Track PlayingTrack { get; set;}
+		public PlaylistEntry PlayingTrack { get; set;}
 
 		[DataMember]
 		public User User { get; set; }

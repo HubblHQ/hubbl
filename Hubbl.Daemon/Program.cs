@@ -12,6 +12,8 @@ using Hubl.Daemon.Commands;
 using Hubl.Daemon.Network;
 using Hubl.Daemon.Service;
 using MessageRouter.Network;
+using Hubl.Core;
+using System.Threading;
 
 namespace Hubl.Daemon
 {
@@ -93,6 +95,19 @@ namespace Hubl.Daemon
 
             Console.CancelKeyPress += ConsoleOnCancelKeyPress;
 		    _runing = true;
+
+			var users = _container.Resolve<UsersService> ();
+			var player = _container.Resolve<IMusicPlayer> ();
+			while (true) {
+				router.PublishFor (users.GetUserIds (), 
+					new HubMessagePlaylistWasUpdated () {
+						User = _container.Resolve<ISession> ().CurrentUser,
+						PlayingTrack = player.CurrentPlayedEntry,
+						Playlist = player.Playlist
+					});
+				Thread.Sleep (100);
+			}
+
 			while (_runing)
 			{
 			    Console.Write("hubl>: ");
