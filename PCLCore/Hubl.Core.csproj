@@ -60,6 +60,7 @@
     <Compile Include="ExternalModules\Authorization.cs" />
     <Compile Include="Messages\HubMessagePlaylistWasUpdated.cs" />
     <Compile Include="Messages\HubMessageTrackWasChanged.cs" />
+    <Compile Include="Messages\HubMessageHubWasCreated.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>

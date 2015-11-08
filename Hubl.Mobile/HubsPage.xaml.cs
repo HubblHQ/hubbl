@@ -26,10 +26,10 @@ namespace Hubl.Mobile
 		public HubsPage ()
 		{
 			InitializeComponent ();
-			var message = new HelloMessage (App.Container.Resolve<ISession> ().CurrentUser);
+			//var message = new HelloMessage (App.Container.Resolve<ISession> ().CurrentUser);
 
 			HubsView.ItemsSource = hubs;
-
+			this.Icon = new FileImageSource (){ File = "app-logo-square-black@2x.png" };
 			HubsView.ItemSelected += (sender, e) => {
 				Navigation.PushAsync(new OneHubPage((User)e.SelectedItem));
 			};

@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using Hubl.Core.Model;
 using System.ServiceModel.Channels;
 using Hubl.Core.Messages;
+using MessageRouter.Network;
 
 namespace Hubl.Core
 {
-	[DataContract, Message(MessageGroups.Player)]
+	[DataContract]
+	[Message(MessageGroups.Player)]
 	public class HubMessagePlaylistWasUpdated:IMessage
 	{
 		[DataMember]
@@ -16,6 +18,9 @@ namespace Hubl.Core
 
 		[DataMember]
 		public Track PlayingTrack { get; set;}
+
+		[DataMember]
+		public User User { get; set;}
 	}
 }
 

@@ -19,6 +19,7 @@ namespace Hubl.Mobile
 		{
 			this.hub = hub;
 			InitializeComponent ();
+			Title = "Добавить песни";
 		}
 
 		protected override void OnAppearing ()
