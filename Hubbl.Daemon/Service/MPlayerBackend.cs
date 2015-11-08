@@ -10,6 +10,8 @@ namespace Hubl.Daemon.Service
 {
 	public class MPlayerBackend : IMusicPlayerBackend
 	{
+		private const string MPLAYER_COMMAND = "mplayer";
+
 		public MPlayerBackend ()
 		{
 			_currentTrack = null;
@@ -30,7 +32,7 @@ namespace Hubl.Daemon.Service
 
 		#region IMusicPlayerBackend implementation
 
-		Track IMusicPlayerBackend.GetTrackInfo (string path)
+		public Track GetTrackInfo (string path)
 		{
 			Process mplayer = new Process ();
 			mplayer.StartInfo.CreateNoWindow = true;
@@ -40,7 +42,7 @@ namespace Hubl.Daemon.Service
 			mplayer.StartInfo.RedirectStandardInput = true;
 			mplayer.StartInfo.RedirectStandardError = true;
 
-			mplayer.StartInfo.FileName = "mplayer";
+			mplayer.StartInfo.FileName = MPLAYER_COMMAND;
 			mplayer.StartInfo.Arguments = "-vo null -ao null -frames 0 -identify " + path; 
 			//mplayer.StartInfo.Arguments = "-identify " + filename; 
 
@@ -110,20 +112,24 @@ namespace Hubl.Daemon.Service
 				mplayer.StartInfo.RedirectStandardInput = true;
 				mplayer.StartInfo.RedirectStandardError = true;
 
-				mplayer.StartInfo.FileName = "mplayer";
-				mplayer.StartInfo.Arguments = track.Source; 
+				mplayer.StartInfo.FileName = MPLAYER_COMMAND;
+				mplayer.StartInfo.Arguments = track.Source; // + " -endpos 00:00:08"; 
 
-				cancellationToken.ThrowIfCancellationRequested ();
+				// cancellationToken.ThrowIfCancellationRequested ();
 				mplayer.Start ();
 
-				while (!(cancellationToken.IsCancellationRequested || mplayer.HasExited))
+				// while (!(cancellationToken.IsCancellationRequested || mplayer.HasExited)) {
+				while (!mplayer.HasExited) {
 					Thread.Sleep (100);
+					//MEGAZALEPA
+					Console.WriteLine (mplayer.StandardOutput.ReadToEnd ()); 
+				}
 
 				if (!mplayer.HasExited)
 					mplayer.Kill ();
-			}, cancellationToken);
+			});
 		}
-
+		 
 		Track IMusicPlayerBackend.CurrentPlayedTrack { get {
 				if (_currentTrack != null && _currentTask.IsCompleted)
 					_currentTrack = null;
