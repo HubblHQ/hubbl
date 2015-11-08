@@ -77,16 +77,11 @@
       <Name>MessageRouter</Name>
     </ProjectReference>
     <ProjectReference Include="..\PCLCore\Hubl.Core.csproj">
-      <Project>{f5fa13cd-343d-4be6-902b-f01f1daae635}</Project>
+      <Project>{F5FA13CD-343D-4BE6-902B-F01F1DAAE635}</Project>
       <Name>Hubl.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
+  <ItemGroup>
+    <Folder Include="Service\" />
+  </ItemGroup>
 </Project>

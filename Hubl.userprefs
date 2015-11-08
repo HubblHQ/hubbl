@@ -1,0 +1,20 @@
+﻿<Properties StartupItem="Hubl.Mobile/Hubl.Mobile.csproj" RefactoringSettings.EnableRefactorings="True" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Hubbl.Daemon/Hubl.Daemon.csproj">
+    <Files>
+      <File FileName="Hubbl.Daemon/Program.cs" Line="1" Column="1" />
+      <File FileName="Hubbl.Daemon/Network/SystemTcpClient.cs" Line="1" Column="1" />
+      <File FileName="Hubbl.Daemon/Network/NetworkClientFactory.cs" Line="1" Column="1" />
+      <File FileName=".nuget/NuGet.targets" Line="1" Column="1" />
+      <File FileName=".nuget/NuGet.Config" Line="1" Column="1" />
+      <File FileName="Hubbl.Daemon/packages.config" Line="1" Column="1" />
+      <File FileName="Hubbl.Daemon/Hubl.Daemon.csproj" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/home/komatsu/projects/hubbl/Hubbl.Daemon/Program.cs" line="64" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
