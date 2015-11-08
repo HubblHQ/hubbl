@@ -30,11 +30,16 @@ namespace Hubl.Daemon
 		    builder.RegisterType<MPlayerBackend>()
                 .As<IMusicPlayerBackend>()
                .SingleInstance();
+
+		    builder.RegisterType<HubblPlayer>()
+		        .As<IMusicPlayer>()
+		        .SingleInstance();
 		    
             builder.RegisterType<ConsoleSession>()
 		        .As<ISession>()
 		        .SingleInstance();
 
+            
 			return builder.Build ();
 		}
 
