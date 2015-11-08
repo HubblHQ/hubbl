@@ -40,17 +40,31 @@ namespace Hubl.Mobile
 		}
 
 		string GenerateNewName()
-		{
+		{ var prefixes = new string[] {
+				"",
+				"TheOnly",
+				"uber",
+				"TRU",
+				""
+			};
 			var names = new string[]{
-				"Eminem",
-				"Hendrix",
-				"Kanye West",
-				"Rihanna",
-				"Imany",
+				"Em1nem",
+				"Hendrixx",
+				"Rihanna:3",
+				"Im@ny",
 				"Тимати",
+				"BobMarl3y",
+				"2pac",
+				"МаксКорж",
+				"Лагутенко",
+				"KanyeW3st",
+				"Pitbull",
+				"LanaD3lRey",
+				"KatyP",
+				"Bieber"
 			};
 			var digits = rand.Next (100);
-			return names [rand.Next (names.Length)] + digits;
+			return prefixes[rand.Next(prefixes.Length)]+ names [rand.Next (names.Length)] + digits;
 		}
 	}
 }
