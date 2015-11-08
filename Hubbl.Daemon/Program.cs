@@ -81,6 +81,13 @@ namespace Hubl.Daemon
                     Console.WriteLine("{0}:{1}", user != null ? user.Title: Properties.Resources.UnknowUser, m.Text);
 		        });
 
+			router.Subscribe<AddCloudTrackMessage> ()
+				.OnSuccess((rp, m) =>
+					{
+						Console.WriteLine ("Cloud track request " + m.Track.Source);
+						_container.Resolve<IMusicPlayer> ().QueueTrack (m.Sender, m.Track);
+					});
+
 
             Task.Factory.StartNew(async () => await router.StartAsync());
 
