@@ -32,7 +32,7 @@ namespace Hubl.Daemon.Service
 
 		#region IMusicPlayerBackend implementation
 
-		Track IMusicPlayerBackend.GetTrackInfo (string path)
+		public Track GetTrackInfo (string path)
 		{
 			Process mplayer = new Process ();
 			mplayer.StartInfo.CreateNoWindow = true;
@@ -113,17 +113,21 @@ namespace Hubl.Daemon.Service
 				mplayer.StartInfo.RedirectStandardError = true;
 
 				mplayer.StartInfo.FileName = MPLAYER_COMMAND;
-				mplayer.StartInfo.Arguments = track.Source; 
+				mplayer.StartInfo.Arguments = track.Source; // + " -endpos 00:00:08"; 
 
-				cancellationToken.ThrowIfCancellationRequested ();
+				// cancellationToken.ThrowIfCancellationRequested ();
 				mplayer.Start ();
 
-				while (!(cancellationToken.IsCancellationRequested || mplayer.HasExited))
+				// while (!(cancellationToken.IsCancellationRequested || mplayer.HasExited)) {
+				while (!mplayer.HasExited) {
 					Thread.Sleep (100);
+					//MEGAZALEPA
+					Console.WriteLine (mplayer.StandardOutput.ReadToEnd ()); 
+				}
 
 				if (!mplayer.HasExited)
 					mplayer.Kill ();
-			}, cancellationToken);
+			});
 		}
 
 		Track IMusicPlayerBackend.CurrentPlayedTrack { get {

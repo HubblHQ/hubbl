@@ -9,8 +9,11 @@ namespace Hubl.Core.Service
 		PlaylistEntry QueueTrack (User user, Track track);
 
 		PlaylistEntry CurrentPlayedEntry { get; }
-
 		List<PlaylistEntry> Playlist { get; }
+
+		void LikeTrack (User user, int entryId);
+		void DislikeTrack (User user, int entryId);
+		
 
 		void Play ();
 		void Stop ();

@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Linq;
 using Hubl.Core.Model;
 using Hubl.Core.Service;
 using Hubl.Daemon.Network;
+using System.Net.NetworkInformation;
+using System.Collections.Generic;
 
 namespace Hubl.Daemon
 {
@@ -11,17 +12,18 @@ namespace Hubl.Daemon
     {
         private readonly NetworkSettings _settings;
         private User _user;
+		private IMusicPlayer _player;
 
-        public ConsoleSession(NetworkSettings settings)
+		public ConsoleSession(NetworkSettings settings, IMusicPlayer player)
         {
-            var interfaces = System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces();
+			_player = player;
+            var interfaces = NetworkInterface.GetAllNetworkInterfaces();
             _settings = settings;
             _user = new User
             {
                 Id = interfaces.First().Id,
                 Title = Environment.MachineName
             };
-            Playlist = new ObservableCollection<Track>();
 
         }
 
@@ -35,6 +37,10 @@ namespace Hubl.Daemon
             set { _user = value; }
         }
 
-        public ObservableCollection<Track> Playlist { get; private set; }
+		public List<PlaylistEntry> Playlist {
+			get {
+				return _player.Playlist;
+			}
+		}
     }
 }

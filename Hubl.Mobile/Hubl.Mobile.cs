@@ -68,10 +68,9 @@ namespace Hubl.Mobile
 					});
 					Router.Subscribe<AddCloudTrackMessage> ().OnSuccess ((ep, m) => {
 						var currentUser = App.Container.Resolve<ISession> ().CurrentUser;
-						if (currentUser.IsHub) {
-							var playlist = App.Container.Resolve<ISession>().Playlist;
-							playlist.Add (m.Track);
-						}
+						if (currentUser.IsHub)
+						    App.Container.Resolve<IMusicPlayer>().QueueTrack(m.Sender, m.Track);
+						
 					});
 				}
 				);
