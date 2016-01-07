@@ -184,7 +184,7 @@ namespace Hubbl.Core.Service
 			Playlist.Sort(comparePlaylistEntries);
 		}
 
-		private int comparePlaylistEntries(PlaylistEntry e1, PlaylistEntry e2)
+		private static int comparePlaylistEntries(PlaylistEntry e1, PlaylistEntry e2)
 		{
 			return Math.Abs(e1.Priority - e2.Priority) < 0.001
 				? e2.Id - e1.Id
