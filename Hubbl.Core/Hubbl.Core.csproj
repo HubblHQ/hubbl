@@ -48,7 +48,7 @@
     <Compile Include="Model\SourceType.cs" />
     <Compile Include="Model\Track.cs" />
     <Compile Include="Model\HubblUser.cs" />
-    <Compile Include="Service\Class1.cs" />
+    <Compile Include="Service\HubblUsersService.cs" />
     <Compile Include="Service\HubblPlayer.cs" />
     <Compile Include="Service\IMusicPlayer.cs" />
     <Compile Include="Service\IMusicPlayerBackend.cs" />
