@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Threading;
 using System.Diagnostics;
-
-using Hubl.Core.Service;
-using Hubl.Core.Model;
 using System.Threading.Tasks;
+using Hubbl.Core.Model;
+using Hubbl.Core.Service;
 
-namespace Hubl.Daemon.Service
+namespace Hubbl.Daemon.Service
 {
 	public class MPlayerBackend : IMusicPlayerBackend
 	{

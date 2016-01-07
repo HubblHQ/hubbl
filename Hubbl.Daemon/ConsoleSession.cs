@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq;
-using Hubl.Core.Model;
-using Hubl.Core.Service;
 using System.Net.NetworkInformation;
 using System.Collections.Generic;
+using Hubbl.Core.Model;
+using Hubbl.Core.Service;
 using Module.MessageRouter.Desktop.Network;
 
-namespace Hubl.Daemon
+namespace Hubbl.Daemon
 {
 	class ConsoleSession : ISession
 	{
 		private readonly NetworkSettings _settings;
-		private User _user;
+		private HubblUser _user;
 		private IMusicPlayer _player;
 
 		public ConsoleSession(NetworkSettings settings, IMusicPlayer player)
@@ -19,7 +19,7 @@ namespace Hubl.Daemon
 			_player = player;
 			var interfaces = NetworkInterface.GetAllNetworkInterfaces();
 			_settings = settings;
-			_user = new User
+			_user = new HubblUser
 			{
 				Id = interfaces.First().Id,
 				Title = Environment.MachineName,
@@ -29,7 +29,7 @@ namespace Hubl.Daemon
 
 		}
 
-		public User CurrentUser
+		public HubblUser CurrentUser
 		{
 			get
 			{

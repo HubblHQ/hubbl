@@ -121,7 +121,7 @@
     <value>Send hello message</value>
   </data>
   <data name="HelpCommand" xml:space="preserve">
-    <value>Lisl commands</value>
+    <value>List commands</value>
   </data>
   <data name="InvalidCommand" xml:space="preserve">
     <value>Invalid command</value>
@@ -135,7 +135,7 @@
   <data name="TextCommand" xml:space="preserve">
     <value>Send all users text message</value>
   </data>
-  <data name="UnknowUser" xml:space="preserve">
-    <value>(Unknow user)</value>
+  <data name="UnknownUser" xml:space="preserve">
+    <value>(Unknown user)</value>
   </data>
 </root>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Hubbl.Mobile.OneHubPage">
+	<ContentPage.Content>
+	<StackLayout Orientation="Vertical" BackgroundColor="White" Padding="5" Spacing="5">	
+		<StackLayout BackgroundColor="White" HeightRequest="100" Orientation="Horizontal">
+	                    <Image WidthRequest = "100" HeightRequest="100" Source="album-artwork-missing@2x.png"/>
+	                            <StackLayout Orientation="Vertical">
+	                                <Label x:Name="CurrentSongLabel" Text="{Binding CurrentSong}" FontSize="18"
+	                                TextColor="Black" />
+	                                <Label x:Name="CurrentSongAuthor" Text="{Binding Author}" FontSize="14"
+	                                TextColor="Gray"/>
+	                           </StackLayout>
+	    </StackLayout>
+
+	    <StackLayout Orientation="Horizontal">
+			<Label x:Name="ElapsedTime" WidthRequest = "50" HorizontalOptions="Start" FontSize="12" VerticalOptions="Center"/>
+			<ProgressBar x:Name="SongProgress" HorizontalOptions="FillAndExpand" MinimumHeightRequest="10" VerticalOptions="CenterAndExpand"/>
+			<Label x:Name="RemainingTime" WidthRequest = "50" HorizontalOptions="End" FontSize="12" VerticalOptions="Center"/>				
+		</StackLayout>
+
+		<StackLayout Orientation="Horizontal">
+			<Button />
+			<Button x:Name="Play" Text="Играть"/>
+			<Button />
+		</StackLayout>
+
+		<ListView  x:Name="SongsView" SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout
+                        Orientation="Vertical">                            
+                           <Label Text="{Binding Name}"
+                           		FontSize="16"
+                           		FontAttributes="Bold"
+                                TextColor="#f35e20" />
+                           <Label Text="{Binding Author}"
+                                FontSize="14"
+                                TextColor="#503026" />
+                           <Label Text="{Binding User}"
+                           		FontSize="12"
+                           		TextColor="Gray"/>
+                        </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+	</StackLayout>
+
+	</ContentPage.Content>
+</ContentPage>

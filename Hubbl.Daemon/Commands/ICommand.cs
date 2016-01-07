@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Hubl.Daemon.Commands
+namespace Hubbl.Daemon.Commands
 {
     interface ICommand
     {

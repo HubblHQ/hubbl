@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace Hubl.Mobile.iOS
+namespace Hubbl.Mobile.iOS
 {
 	public class Application
 	{

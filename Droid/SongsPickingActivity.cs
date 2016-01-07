@@ -11,7 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace Hubl.Mobile.Droid
+namespace Hubbl.Mobile.Droid
 {
 	[Activity (Label = "SongsPickingActivity")]			
 	public class SongsPickingActivity : Activity

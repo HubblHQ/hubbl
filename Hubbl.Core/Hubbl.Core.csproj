@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{F5FA13CD-343D-4BE6-902B-F01F1DAAE635}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Hubbl.Core</RootNamespace>
+    <AssemblyName>Hubbl.Core</AssemblyName>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Messages\EchoMessage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Messages\AddCloudTrackMessage.cs" />
+    <Compile Include="Messages\AddLocalTrackMessage.cs" />
+    <Compile Include="Messages\TextMessage.cs" />
+    <Compile Include="Messages\HelloMessage.cs" />
+    <Compile Include="Messages\MessageGroups.cs" />
+    <Compile Include="Messages\NextTrackMessage.cs" />
+    <Compile Include="Messages\PauseMessage.cs" />
+    <Compile Include="Messages\PlayTrackMessage.cs" />
+    <Compile Include="Messages\ResponsePlayingTrackMessage.cs" />
+    <Compile Include="Messages\ResponsePlaylistMessage.cs" />
+    <Compile Include="Model\PlaylistEntry.cs" />
+    <Compile Include="Model\SourceType.cs" />
+    <Compile Include="Model\Track.cs" />
+    <Compile Include="Model\HubblUser.cs" />
+    <Compile Include="Service\Class1.cs" />
+    <Compile Include="Service\HubblPlayer.cs" />
+    <Compile Include="Service\IMusicPlayer.cs" />
+    <Compile Include="Service\IMusicPlayerBackend.cs" />
+    <Compile Include="Service\ISession.cs" />
+    <Compile Include="ExternalModules\VkModule\VkSettings.cs" />
+    <Compile Include="ExternalModules\VkModule\VkApiService.cs" />
+    <Compile Include="ExternalModules\VkModule\VkUserInfo.cs" />
+    <Compile Include="ExternalModules\SoundCloudModule\SCApiService.cs" />
+    <Compile Include="ExternalModules\SoundCloudModule\SCSettings.cs" />
+    <Compile Include="ExternalModules\SoundCloudModule\SCUserInfo.cs" />
+    <Compile Include="ExternalModules\Authorization.cs" />
+    <Compile Include="Messages\HubMessagePlaylistWasUpdated.cs" />
+    <Compile Include="Messages\HubMessageTrackWasChanged.cs" />
+    <Compile Include="Messages\HubMessageHubWasCreated.cs" />
+    <Compile Include="Service\WebFileService.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\MessageRouter\MessageRouter\Module.MessageRouter.Abstractions.csproj">
+      <Project>{0c3e3766-bb19-4284-95fa-38468377cac9}</Project>
+      <Name>Module.MessageRouter.Abstractions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLStorage">
+      <HintPath>..\packages\PCLStorage.1.0.2\lib\portable-net45+wp8+wpa81+win8+monoandroid+monotouch+Xamarin.iOS+Xamarin.Mac\PCLStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLStorage.Abstractions">
+      <HintPath>..\packages\PCLStorage.1.0.2\lib\portable-net45+wp8+wpa81+win8+monoandroid+monotouch+Xamarin.iOS+Xamarin.Mac\PCLStorage.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <!--
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+-->
+</Project>

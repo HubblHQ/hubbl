@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace Hubl.Mobile.iOS
+namespace Hubbl.Mobile.iOS
 {
 	public class AuthCaller : IAuth
 	{

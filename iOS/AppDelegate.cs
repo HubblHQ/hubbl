@@ -6,7 +6,7 @@ using Foundation;
 using UIKit;
 using AVFoundation;
 
-namespace Hubl.Mobile.iOS
+namespace Hubbl.Mobile.iOS
 {
 	[Register ("AppDelegate")]
 	public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate

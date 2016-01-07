@@ -6,14 +6,14 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{FD878E56-3D67-4D48-B838-3AE4DDD58D6A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Hubl.Mobile.Droid</RootNamespace>
+    <RootNamespace>Hubbl.Mobile.Droid</RootNamespace>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidApplication>True</AndroidApplication>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <AssemblyName>Hubl.Mobile.Droid</AssemblyName>
+    <AssemblyName>Hubbl.Mobile.Droid</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
   </PropertyGroup>
@@ -102,9 +102,9 @@
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Hubl.Mobile\Hubl.Mobile.csproj">
+    <ProjectReference Include="..\Hubbl.Mobile\Hubbl.Mobile.csproj">
       <Project>{0742BD85-E181-4DAB-B8C0-5C37D34B1256}</Project>
-      <Name>Hubl.Mobile</Name>
+      <Name>Hubbl.Mobile</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

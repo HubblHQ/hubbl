@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace Hubl.Daemon.Commands
+namespace Hubbl.Daemon.Commands
 {
     class CommandsModule : Autofac.Module
     {

@@ -1,7 +1,7 @@
-﻿using Hubl.Core.Service;
+﻿using Hubbl.Core.Service;
 using Module.MessageRouter.Abstractions.Network;
 
-namespace Hubl.Daemon.Network
+namespace Hubbl.Daemon.Network
 {
 	internal class NetworkClientFactory : INetworkClientFactory
 	{

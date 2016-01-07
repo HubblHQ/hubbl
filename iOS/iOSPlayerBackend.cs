@@ -1,8 +1,8 @@
 ﻿using System;
 using AVFoundation;
 using System.Runtime.InteropServices;
-using Hubl.Core.Service;
-using Hubl.Core.Model;
+using Hubbl.Core.Service;
+using Hubbl.Core.Model;
 using Foundation;
 using CoreMedia;
 using CoreText;
@@ -11,8 +11,8 @@ using System.IO;
 using PassKit;
 using AudioToolbox;
 
-[assembly: Xamarin.Forms.Dependency(typeof(Hubl.Mobile.iOS.iOSPlayerBackend))]
-namespace Hubl.Mobile.iOS
+[assembly: Xamarin.Forms.Dependency(typeof(Hubbl.Mobile.iOS.iOSPlayerBackend))]
+namespace Hubbl.Mobile.iOS
 {
 
 	public class iOSPlayerBackend : IMusicPlayerBackend

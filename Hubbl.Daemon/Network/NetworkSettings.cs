@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Hubl.Daemon.Network
+namespace Hubbl.Daemon.Network
 {
     public class NetworkSettings
     {

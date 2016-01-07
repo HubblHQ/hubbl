@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Hubl.Core.Messages;
-using Hubl.Core.Service;
-using Hubl.Daemon.Properties;
+using Hubbl.Core.Messages;
+using Hubbl.Core.Service;
+using Hubbl.Daemon.Properties;
 using Module.MessageRouter.Abstractions.Network;
 
-namespace Hubl.Daemon.Commands
+namespace Hubbl.Daemon.Commands
 {
 	internal class HelloCommand : ICommand
 	{

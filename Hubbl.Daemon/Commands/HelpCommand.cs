@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 
-namespace Hubl.Daemon.Commands
+namespace Hubbl.Daemon.Commands
 {
     class HelpCommand:ICommand
     {

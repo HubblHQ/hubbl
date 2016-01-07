@@ -6,7 +6,7 @@
 //
 using Foundation;
 
-namespace Hubl.Mobile.iOS
+namespace Hubbl.Mobile.iOS
 {
 	[Register ("AuthController")]
 	partial class AuthController

@@ -3,7 +3,7 @@ using Module.MessageRouter.Abstractions.Message;
 using Module.MessageRouter.Abstractions.Network;
 using Module.MessageRouter.Desktop.Network;
 
-namespace Hubl.Daemon.Network
+namespace Hubbl.Daemon.Network
 {
 	class NetworkModule: Autofac.Module
 	{

@@ -4,8 +4,8 @@ using Android.Content;
 using Xamarin.Forms;
 using System.Collections.Generic;
 
-[assembly: Xamarin.Forms.Dependency(typeof(Hubl.Mobile.Droid.SongsPicker_Droid))]
-namespace Hubl.Mobile.Droid
+[assembly: Xamarin.Forms.Dependency(typeof(Hubbl.Mobile.Droid.SongsPicker_Droid))]
+namespace Hubbl.Mobile.Droid
 {
 	public class SongsPicker_Droid : ISongsPicker
 	{

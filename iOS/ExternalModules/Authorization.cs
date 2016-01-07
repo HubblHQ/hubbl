@@ -1,10 +1,10 @@
 ﻿using System;
 using Xamarin.Auth;
-using PCLCore;
-using Hubl.Core.Model;
+using Hubbl.Core;
+using Hubbl.Core.Model;
 using Security;
 
-namespace Hubl.Mobile.iOS
+namespace Hubbl.Mobile.iOS
 {
 	public class Authorization
 	{

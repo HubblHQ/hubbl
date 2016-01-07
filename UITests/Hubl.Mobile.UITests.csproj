@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2483BD4C-153D-47DA-AB03-0B727DA57AF1}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Hubl.Mobile.UITests</RootNamespace>
-    <AssemblyName>Hubl.Mobile.UITests</AssemblyName>
+    <RootNamespace>Hubbl.Mobile.UITests</RootNamespace>
+    <AssemblyName>Hubbl.Mobile.UITests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -40,15 +40,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\iOS\Hubl.Mobile.iOS.csproj">
+    <ProjectReference Include="..\iOS\Hubbl.Mobile.iOS.csproj">
       <Project>{72B99D4F-F251-4D6C-BB89-239833DBC35D}</Project>
-      <Name>Hubl.Mobile.iOS</Name>
+      <Name>Hubbl.Mobile.iOS</Name>
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Droid\Hubl.Mobile.Droid.csproj">
+    <ProjectReference Include="..\Droid\Hubbl.Mobile.Droid.csproj">
       <Project>{FD878E56-3D67-4D48-B838-3AE4DDD58D6A}</Project>
-      <Name>Hubl.Mobile.Droid</Name>
+      <Name>Hubbl.Mobile.Droid</Name>
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>

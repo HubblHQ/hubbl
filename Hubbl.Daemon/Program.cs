@@ -4,29 +4,33 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Autofac;
-using Hubl.Core.Messages;
-using Hubl.Core.Model;
-using Hubl.Core.Service;
-using Hubl.Daemon.Commands;
-using Hubl.Daemon.Properties;
-using Hubl.Daemon.Service;
+using Hubbl.Core.Messages;
+using Hubbl.Core.Model;
+using Hubbl.Core.Service;
+using Hubbl.Daemon.Commands;
+using Hubbl.Daemon.Properties;
+using Hubbl.Daemon.Service;
+using Module.MessageRouter.Abstractions;
 using Module.MessageRouter.Abstractions.Network;
 using Module.MessageRouter.Desktop.Network;
 
-namespace Hubl.Daemon
+namespace Hubbl.Daemon
 {
 	internal class MainClass
 	{
 		private static IContainer _container;
-		private static bool _runing;
+		private static bool _running;
 
 		private static IContainer CreateContainer()
 		{
 			var builder = new ContainerBuilder();
 			builder.RegisterModule<NetworkModule>();
 			builder.RegisterModule<CommandsModule>();
-			builder.RegisterType<UsersService>()
+			builder.RegisterType<HubblUsersService>()
+				.As<IUsersService>()
+				.As<HubblUsersService>()
 				.SingleInstance();
+
 			builder.RegisterType<MPlayerBackend>()
 				.As<IMusicPlayerBackend>()
 				.SingleInstance();
@@ -72,7 +76,7 @@ namespace Hubl.Daemon
 				{
 					Console.WriteLine("Get message {0} from {1}:{2}", m, ep.Address, ep.Port);
 					m.Sender.IpAddress = ep.Address;
-					_container.Resolve<UsersService>().Add(m.Sender);
+					_container.Resolve<HubblUsersService>().Add(m.Sender);
 					router.PublishFor(new[] {m.Sender.Id}, new EchoMessage(_container.Resolve<ISession>().CurrentUser)).First().Run();
 				}).OnException(e => { });
 
@@ -81,14 +85,14 @@ namespace Hubl.Daemon
 				{
 					Console.WriteLine("Get message {0} from {1}:{2}", m, ep.Address, ep.Port);
 					m.Sender.IpAddress = ep.Address;
-					_container.Resolve<UsersService>().Add(m.Sender);
+					_container.Resolve<HubblUsersService>().Add(m.Sender);
 				});
 
 			router.Subscribe<TextMessage>()
 				.OnSuccess((rp, m) =>
 				{
-					var user = _container.Resolve<UsersService>().Get(rp);
-					Console.WriteLine("{0}:{1}", user != null ? user.Title : Resources.UnknowUser, m.Text);
+					var user = _container.Resolve<HubblUsersService>().Get(rp);
+					Console.WriteLine("{0}:{1}", user != null ? user.Title : Resources.UnknownUser, m.Text);
 				});
 
 			router.Subscribe<AddCloudTrackMessage>()
@@ -103,12 +107,12 @@ namespace Hubl.Daemon
 			Task.Factory.StartNew(() => router.Start());
 
 			Console.CancelKeyPress += ConsoleOnCancelKeyPress;
-			_runing = true;
+			_running = true;
 
-			var users = _container.Resolve<UsersService>();
+			var users = _container.Resolve<IUsersService>();
 			var player = _container.Resolve<IMusicPlayer>();
 
-			while (_runing)
+			while (_running)
 			{
 				Console.Write("hubl>: ");
 				var commandLine = Regex.Split(Console.ReadLine() ?? string.Empty, "\\s");
@@ -130,7 +134,7 @@ namespace Hubl.Daemon
 
 		private static void ConsoleOnCancelKeyPress(object sender, ConsoleCancelEventArgs e)
 		{
-			_runing = false;
+			_running = false;
 		}
 	}
 }

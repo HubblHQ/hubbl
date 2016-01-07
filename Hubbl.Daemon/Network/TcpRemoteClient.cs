@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using Module.MessageRouter.Desktop.Network;
 
-namespace Hubl.Daemon.Network
+namespace Hubbl.Daemon.Network
 {
 	class TcpRemoteClient : IRemoteClient
 	{

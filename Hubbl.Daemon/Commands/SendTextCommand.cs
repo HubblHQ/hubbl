@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
-using Hubl.Core.Messages;
-using Hubl.Core.Service;
-using Hubl.Daemon.Properties;
+using Hubbl.Core.Messages;
+using Hubbl.Core.Service;
+using Hubbl.Daemon.Properties;
+using Module.MessageRouter.Abstractions;
 using Module.MessageRouter.Abstractions.Network;
 
-namespace Hubl.Daemon.Commands
+namespace Hubbl.Daemon.Commands
 {
 	public class SendTextCommand : ICommand
 	{
 		private readonly INetworkMessageRouter _route;
-		private readonly UsersService _usersService;
+		private readonly IUsersService _usersService;
 
-		public SendTextCommand(INetworkMessageRouter route, UsersService usersService)
+		public SendTextCommand(INetworkMessageRouter route, IUsersService usersService)
 		{
 			_route = route;
 			_usersService = usersService;

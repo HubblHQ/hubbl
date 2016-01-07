@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hubl.Core.Service;
+using Hubbl.Core.Service;
 
-namespace Hubl.Daemon.Commands
+namespace Hubbl.Daemon.Commands
 {
     class UserListCommand:ICommand
     {
-        private readonly UsersService _usersService;
+        private readonly HubblUsersService _usersService;
 
-        public UserListCommand(UsersService usersService)
+        public UserListCommand(HubblUsersService usersService)
         {
             _usersService = usersService;
             Shortcuts = new[] {"user-list", "ul"};

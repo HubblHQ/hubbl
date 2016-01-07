@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Net.Sockets;
 using System.Threading.Tasks;
-using Hubl.Core.Service;
+using Hubbl.Core.Service;
 using Module.MessageRouter.Abstractions.Network;
 using Module.MessageRouter.Desktop.Network;
 
-namespace Hubl.Daemon.Network
+namespace Hubbl.Daemon.Network
 {
 	class SystemTcpClient:ITcpClient
 	{

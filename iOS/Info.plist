@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>Hubl.Mobile</string>
+	<string>Hubbl.Mobile</string>
 	<key>CFBundleIdentifier</key>
-	<string>hublhq.hubl.mobile</string>
+	<string>hublhq.Hubbl.mobile</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>

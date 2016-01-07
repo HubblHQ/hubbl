@@ -44,13 +44,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PCLCore\Hubl.Core.csproj">
+    <ProjectReference Include="..\Hubbl.Core\Hubbl.Core.csproj">
       <Project>{F5FA13CD-343D-4BE6-902B-F01F1DAAE635}</Project>
-      <Name>Hubl.Core</Name>
+      <Name>Hubbl.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Hubbl.Daemon\Hubl.Daemon.csproj">
+    <ProjectReference Include="..\Hubbl.Daemon\Hubbl.Daemon.csproj">
       <Project>{5DFCCD93-BA0F-4794-A62B-6FB5A0FBA29B}</Project>
-      <Name>Hubl.Daemon</Name>
+      <Name>Hubbl.Daemon</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
