@@ -3,7 +3,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using MessageRouter.Network;
+using Module.MessageRouter.Abstractions.Network;
 using PCLStorage;
 
 namespace Hubl.Core.Service

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using MessageRouter.Message;
+using Module.MessageRouter.Abstractions.Message;
 
 namespace Hubl.Core.Messages
 {

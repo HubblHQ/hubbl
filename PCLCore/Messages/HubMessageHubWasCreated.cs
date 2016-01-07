@@ -1,13 +1,10 @@
-﻿using System;
-using System.ServiceModel.Channels;
-using Hubl.Core.Model;
-using MessageRouter.Message;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using Hubl.Core.Messages;
-using MessageRouter.Network;
-using System.Collections.Generic;
+using Hubl.Core.Model;
+using Module.MessageRouter.Abstractions.Message;
+using Module.MessageRouter.Abstractions.Network;
 
-namespace Hubl.Core
+namespace Hubl.Core.Messages
 {
 	[DataContract]
 	[Message(MessageGroups.Player)]

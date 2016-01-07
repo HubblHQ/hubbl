@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Hubl.Core.Model;
-using MessageRouter.Network;
+using Module.MessageRouter.Abstractions.Network;
 
 namespace Hubl.Core.Service
 {

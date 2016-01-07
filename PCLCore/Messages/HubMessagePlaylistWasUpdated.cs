@@ -1,10 +1,10 @@
 using System;
-using MessageRouter.Message;
+using Module.MessageRouter.Abstractions.Message;
 using System.Runtime.Serialization;
 using System.Collections.Generic;
 using Hubl.Core.Model;
 using Hubl.Core.Messages;
-using MessageRouter.Network;
+using Module.MessageRouter.Abstractions.Network;
 
 namespace Hubl.Core.Messages
 {

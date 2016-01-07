@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using MessageRouter.Message;
 using MessageRouter.Network;
+using Module = Autofac.Module;
 
 namespace Hubl.Daemon.Network
 {

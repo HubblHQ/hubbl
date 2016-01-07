@@ -5,8 +5,8 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Hubl.Core.Model;
-using MessageRouter.Message;
-using MessageRouter.Network;
+using Module.MessageRouter.Abstractions.Message;
+using Module.MessageRouter.Abstractions.Network;
 
 namespace Hubl.Core.Messages
 {

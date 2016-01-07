@@ -1,7 +1,7 @@
-﻿using MessageRouter.Message;
+﻿using Module.MessageRouter.Abstractions.Message;
 using Hubl.Core.Model;
 using System.Runtime.Serialization;
-using MessageRouter.Network;
+using Module.MessageRouter.Abstractions.Network;
 using Hubl.Core.Messages;
 
 namespace Hubl.Core.Messages
