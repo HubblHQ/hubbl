@@ -1,35 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Hubl.Core.Messages;
 using Hubl.Core.Service;
-using MessageRouter.Network;
+using Hubl.Daemon.Properties;
+using Module.MessageRouter.Abstractions.Network;
 
 namespace Hubl.Daemon.Commands
 {
-    class HelloCommand:ICommand
-    {
-        private readonly INetworkMessageRouter _router;
-        private readonly ISession _session;
+	internal class HelloCommand : ICommand
+	{
+		private readonly INetworkMessageRouter _router;
+		private readonly ISession _session;
 
-        public HelloCommand(INetworkMessageRouter router, ISession session)
-        {
-            _router = router;
-            _session = session;
-            Shortcuts = new[] {"hello"};
-            Description = Properties.Resources.HelloCommand;
-        }
+		public HelloCommand(INetworkMessageRouter router, ISession session)
+		{
+			_router = router;
+			_session = session;
+			Shortcuts = new[] {"hello"};
+			Description = Resources.HelloCommand;
+		}
 
-        public bool Execute(params string[] args)
-        {
-            _router.Publish(new HelloMessage(_session.CurrentUser)).Run();
-            return false;
-        }
+		public bool Execute(params string[] args)
+		{
+			_router.Publish(new HelloMessage(_session.CurrentUser)).Run();
+			return false;
+		}
 
-        public IEnumerable<string> Shortcuts { get; private set; }
-        public string Description { get; private set; }
-    }
+		public IEnumerable<string> Shortcuts { get; }
+		public string Description { get; }
+	}
 }

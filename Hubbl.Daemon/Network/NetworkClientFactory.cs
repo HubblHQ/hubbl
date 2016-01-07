@@ -1,9 +1,9 @@
 ﻿using Hubl.Core.Service;
-using MessageRouter.Network;
+using Module.MessageRouter.Abstractions.Network;
 
 namespace Hubl.Daemon.Network
 {
-	class NetworkClientFactory:INetworkClientFactory
+	internal class NetworkClientFactory : INetworkClientFactory
 	{
 		private readonly UsersService _userService;
 		private readonly NetworkSettings _networkSettings;

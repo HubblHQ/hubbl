@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
-using MessageRouter.Network;
+using Module.MessageRouter.Desktop.Network;
 
 namespace Hubl.Daemon.Network
 {

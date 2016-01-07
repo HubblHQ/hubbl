@@ -1,11 +1,11 @@
 ﻿using Autofac;
-using MessageRouter.Message;
-using MessageRouter.Network;
-using Module = Autofac.Module;
+using Module.MessageRouter.Abstractions.Message;
+using Module.MessageRouter.Abstractions.Network;
+using Module.MessageRouter.Desktop.Network;
 
 namespace Hubl.Daemon.Network
 {
-	class NetworkModule:Module
+	class NetworkModule: Autofac.Module
 	{
 		protected override void Load(ContainerBuilder builder)
 		{

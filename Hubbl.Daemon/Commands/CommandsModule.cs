@@ -1,9 +1,8 @@
-﻿using System.Runtime.InteropServices;
-using Autofac;
+﻿using Autofac;
 
 namespace Hubl.Daemon.Commands
 {
-    class CommandsModule : Module
+    class CommandsModule : Autofac.Module
     {
         protected override void Load(ContainerBuilder builder)
         {

@@ -12,6 +12,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageRouter", "MessageRouter\MessageRouter.csproj", "{67F9D3A8-F71E-4428-913F-C37AE82CDB24}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hubl.Daemon", "Hubbl.Daemon\Hubl.Daemon.csproj", "{5DFCCD93-BA0F-4794-A62B-6FB5A0FBA29B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0C3E3766-BB19-4284-95FA-38468377CAC9} = {0C3E3766-BB19-4284-95FA-38468377CAC9}
+		{2C8FF36C-C6A7-4C06-9BBF-5FCADBA7A775} = {2C8FF36C-C6A7-4C06-9BBF-5FCADBA7A775}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hubl.Core", "PCLCore\Hubl.Core.csproj", "{F5FA13CD-343D-4BE6-902B-F01F1DAAE635}"
 	ProjectSection(ProjectDependencies) = postProject
