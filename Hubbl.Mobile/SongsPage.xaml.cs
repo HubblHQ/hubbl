@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
 using Hubbl.Core.Model;
 using Hubbl.Core.Messages;
 using Autofac;
 using Hubbl.Core.Service;
-using Hubbl.Core;
+using Hubbl.Core.ExternalModules.VkModule;
 
 namespace Hubbl.Mobile
 {
 	public partial class SongsPage : ContentPage
 	{
 		ObservableCollection<Song> songs = new ObservableCollection<Song>();
-		User hub;
-		public SongsPage (User hub)
+		HubblUser hub;
+		public SongsPage (HubblUser hub)
 		{
 			this.hub = hub;
 			InitializeComponent ();

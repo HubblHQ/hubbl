@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Autofac;
 using Xamarin.Forms;
 using Hubbl.Core.Model;
 using Hubbl.Core.Service;
-using Autofac.Core.Lifetime;
-using System.Linq;
-using System.Diagnostics;
-using Hubbl.Core;
 using Hubbl.Core.Messages;
 
 namespace Hubbl.Mobile
@@ -30,11 +25,11 @@ namespace Hubbl.Mobile
 
 	public partial class OneHubPage : ContentPage
 	{
-		User hub;
+		HubblUser hub;
 		bool isPlaying;
 		ObservableCollection<PlaylistEntry> tracks;
 		PlaylistEntry currentTrack;
-		public OneHubPage (User hub)
+		public OneHubPage (HubblUser hub)
 		{
 			this.hub = hub;
 			InitializeComponent ();

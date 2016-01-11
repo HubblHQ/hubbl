@@ -1,7 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using System.Diagnostics;
+using Autofac;
+using Hubbl.Core.Messages;
 using Hubbl.Core.Model;
+using Hubbl.Core.Service;
+using Module.MessageRouter.Abstractions;
 using Module.MessageRouter.Abstractions.Network;
 
 namespace Hubbl.Mobile
@@ -41,7 +45,7 @@ namespace Hubbl.Mobile
 			subscription.OnSuccess ((ep, m) => {				
 				m.Sender.IpAddress = ep.Address;
 				if (m.Sender.IsHub) {
-					App.Container.Resolve<UsersService>().Add(m.Sender);
+					App.Container.Resolve<UsersService<HubblUser>>().Add(m.Sender);
 					hubs.Add (m.Sender);
 				}
 			});
