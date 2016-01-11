@@ -48,13 +48,6 @@
       <DependentUpon>SourcesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ISongsPicker.cs" />
-    <Compile Include="Network\MobileNetworkClientFactory.cs" />
-    <Compile Include="Network\MobileTcpClient.cs" />
-    <Compile Include="Network\MobileTcpListener.cs" />
-    <Compile Include="Network\MobileMulticastClient.cs" />
-    <Compile Include="Network\MobileNetworkSettings.cs" />
-    <Compile Include="Network\MobileTcpRemoteClient.cs" />
-    <Compile Include="Network\MobileNetworkModule.cs" />
     <Compile Include="Utils\MobileSession.cs" />
     <Compile Include="SongsPage.xaml.cs">
       <DependentUpon>SongsPage.xaml</DependentUpon>
@@ -109,6 +102,10 @@
     <ProjectReference Include="..\..\MessageRouter\Module.MessageRouter.Abstractions\Module.MessageRouter.Abstractions.csproj">
       <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
       <Name>Module.MessageRouter.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MessageRouter\Module.MessageRouter.Mobile\Module.MessageRouter.Mobile.csproj">
+      <Project>{a46012be-8151-4e90-a185-94b575e76381}</Project>
+      <Name>Module.MessageRouter.Mobile</Name>
     </ProjectReference>
     <ProjectReference Include="..\Hubbl.Core\Hubbl.Core.csproj">
       <Project>{F5FA13CD-343D-4BE6-902B-F01F1DAAE635}</Project>

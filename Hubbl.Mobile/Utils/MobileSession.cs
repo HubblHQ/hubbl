@@ -4,16 +4,16 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Hubbl.Core.Model;
 using Hubbl.Core.Service;
-using Hubbl.Mobile.Network;
+using Module.MessageRouter.Mobile.Network;
 
 namespace Hubbl.Mobile.Utils
 {
 	class MobileSession : ISession
 	{
-		private readonly MobileNetworkSettings _settings;
+		private readonly NetworkSettings _settings;
 		private HubblUser _user;
 		private ObservableCollection<PlaylistEntry> _playlist;
-		public MobileSession(MobileNetworkSettings settings)
+		public MobileSession(NetworkSettings settings)
 		{			
 			_settings = settings;
 

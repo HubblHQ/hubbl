@@ -4,10 +4,10 @@ using Autofac;
 using Hubbl.Core.Messages;
 using Hubbl.Core.Model;
 using Hubbl.Core.Service;
-using Hubbl.Mobile.Network;
 using Hubbl.Mobile.Utils;
 using Module.MessageRouter.Abstractions;
 using Module.MessageRouter.Abstractions.Network;
+using Module.MessageRouter.Mobile.Network;
 using Xamarin.Forms;
 
 namespace Hubbl.Mobile
