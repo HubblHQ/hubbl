@@ -155,7 +155,6 @@
     <BundleResource Include="Resources\yandex-music%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\airdrop-white%402x.png" />
-    <BundleResource Include="Resources\add-track-blue%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -196,8 +195,5 @@
       <Version>1.2.3.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Auth\" />
   </ItemGroup>
 </Project>

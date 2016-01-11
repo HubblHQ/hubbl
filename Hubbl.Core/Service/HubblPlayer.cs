@@ -194,7 +194,7 @@ namespace Hubbl.Core.Service
 
 		//TODO: ask my c sharp guru about methods to make it immutable
 		public PlaylistEntry CurrentPlayedEntry { get; private set; }
-		public List<PlaylistEntry> Playlist { get; }
+		public List<PlaylistEntry> Playlist { get; private set; }
 
 		public void Play()
 		{

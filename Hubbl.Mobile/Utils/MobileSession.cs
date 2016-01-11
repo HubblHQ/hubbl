@@ -38,6 +38,6 @@ namespace Hubbl.Mobile.Utils
 				_user = value;	
 			}
 		}
-		public List<PlaylistEntry> Playlist => _playlist.ToList();
+		public List<PlaylistEntry> Playlist { get { return _playlist.ToList (); } }
 	}
 }

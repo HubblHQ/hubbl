@@ -100,11 +100,11 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <ProjectReference Include="..\..\MessageRouter\Module.MessageRouter.Abstractions\Module.MessageRouter.Abstractions.csproj">
-      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
+      <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>Module.MessageRouter.Abstractions</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MessageRouter\Module.MessageRouter.Mobile\Module.MessageRouter.Mobile.csproj">
-      <Project>{a46012be-8151-4e90-a185-94b575e76381}</Project>
+      <Project>{A46012BE-8151-4E90-A185-94B575E76381}</Project>
       <Name>Module.MessageRouter.Mobile</Name>
     </ProjectReference>
     <ProjectReference Include="..\Hubbl.Core\Hubbl.Core.csproj">

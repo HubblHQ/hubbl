@@ -26,7 +26,7 @@ namespace Hubbl.Daemon.Commands
 			return false;
 		}
 
-		public IEnumerable<string> Shortcuts { get; }
-		public string Description { get; }
+		public IEnumerable<string> Shortcuts { get; private set; }
+		public string Description { get; private set;}
 	}
 }
