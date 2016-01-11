@@ -21,6 +21,7 @@ namespace Hubbl.Mobile
 			var builder = new ContainerBuilder ();
 			builder.RegisterModule <NetworkModule> ();
 			builder.RegisterType<UsersService<HubblUser>>()
+				.As<IUsersService>()
 				.SingleInstance();
 
 			builder.RegisterType<MobileSession>()
