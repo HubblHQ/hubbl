@@ -1,5 +1,6 @@
-﻿using Hubbl.Core.Service;
-using MessageRouter.Network;
+﻿using Hubbl.Core.Model;
+using Module.MessageRouter.Abstractions;
+using Module.MessageRouter.Abstractions.Network;
 
 namespace Hubbl.Mobile.Network
 {
@@ -7,9 +8,10 @@ namespace Hubbl.Mobile.Network
 	{
 
 		private readonly MobileNetworkSettings _networkSettings;
-		private readonly UsersService _usersService;
+		private readonly UsersService<HubblUser> _usersService;
 
-		public MobileNetworkClientFactory(MobileNetworkSettings networkSettings, UsersService usersService)
+		public MobileNetworkClientFactory(MobileNetworkSettings networkSettings,
+			UsersService<HubblUser> usersService)
 		{
 			_networkSettings = networkSettings;
 			_usersService = usersService;

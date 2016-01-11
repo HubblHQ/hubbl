@@ -1,12 +1,8 @@
 ﻿using System.Collections.ObjectModel;
-using Hubbl.Core.Messages;
-using Autofac;
-using Hubbl.Core.Service;
-
 using Xamarin.Forms;
-using Hubbl.Core.Model;
 using System.Diagnostics;
-using MessageRouter.Network;
+using Hubbl.Core.Model;
+using Module.MessageRouter.Abstractions.Network;
 
 namespace Hubbl.Mobile
 {
@@ -19,7 +15,7 @@ namespace Hubbl.Mobile
 
 	public partial class HubsPage : ContentPage
 	{
-		ObservableCollection<User> hubs = new ObservableCollection<User>();
+		ObservableCollection<HubblUser> hubs = new ObservableCollection<HubblUser>();
 		IMessageReceiverConfig<EchoMessage> subscription;
 		public HubsPage ()
 		{
@@ -29,7 +25,7 @@ namespace Hubbl.Mobile
 			HubsView.ItemsSource = hubs;
 			this.Icon = new FileImageSource (){ File = "app-logo-square-black@2x.png" };
 			HubsView.ItemSelected += (sender, e) => {
-				Navigation.PushAsync(new OneHubPage((User)e.SelectedItem));
+				Navigation.PushAsync(new OneHubPage((HubblUser)e.SelectedItem));
 			};
 			AddHub.Clicked += (sender, e) => {
 				Navigation.PushAsync(new NewHubPage(), true);

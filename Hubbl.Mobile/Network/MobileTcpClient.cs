@@ -1,7 +1,8 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
-using Hubbl.Core.Service;
-using MessageRouter.Network;
+using Hubbl.Core.Model;
+using Module.MessageRouter.Abstractions;
+using Module.MessageRouter.Abstractions.Network;
 using Sockets.Plugin;
 
 namespace Hubbl.Mobile.Network
@@ -9,14 +10,14 @@ namespace Hubbl.Mobile.Network
 	public class MobileTcpClient : ITcpClient
 	{
 
-		private readonly UsersService _usersService;
+		private readonly UsersService<HubblUser> _usersService;
 		private readonly TcpSocketClient _client;
 
-		public MobileTcpClient(UsersService usersService) : this(usersService, new TcpSocketClient())
+		public MobileTcpClient(UsersService<HubblUser> usersService) : this(usersService, new TcpSocketClient())
 		{
 		}
 
-		public MobileTcpClient(UsersService usersService, TcpSocketClient client)
+		public MobileTcpClient(UsersService<HubblUser> usersService, TcpSocketClient client)
 		{
 			_usersService = usersService;
 			_client = client;

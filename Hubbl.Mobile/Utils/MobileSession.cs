@@ -1,33 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Hubbl.Core.Model;
 using Hubbl.Core.Service;
 using Hubbl.Mobile.Network;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
-
-namespace Hubbl.Mobile
+namespace Hubbl.Mobile.Utils
 {
 	class MobileSession : ISession
 	{
 		private readonly MobileNetworkSettings _settings;
-		private User _user;
-		private ObservableCollection<PlaylistEntry> playlist;
+		private HubblUser _user;
+		private ObservableCollection<PlaylistEntry> _playlist;
 		public MobileSession(MobileNetworkSettings settings)
 		{			
 			_settings = settings;
 
-			_user = new User
+			_user = new HubblUser
 			{
 				Id = Guid.NewGuid().ToString(),
 				Title = "staff"
 			};
-			playlist = new ObservableCollection<PlaylistEntry> ();
+			_playlist = new ObservableCollection<PlaylistEntry> ();
 
 		}
 
-		public User CurrentUser
+		public HubblUser CurrentUser
 		{
 			get
 			{
@@ -39,13 +38,6 @@ namespace Hubbl.Mobile
 				_user = value;	
 			}
 		}
-		public List<PlaylistEntry> Playlist
-		{
-			get
-			{
-				return playlist.ToList();
-			}
-		}
-
+		public List<PlaylistEntry> Playlist => _playlist.ToList();
 	}
 }

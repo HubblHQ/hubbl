@@ -1,5 +1,5 @@
 ﻿using System;
-using MessageRouter.Network;
+using Module.MessageRouter.Abstractions.Network;
 using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
 
@@ -16,18 +16,18 @@ namespace Hubbl.Mobile.Network
 		{
 			_settings = settings;
 
-		    _udpClient = new UdpSocketMulticastClient {TTL = settings.TTL};
-            _udpClient.MessageReceived = OnMessageReceived;
+			_udpClient = new UdpSocketMulticastClient {TTL = settings.TTL};
+			_udpClient.MessageReceived = OnMessageReceived;
 
 		}
 
-	    private void OnMessageReceived(object sender, UdpSocketMessageReceivedEventArgs e)
-	    {
-            if(MessageReceived != null)
-                MessageReceived(sender, new DatagramReceivedEventArgs(e.RemoteAddress, int.Parse(e.RemotePort), e.ByteData));
-	    }
+		private void OnMessageReceived(object sender, UdpSocketMessageReceivedEventArgs e)
+		{
+			if(MessageReceived != null)
+				MessageReceived(sender, new DatagramReceivedEventArgs(e.RemoteAddress, int.Parse(e.RemotePort), e.ByteData));
+		}
 
-	    #region IMulticastClient implementation
+		#region IMulticastClient implementation
 
 		public event EventHandler<DatagramReceivedEventArgs> MessageReceived;
 
