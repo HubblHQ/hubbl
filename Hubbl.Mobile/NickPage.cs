@@ -14,7 +14,7 @@ namespace Hubbl.Mobile
 		{
 			rand = new Random ();
 			var image = new Image () {
-				Source = new FileImageSource() {File = "app-logo-wide-black@2x.png"},
+				Source = new FileImageSource() {File = "applogowideblack.png"},
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Aspect = Aspect.AspectFit,
 				HeightRequest = 200,
@@ -38,7 +38,7 @@ namespace Hubbl.Mobile
 			};
 			var box = new BoxView (){ MinimumHeightRequest = 40 };
 			var refresh = new Button ();
-			refresh.Image = new FileImageSource () { File = "reload-blue@2x.png" };
+			refresh.Image = new FileImageSource () { File = "reloadblue.png" };
 			refresh.Clicked += (sender, e) => {
 				var name = GenerateNewName();
 				nickLabel.Text = name;

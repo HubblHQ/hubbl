@@ -62,8 +62,7 @@ namespace Hubbl.Daemon
 		{
 			_container = CreateContainer();
 			var builder = new ContainerBuilder();
-			builder.RegisterInstance(_container)
-				.ExternallyOwned();
+			builder.RegisterInstance(_container).ExternallyOwned();
 			builder.Update(_container);
 
 			var networkSettings = _container.Resolve<NetworkSettings>();

@@ -116,8 +116,6 @@
     <BundleResource Include="Resources\app-logo-square-black%402x.png" />
     <BundleResource Include="Resources\app-logo-square-white.png" />
     <BundleResource Include="Resources\app-logo-square-white%402x.png" />
-    <BundleResource Include="Resources\app-logo-wide-black.png" />
-    <BundleResource Include="Resources\app-logo-wide-black%402x.png" />
     <BundleResource Include="Resources\app-logo-wide-white.png" />
     <BundleResource Include="Resources\app-logo-wide-white%402x.png" />
     <BundleResource Include="Resources\cog-blue.png" />
@@ -141,8 +139,6 @@
     <BundleResource Include="Resources\plus-green%402x.png" />
     <BundleResource Include="Resources\plus-white.png" />
     <BundleResource Include="Resources\plus-white%402x.png" />
-    <BundleResource Include="Resources\reload-blue.png" />
-    <BundleResource Include="Resources\reload-blue%402x.png" />
     <BundleResource Include="Resources\star-golden.png" />
     <BundleResource Include="Resources\star-golden%402x.png" />
     <BundleResource Include="Resources\star-white.png" />
@@ -155,6 +151,10 @@
     <BundleResource Include="Resources\yandex-music%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\airdrop-white%402x.png" />
+    <BundleResource Include="Resources\applogowideblack%402x.png" />
+    <BundleResource Include="Resources\applogowideblack.png" />
+    <BundleResource Include="Resources\reloadblue.png" />
+    <BundleResource Include="Resources\reloadblue%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
