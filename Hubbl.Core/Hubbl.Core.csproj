@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Messages\EchoMessage.cs" />
+    <Compile Include="Messages\FileTransferMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Messages\AddCloudTrackMessage.cs" />
     <Compile Include="Messages\AddLocalTrackMessage.cs" />

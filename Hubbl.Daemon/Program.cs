@@ -102,6 +102,15 @@ namespace Hubbl.Daemon
 					Console.WriteLine("added {0}", entry);
 				});
 
+			router.Subscribe<FileTransferMessage>()
+				.OnSuccess((rp, m) =>
+				{
+					Console.WriteLine("We got the file transfer! name:  " + m.Filename);
+					Console.WriteLine("	Trying to save...");
+					
+				} 
+				);
+
 
 			Task.Factory.StartNew(() => router.Start());
 

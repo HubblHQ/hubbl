@@ -7,6 +7,7 @@ using Hubbl.Core.Model;
 using Hubbl.Core.Service;
 using Module.MessageRouter.Abstractions;
 using Module.MessageRouter.Abstractions.Network;
+using Module.MessageRouter.Abstractions.Network.Interfaces;
 
 namespace Hubbl.Mobile
 {
