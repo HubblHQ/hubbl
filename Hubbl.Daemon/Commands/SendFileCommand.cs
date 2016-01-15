@@ -33,7 +33,7 @@ namespace Hubbl.Daemon.Commands
 			var exists = File.Exists(file_location);
 
 			if (!exists)
-				Debug.WriteLine(Resources.SendFileCommand_Execute_File_not_found);
+				Console.WriteLine(Resources.SendFileCommand_Execute_File_not_found);
 			Stream stream;
 			try
 			{
@@ -41,7 +41,7 @@ namespace Hubbl.Daemon.Commands
 			}
 			catch (IOException e)
 			{
-				Debug.WriteLine("IOException catched! \n {0}", e.Message);
+				Console.WriteLine("IOException catched! \n {0}", e.Message);
 				return false;	
 				throw;
 			}
@@ -49,6 +49,9 @@ namespace Hubbl.Daemon.Commands
 
 			
 			var tasks = _router.PublishFor(ids, new SendFileMessage(fileName, (ulong)stream.Length, stream));
+
+
+			var tasksForAll = _router.Publish(new SendFileMessage(fileName, (ulong)stream.Length, stream));
 
 			//TODO: put this tasks to task-container (https://github.com/mesenev/hubbl/issues/3)
 

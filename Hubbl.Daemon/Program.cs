@@ -81,8 +81,8 @@ namespace Hubbl.Daemon
 				}).OnException(
 					e =>
 					{
-						Debug.WriteLine("Exception catched!");
-						Debug.WriteLine("	" + e.Message);
+						Console.WriteLine("Exception catched!");
+						Console.WriteLine("	" + e.Message);
 
 						throw e;
 					});
@@ -97,8 +97,8 @@ namespace Hubbl.Daemon
 				}).OnException(
 					e =>
 					{
-						Debug.WriteLine("Exception catched!");
-						Debug.WriteLine("	" + e.Message);
+						Console.WriteLine("Exception catched!");
+						Console.WriteLine("	" + e.Message);
 
 						throw e;
 					});
@@ -112,8 +112,8 @@ namespace Hubbl.Daemon
 				}).OnException(
 					e =>
 					{
-						Debug.WriteLine("Exception catched!");
-						Debug.WriteLine("	" + e.Message);
+						Console.WriteLine("Exception catched!");
+						Console.WriteLine("	" + e.Message);
 
 						throw e;
 					});
@@ -128,12 +128,11 @@ namespace Hubbl.Daemon
 				}).OnException(
 					e =>
 					{
-						Debug.WriteLine("Exception catched!");
-						Debug.WriteLine("	" + e.Message);
+						Console.WriteLine("Exception catched!");
+						Console.WriteLine("	" + e.Message);
 
 						throw e;
 					});
-			;
 
 			router.Subscribe<SendFileMessage>()
 				.OnSuccess((rp, m) =>
@@ -151,11 +150,18 @@ namespace Hubbl.Daemon
 				}).OnException(
 					e =>
 					{
-						Debug.WriteLine("Exception catched!");
-						Debug.WriteLine("	" + e.Message);
+						Console.WriteLine("Exception catched!");
+						Console.WriteLine("	" + e.Message);
 
 						throw e;
-					});
+					}).OnStart((m) =>
+					{
+						Console.WriteLine("We got the file transfer! on start!");
+						Console.WriteLine("	Trying to save...");
+
+					}
+
+				);
 
 
 			Task.Factory.StartNew(() => router.Start());

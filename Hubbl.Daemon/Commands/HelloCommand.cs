@@ -22,7 +22,8 @@ namespace Hubbl.Daemon.Commands
 
 		public bool Execute(params string[] args)
 		{
-			_router.Publish(new HelloMessage(_session.CurrentUser)).Run();
+			var tasks = _router.Publish(new HelloMessage(_session.CurrentUser));
+			tasks.Run();
 			return false;
 		}
 

@@ -59,3 +59,4 @@ Thumbs.db
 #dotCover
 *.dotCover
 >>>>>>> origin/mobile_network
+/Hubbl.Daemon/Hubbl.Daemon.csproj.DotSettings
