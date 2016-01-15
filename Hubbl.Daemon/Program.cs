@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ using Module.MessageRouter.Desktop.Network;
 
 namespace Hubbl.Daemon
 {
-	internal class MainClass
+	internal static class MainClass
 	{
 		private static IContainer _container;
 		private static bool _running;
@@ -42,7 +43,6 @@ namespace Hubbl.Daemon
 			builder.RegisterType<ConsoleSession>()
 				.As<ISession>()
 				.SingleInstance();
-
 
 			return builder.Build();
 		}
@@ -102,12 +102,19 @@ namespace Hubbl.Daemon
 					Console.WriteLine("added {0}", entry);
 				});
 
-			router.Subscribe<FileTransferMessage>()
+			router.Subscribe<SendFileMessage>()
 				.OnSuccess((rp, m) =>
 				{
 					Console.WriteLine("We got the file transfer! name:  " + m.Filename);
 					Console.WriteLine("	Trying to save...");
-					
+
+					var fileStream = File.Create("files/", (int) m.StreamLength);
+
+					var bytesInStream = new byte[(int) m.Stream.Length];
+
+					m.Stream.Read(bytesInStream, 0, bytesInStream.Length);
+
+					fileStream.Write(bytesInStream, 0, bytesInStream.Length);
 				} 
 				);
 
@@ -138,7 +145,6 @@ namespace Hubbl.Daemon
 			_container.Dispose();
 			return 0;
 		}
-
 
 		private static void ConsoleOnCancelKeyPress(object sender, ConsoleCancelEventArgs e)
 		{

@@ -42,6 +42,7 @@
     <Compile Include="Commands\HelpCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\QuitCommand.cs" />
+    <Compile Include="Commands\SendFileCommand.cs" />
     <Compile Include="Commands\SendTextCommand.cs" />
     <Compile Include="Commands\UserListCommand.cs" />
     <Compile Include="ConsoleSession.cs" />

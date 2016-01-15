@@ -120,6 +120,9 @@
   <data name="HelloCommand" xml:space="preserve">
     <value>Send hello message</value>
   </data>
+  <data name="SendFileCommand" xml:space="preserve">
+    <value>Send File Command</value>
+  </data>
   <data name="HelpCommand" xml:space="preserve">
     <value>List commands</value>
   </data>
@@ -137,5 +140,8 @@
   </data>
   <data name="UnknownUser" xml:space="preserve">
     <value>(Unknown user)</value>
+  </data>
+  <data name="SendFileCommand_Execute_File_not_found" xml:space="preserve">
+    <value>File not found!</value>
   </data>
 </root>

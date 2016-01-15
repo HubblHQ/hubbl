@@ -106,6 +106,24 @@ namespace Hubbl.Daemon.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send File Command.
+        /// </summary>
+        internal static string SendFileCommand {
+            get {
+                return ResourceManager.GetString("SendFileCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File not found!.
+        /// </summary>
+        internal static string SendFileCommand_Execute_File_not_found {
+            get {
+                return ResourceManager.GetString("SendFileCommand_Execute_File_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Send all users text message.
         /// </summary>
         internal static string TextCommand {

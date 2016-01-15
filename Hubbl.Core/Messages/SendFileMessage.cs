@@ -7,8 +7,15 @@ using Module.MessageRouter.Abstractions.Message;
 namespace Hubbl.Core.Messages
 {
 
-	public class FileTransferMessage : IStreamingMessage, IMessage
+	public class SendFileMessage : IStreamingMessage, IMessage
 	{
+		public SendFileMessage(string filename, ulong streamLength, Stream stream)
+		{
+			Filename = filename;
+			StreamLength = streamLength;
+			Stream = stream;
+		}
+
 		[DataMember]
 		public string Filename { get; set; }
 
