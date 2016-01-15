@@ -1,13 +1,12 @@
 ﻿using System.Collections.ObjectModel;
-using Xamarin.Forms;
 using System.Diagnostics;
 using Autofac;
 using Hubbl.Core.Messages;
 using Hubbl.Core.Model;
 using Hubbl.Core.Service;
 using Module.MessageRouter.Abstractions;
-using Module.MessageRouter.Abstractions.Network;
 using Module.MessageRouter.Abstractions.Network.Interfaces;
+using Xamarin.Forms;
 
 namespace Hubbl.Mobile
 {
@@ -18,14 +17,13 @@ namespace Hubbl.Mobile
 		public string CurrentSong { get; set; }
 	}
 
-	public partial class HubsPage : ContentPage
+	public partial class HubsPage
 	{
 		ObservableCollection<HubblUser> hubs = new ObservableCollection<HubblUser>();
 		IMessageReceiverConfig<EchoMessage> subscription;
 		public HubsPage ()
 		{
-			InitializeComponent ();
-			//var message = new HelloMessage (App.Container.Resolve<ISession> ().CurrentUser);
+			InitializeComponent();
 
 			HubsView.ItemsSource = hubs;
 			this.Icon = new FileImageSource (){ File = "app-logo-square-black@2x.png" };

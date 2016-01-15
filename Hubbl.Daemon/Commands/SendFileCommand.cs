@@ -5,6 +5,7 @@ using Hubbl.Core.Messages;
 using Hubbl.Core.Service;
 using Hubbl.Daemon.Properties;
 using Module.MessageRouter.Abstractions.Network;
+using Module.MessageRouter.Abstractions.Network.Interfaces;
 
 namespace Hubbl.Daemon.Commands
 {

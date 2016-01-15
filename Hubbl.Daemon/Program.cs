@@ -13,6 +13,7 @@ using Hubbl.Daemon.Properties;
 using Hubbl.Daemon.Service;
 using Module.MessageRouter.Abstractions;
 using Module.MessageRouter.Abstractions.Network;
+using Module.MessageRouter.Abstractions.Network.Interfaces;
 using Module.MessageRouter.Desktop.Network;
 
 namespace Hubbl.Daemon

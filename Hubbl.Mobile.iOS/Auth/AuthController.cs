@@ -1,21 +1,16 @@
-﻿
-using System;
-
-using Foundation;
-using UIKit;
-using Hubbl.Core;
-using Hubbl.Core;
-using Xamarin.Auth;
+﻿using System;
 using Autofac;
+using Hubbl.Core;
 using Hubbl.Core.Service;
-using Xamarin.Forms.Platform.iOS;
-using Xamarin.Forms;
 using Hubbl.Mobile;
-using Hubbl.Mobile.iOS;
-using System.Runtime.InteropServices;
+using Hubbl.Mobile.iOS.Auth;
+using UIKit;
+using Xamarin.Auth;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 [assembly:ExportRenderer(typeof(AuthPage), typeof(AuthController))]
-namespace Hubbl.Mobile.iOS
+namespace Hubbl.Mobile.iOS.Auth
 {
 	public partial class AuthController : PageRenderer
 	{
