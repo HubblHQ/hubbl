@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -12,7 +13,6 @@ using Hubbl.Daemon.Commands;
 using Hubbl.Daemon.Properties;
 using Hubbl.Daemon.Service;
 using Module.MessageRouter.Abstractions;
-using Module.MessageRouter.Abstractions.Network;
 using Module.MessageRouter.Abstractions.Network.Interfaces;
 using Module.MessageRouter.Desktop.Network;
 
@@ -78,7 +78,15 @@ namespace Hubbl.Daemon
 					m.Sender.IpAddress = ep.Address;
 					_container.Resolve<HubblUsersService>().Add(m.Sender);
 					router.PublishFor(new[] {m.Sender.Id}, new EchoMessage(_container.Resolve<ISession>().CurrentUser)).First().Run();
-				}).OnException(e => { });
+				}).OnException(
+					e =>
+					{
+						Debug.WriteLine("Exception catched!");
+						Debug.WriteLine("	" + e.Message);
+
+						throw e;
+					});
+			;
 
 			router.Subscribe<EchoMessage>()
 				.OnSuccess((ep, m) =>
@@ -86,14 +94,30 @@ namespace Hubbl.Daemon
 					Console.WriteLine("Get message {0} from {1}:{2}", m, ep.Address, ep.Port);
 					m.Sender.IpAddress = ep.Address;
 					_container.Resolve<HubblUsersService>().Add(m.Sender);
-				});
+				}).OnException(
+					e =>
+					{
+						Debug.WriteLine("Exception catched!");
+						Debug.WriteLine("	" + e.Message);
+
+						throw e;
+					});
+			;
 
 			router.Subscribe<TextMessage>()
 				.OnSuccess((rp, m) =>
 				{
 					var user = _container.Resolve<HubblUsersService>().Get(rp);
 					Console.WriteLine("{0}:{1}", user != null ? user.Title : Resources.UnknownUser, m.Text);
-				});
+				}).OnException(
+					e =>
+					{
+						Debug.WriteLine("Exception catched!");
+						Debug.WriteLine("	" + e.Message);
+
+						throw e;
+					});
+			;
 
 			router.Subscribe<AddCloudTrackMessage>()
 				.OnSuccess((rp, m) =>
@@ -101,7 +125,15 @@ namespace Hubbl.Daemon
 					Console.WriteLine("Cloud track request " + m.Track.Source);
 					var entry = _container.Resolve<IMusicPlayer>().QueueTrack(m.Sender, m.Track);
 					Console.WriteLine("added {0}", entry);
-				});
+				}).OnException(
+					e =>
+					{
+						Debug.WriteLine("Exception catched!");
+						Debug.WriteLine("	" + e.Message);
+
+						throw e;
+					});
+			;
 
 			router.Subscribe<SendFileMessage>()
 				.OnSuccess((rp, m) =>
@@ -116,8 +148,14 @@ namespace Hubbl.Daemon
 					m.Stream.Read(bytesInStream, 0, bytesInStream.Length);
 
 					fileStream.Write(bytesInStream, 0, bytesInStream.Length);
-				} 
-				);
+				}).OnException(
+					e =>
+					{
+						Debug.WriteLine("Exception catched!");
+						Debug.WriteLine("	" + e.Message);
+
+						throw e;
+					});
 
 
 			Task.Factory.StartNew(() => router.Start());

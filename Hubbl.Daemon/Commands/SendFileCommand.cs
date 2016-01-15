@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using Hubbl.Core.Messages;
 using Hubbl.Core.Service;
@@ -32,9 +33,19 @@ namespace Hubbl.Daemon.Commands
 			var exists = File.Exists(file_location);
 
 			if (!exists)
-				Console.WriteLine(Resources.SendFileCommand_Execute_File_not_found);
-
-			Stream stream = File.Open(file_location, FileMode.Open);
+				Debug.WriteLine(Resources.SendFileCommand_Execute_File_not_found);
+			Stream stream;
+			try
+			{
+				stream = File.Open(file_location, FileMode.Open);
+			}
+			catch (IOException e)
+			{
+				Debug.WriteLine("IOException catched! \n {0}", e.Message);
+				return false;	
+				throw;
+			}
+			
 
 			
 			var tasks = _router.PublishFor(ids, new SendFileMessage(fileName, (ulong)stream.Length, stream));
