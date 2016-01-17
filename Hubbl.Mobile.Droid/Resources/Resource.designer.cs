@@ -57,10 +57,7 @@ namespace Hubbl.Mobile.Droid
 			public const int icon = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int monoandroidsplash = 2130837508;
-			
-			// aapt resource value: 0x7f020005
-			public const int reloadblue = 2130837509;
+			public const int reloadblue = 2130837508;
 			
 			static Drawable()
 			{
@@ -68,22 +65,6 @@ namespace Hubbl.Mobile.Droid
 			}
 			
 			private Drawable()
-			{
-			}
-		}
-		
-		public partial class Style
-		{
-			
-			// aapt resource value: 0x7f030000
-			public const int Mono_Android_Theme_Splash = 2130903040;
-			
-			static Style()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Style()
 			{
 			}
 		}

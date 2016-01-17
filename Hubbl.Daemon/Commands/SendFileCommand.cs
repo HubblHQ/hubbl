@@ -24,7 +24,15 @@ namespace Hubbl.Daemon.Commands
 
 		public bool Execute(params string[] args)
 		{
+			if (args.Length != 2)
+			{
+				Console.WriteLine("Parameters are incorrect. Please, try again.");
+				return false;
+			}
+
+
 			var ids = args[0].Split(',');
+			
 
 			var file_location = args[1];
 
