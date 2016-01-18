@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -106,8 +106,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\testsound.mp3" />
     <BundleResource Include="Resources\add-track-blue.png" />
-    <BundleResource Include="Resources\album-artwork-missing.png" />
-    <BundleResource Include="Resources\album-artwork-missing%402x.png" />
+    <BundleResource Include="Resources\album_artwork_missing.png" />
     <BundleResource Include="Resources\app-icon-rounded.png" />
     <BundleResource Include="Resources\app-icon-rounded%402x.png" />
     <BundleResource Include="Resources\app-icon.png" />
@@ -150,7 +149,7 @@
     <BundleResource Include="Resources\yandex-music.png" />
     <BundleResource Include="Resources\yandex-music%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
-    <BundleResource Include="Resources\airdrop-white%402x.png" />
+    <BundleResource Include="Resources\airdrop_white.png" />
     <BundleResource Include="Resources\applogowideblack%402x.png" />
     <BundleResource Include="Resources\applogowideblack.png" />
     <BundleResource Include="Resources\reloadblue.png" />

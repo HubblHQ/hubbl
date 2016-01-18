@@ -3,14 +3,14 @@
 	<ContentPage.Content>
 	<StackLayout Padding="5" Spacing="5">
 		<ListView  x:Name="SongsView" SeparatorVisibility="None">
-	            <ListView.ItemTemplate>
-	                <DataTemplate>
-	                    <SwitchCell Text="{Binding Track.Name}" On="{Binding Selected}">
-	                        
-	                    </SwitchCell>
-	                </DataTemplate>
-	            </ListView.ItemTemplate>
-	        </ListView>
-        </StackLayout>
+							<ListView.ItemTemplate>
+									<DataTemplate>
+											<SwitchCell Text="{Binding Track.Name}" On="{Binding Selected}">
+													
+											</SwitchCell>
+									</DataTemplate>
+							</ListView.ItemTemplate>
+					</ListView>
+				</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

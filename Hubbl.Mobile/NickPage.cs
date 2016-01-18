@@ -37,7 +37,7 @@ namespace Hubbl.Mobile
 				VerticalOptions = LayoutOptions.End
 			};
 			var box = new BoxView (){ MinimumHeightRequest = 40 };
-			var refresh = new Button ();
+			var refresh = new Button () {HeightRequest = 40, WidthRequest = 40};
 			refresh.Image = new FileImageSource () { File = "reloadblue.png" };
 			refresh.Clicked += (sender, e) => {
 				var name = GenerateNewName();

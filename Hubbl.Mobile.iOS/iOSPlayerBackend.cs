@@ -1,14 +1,8 @@
 ﻿using System;
-using AVFoundation;
-using System.Runtime.InteropServices;
 using Hubbl.Core.Service;
 using Hubbl.Core.Model;
 using Foundation;
-using CoreMedia;
-using CoreText;
-using UIKit;
 using System.IO;
-using PassKit;
 using AudioToolbox;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Hubbl.Mobile.iOS.iOSPlayerBackend))]
