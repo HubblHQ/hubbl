@@ -17,7 +17,7 @@ namespace Hubbl.Mobile
 		public string CurrentSong { get; set; }
 	}
 
-	public partial class HubsPage
+	public partial class HubsPage : ContentPage
 	{
 		ObservableCollection<HubblUser> hubs = new ObservableCollection<HubblUser>();
 		IMessageReceiverConfig<EchoMessage> subscription;
@@ -26,7 +26,7 @@ namespace Hubbl.Mobile
 			InitializeComponent();
 
 			HubsView.ItemsSource = hubs;
-			this.Icon = new FileImageSource (){ File = "app-logo-square-black@2x.png" };
+			this.Icon = new FileImageSource (){ File = "applogosquareblack.png" };
 			HubsView.ItemSelected += (sender, e) => {
 				Navigation.PushAsync(new OneHubPage((HubblUser)e.SelectedItem));
 			};
