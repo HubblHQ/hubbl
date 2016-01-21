@@ -98,8 +98,10 @@ namespace Hubbl.Mobile
 					);
 
 				Router.Subscribe<EchoMessage>()
-					.OnSuccess(m => 
-						{ Debug.WriteLine("We got ECHO here!! From: {0}", m.Sender.Title); }
+					.OnSuccess(m =>
+					{
+						Debug.WriteLine("We got ECHO here!! From: {0}", m.Sender.Title);
+					}
 					);
 
 				Router.Subscribe<AddCloudTrackMessage>()

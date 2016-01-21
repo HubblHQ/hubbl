@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using Hubbl.Core.Messages;
 using Hubbl.Core.Service;
 using Xamarin.Forms;
 using XLabs.Forms.Controls;
@@ -61,6 +62,11 @@ namespace Hubbl.Mobile
 			{
 				var session = App.Container.Resolve<ISession>();
 				session.CurrentUser.Title = nickLabel.Text;
+
+				App.Router.Publish(
+					new EchoMessage(App.Container.Resolve<ISession>().CurrentUser)
+					);
+
 				Navigation.PushAsync(new HubsPage());
 			};
 			continueButton.VerticalOptions = LayoutOptions.End;

@@ -10,60 +10,68 @@ using Xamarin.Forms;
 
 namespace Hubbl.Mobile
 {
-	public class Hub 
+	public class Hub
 	{
-		public string Name {get; set; }
-		public string Admin {get; set; }
+		public string Name { get; set; }
+		public string Admin { get; set; }
 		public string CurrentSong { get; set; }
 	}
 
 	public partial class HubsPage : ContentPage
 	{
-		ObservableCollection<HubblUser> hubs = new ObservableCollection<HubblUser>();
-		IMessageReceiverConfig<EchoMessage> subscription;
-		public HubsPage ()
+		private readonly ObservableCollection<HubblUser> hubs = new ObservableCollection<HubblUser>();
+		private IMessageReceiverConfig<EchoMessage> subscription;
+
+		public HubsPage()
 		{
 			InitializeComponent();
 
 			HubsView.ItemsSource = hubs;
-			this.Icon = new FileImageSource (){ File = "applogosquareblack.png" };
-			HubsView.ItemSelected += (sender, e) => {
-				Navigation.PushAsync(new OneHubPage((HubblUser)e.SelectedItem));
+			Icon = new FileImageSource {File = "applogosquareblack.png"};
+
+			HubsView.ItemSelected += (sender, e) =>
+			{
+				Navigation.PushAsync(new OneHubPage((HubblUser) e.SelectedItem));
 			};
-			AddHub.Clicked += (sender, e) => {
+
+			AddHub.Clicked += (sender, e) =>
+			{
 				Navigation.PushAsync(new NewHubPage(), true);
 			};
-			ToolbarItems.Add (new ToolbarItem ("Обновить", "", () => {
-				LoadHubs ();
-			}));
+
+			ToolbarItems.Add(new ToolbarItem("Обновить", "", () => { LoadHubs(); }));
 		}
-		void LoadHubs()
+
+		private void LoadHubs()
 		{
-			hubs.Clear ();
-			subscription = App.Router.Subscribe<EchoMessage> ();
-			subscription.OnSuccess ((ep, m) => {				
+			hubs.Clear();
+			subscription = App.Router.Subscribe<EchoMessage>();
+			subscription.OnSuccess((ep, m) =>
+			{
 				m.Sender.IpAddress = ep.Address;
-				if (m.Sender.IsHub) {
+				if (m.Sender.IsHub)
+				{
 					App.Container.Resolve<UsersService<HubblUser>>().Add(m.Sender);
-					hubs.Add (m.Sender);
+					hubs.Add(m.Sender);
 				}
 			});
-			subscription.OnException ((ep, ex) => {
-				Debug.WriteLine(ex.Message);
-			});
-			var msg = new HelloMessage (App.Container.Resolve<ISession> ().CurrentUser);
-			var hello = App.Router.Publish (msg);
-			hello.Run ();
+			subscription.OnException((ep, ex) => { Debug.WriteLine(ex.Message); });
+			var msg = new HelloMessage(App.Container.Resolve<ISession>().CurrentUser);
+			var hello = App.Router.Publish(msg);
+			hello.Run();
 		}
-		protected override void OnAppearing ()
+
+		protected override void OnAppearing()
 		{
-			LoadHubs ();
-			base.OnAppearing ();
+			LoadHubs();
+			base.OnAppearing();
 		}
-		protected override void OnDisappearing ()
+
+
+		protected override void OnDisappearing()
 		{
-			subscription.Dispose ();
-			base.OnDisappearing ();
+			subscription.Dispose();
+			base.OnDisappearing();
 		}
 	}
 }
