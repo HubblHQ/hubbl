@@ -26,18 +26,18 @@ namespace Hubbl.Mobile
 			{
 				Text = "Музыкальный плеер с удаленным управлением",
 				VerticalOptions = LayoutOptions.Center,
-				XAlign = TextAlignment.Center
+				HorizontalTextAlignment = TextAlignment.Center
 			};
 			var nameLabel = new Label
 			{
 				Text = "Ваше имя в сети",
 				VerticalOptions = LayoutOptions.End,
-				XAlign = TextAlignment.Center
+				HorizontalTextAlignment = TextAlignment.Center
 			};
 			var nickLabel = new Label
 			{
 				Text = GenerateNewName(),
-				XAlign = TextAlignment.Center,
+				HorizontalTextAlignment = TextAlignment.Center,
 				FontSize = 24.0,
 				VerticalOptions = LayoutOptions.End
 			};
