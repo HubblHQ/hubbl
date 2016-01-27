@@ -3,7 +3,6 @@ using Autofac;
 using Hubbl.Core.Messages;
 using Hubbl.Core.Service;
 using Xamarin.Forms;
-using XLabs.Forms.Controls;
 
 namespace Hubbl.Mobile
 {
@@ -42,7 +41,7 @@ namespace Hubbl.Mobile
 				VerticalOptions = LayoutOptions.End
 			};
 			var box = new BoxView {MinimumHeightRequest = 40};
-			var refresh = new ImageButton
+			var refresh = new Button
 			{
 				HeightRequest = 40,
 				WidthRequest = 40,

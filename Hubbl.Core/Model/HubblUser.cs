@@ -1,9 +1,9 @@
 using System.Runtime.Serialization;
 using Hubbl.Core;
-using PCLStorage;
 using Newtonsoft.Json;
 using System;
 using Module.MessageRouter.Abstractions;
+using PCLStorage;
 
 namespace Hubbl.Core.Model
 {
