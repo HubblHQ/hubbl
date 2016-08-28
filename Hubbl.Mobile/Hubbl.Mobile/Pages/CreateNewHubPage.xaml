@@ -12,18 +12,22 @@
             </TableSection>
 
             <TableSection Title="ДОБАВИТЬ ТРЕКИ">
-                <ImageCell Detail="На устройстве"
+                <ImageCell Command="{Binding ShowVkSongs}"
+                           Detail="На устройстве"
                            StyleId="disclosure"
                            Text="Моя музыка" />
-                <ImageCell Detail="Подключить"
+                <ImageCell Command="{Binding ShowVkSongs}"
+                           Detail="Подключить"
                            ImageSource="dropbox.png"
                            StyleId="disclosure"
                            Text="Dropbox" />
-                <ImageCell Detail="Подключить"
+                <ImageCell Command="{Binding ShowVkSongs}"
+                           Detail="Подключить"
                            ImageSource="yandex.png"
                            StyleId="disclosure"
                            Text="Яндекс.Музыка" />
-                <ImageCell Detail=""
+                <ImageCell Command="{Binding ShowVkSongs}"
+                           Detail=""
                            ImageSource="vk.png"
                            StyleId="disclosure"
                            Text="ВКонтакте" />

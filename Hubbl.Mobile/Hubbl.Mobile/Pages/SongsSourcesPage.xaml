@@ -4,6 +4,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Выберите источник">
     <ContentPage.Content>
-        <ListView x:Name="SourcesView" />
+        <TableView HasUnevenRows="true" Intent="Settings">
+            <TableSection Title="Доступные источники">
+                <ImageCell Detail="На устройстве"
+                           StyleId="disclosure"
+                           Text="Моя музыка" />
+                <ImageCell Detail="Подключить"
+                           ImageSource="dropbox.png"
+                           StyleId="disclosure"
+                           Text="Dropbox" />
+                <ImageCell Detail="Подключить"
+                           ImageSource="yandex.png"
+                           StyleId="disclosure"
+                           Text="Яндекс.Музыка" />
+                <ImageCell Command="{Binding SHowVkSongs}"
+                           Detail=""
+                           ImageSource="vk.png"
+                           StyleId="disclosure"
+                           Text="ВКонтакте" />
+            </TableSection>
+
+        </TableView>
     </ContentPage.Content>
 </ContentPage>

@@ -1,12 +1,15 @@
-﻿using System.Threading;
-using FreshMvvm;
+﻿using FreshMvvm;
+using Hubbl.Mobile.PageModels.Vkontakte;
 using PropertyChanged;
+using Xamarin.Forms;
 
 namespace Hubbl.Mobile.PageModels
 {
-	[ImplementPropertyChanged]
-	class CreateNewHubPageModel : FreshBasePageModel
-	{
-		public CreateNewHubPageModel(){}
-	}
+    [ImplementPropertyChanged]
+    internal class CreateNewHubPageModel : FreshBasePageModel
+    {
+        public Command ShowVkSongs => 
+            new Command(() 
+                => CoreMethods.PushPageModel<VkSongsSourcePageModel>());
+    }
 }

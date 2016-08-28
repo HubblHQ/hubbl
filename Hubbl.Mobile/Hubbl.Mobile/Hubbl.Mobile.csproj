@@ -45,7 +45,8 @@
     <Compile Include="PageModels\SelectedHubPageModel.cs" />
     <Compile Include="PageModels\SettingsPageModel.cs" />
     <Compile Include="PageModels\SongsSourcesPageModel.cs" />
-    <Compile Include="PageModels\VkAuthPageModel.cs" />
+    <Compile Include="PageModels\Vkontakte\VkAuthPageModel.cs" />
+    <Compile Include="PageModels\Vkontakte\VkSongsSourcePageModel.cs" />
     <Compile Include="Pages\CreateNewHubPage.xaml.cs">
       <DependentUpon>CreateNewHubPage.xaml</DependentUpon>
     </Compile>
@@ -64,8 +65,11 @@
     <Compile Include="Pages\SongsSourcesPage.xaml.cs">
       <DependentUpon>SongsSourcesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\VkAuthPage.xaml.cs">
+    <Compile Include="Pages\Vkontakte\VkAuthPage.xaml.cs">
       <DependentUpon>VkAuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Vkontakte\VkSongsSourcePage.xaml.cs">
+      <DependentUpon>VkSongsSourcePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DatabaseService.cs" />
@@ -181,13 +185,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\VkAuthPage.xaml">
+    <EmbeddedResource Include="Pages\Vkontakte\VkAuthPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Vkontakte\VkSongsSourcePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

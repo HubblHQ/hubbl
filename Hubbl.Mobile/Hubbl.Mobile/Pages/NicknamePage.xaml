@@ -12,7 +12,8 @@
                         <StackLayout Margin="0,20">
                             <Label HorizontalOptions="Center" Text="Ваше имя в сети" />
                             <Label HorizontalOptions="Center" Text="{Binding Username}" />
-                            <Button ContentLayout="Top,0"
+                            <Button Command="{Binding ChangeNameCommand}"
+                                    ContentLayout="Top,0"
                                     HorizontalOptions="Center"
                                     Text="Выбрать другое">
                                 <Button.Image>
@@ -29,20 +30,17 @@
                 </ViewCell>
             </TableSection>
             <TableSection>
-                <TextCell StyleId="disclosure" Text="Привязанные аккаунты" />
-            </TableSection>
-            <TableSection>
-                <TextCell StyleId="disclosure" Text="Сведения о разработчиках" />
-                <TextCell StyleId="disclosure" Text="Правовая информация" />
+                <ViewCell>
+                    <Button Command="{Binding AcceptCommand}"
+                            HorizontalOptions="Center"
+                            Text="Пойдет"
+                            VerticalOptions="Center" />
+                </ViewCell>
             </TableSection>
         </TableView>
     </ContentPage.Content>
 
     <!--	<ContentPage.Content>-->
-    <!--  <Button  -->
-    <!--  Command="{Binding AcceptCommand}"  -->
-    <!--  Text="{Binding ButtonText}"  -->
-    <!--  VerticalOptions="Center"  -->
-    <!--  HorizontalOptions="Center" />  -->
+
     <!--	</ContentPage.Content>-->
 </ContentPage>

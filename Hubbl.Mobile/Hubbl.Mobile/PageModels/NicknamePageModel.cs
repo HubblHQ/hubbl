@@ -1,4 +1,5 @@
-﻿using FreshMvvm;
+﻿using System;
+using FreshMvvm;
 using PropertyChanged;
 using Xamarin.Forms;
 
@@ -7,11 +8,12 @@ namespace Hubbl.Mobile.PageModels
 	[ImplementPropertyChanged]
 	public class NicknamePageModel : FreshBasePageModel
 	{
-	    public NicknamePageModel()
-	    {
-	    }
-	    public string Username { get; set; }
-		public string ButtonText { get { return "Пойдёт"; } }
+		public NicknamePageModel()
+		{
+		    Username = "Hendr1x";
+		}
+
+		public string Username { get; set; }
 
 		public Command AcceptCommand
 		{
@@ -24,5 +26,12 @@ namespace Hubbl.Mobile.PageModels
 				});
 			}
 		}
+
+		public Command ChangeNameCommand =>
+			new Command(() =>
+			{
+				Username = new Random().Next().ToString();
+			});
+
 	}
 }
