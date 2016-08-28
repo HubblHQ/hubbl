@@ -11,7 +11,7 @@ namespace Hubbl.Mobile.PageModels
 
 		public string ButtonText { get { return "Пойдёт"; } }
 
-		public Command CloseCommand
+		public Command AcceptCommand
 		{
 			get
 			{

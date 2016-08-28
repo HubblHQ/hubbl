@@ -1,39 +1,36 @@
 ﻿using System;
+using System.Diagnostics;
 using Hubbl.Core;
 using Hubbl.Core.Service;
 using Hubbl.Mobile.iOS.Auth;
 using Hubbl.Mobile.Pages;
 using UIKit;
+using Xamarin.Auth;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly:ExportRenderer(typeof(VkAuthPage), typeof(VkAuthController))]
 namespace Hubbl.Mobile.iOS.Auth
 {
-	public partial class VkAuthController : PageRenderer
+	public class VkAuthController : PageRenderer
 	{
+		private VkAuthPage page;
+		private UIViewController controller;
 
-		public override void DidReceiveMemoryWarning ()
+		private void LoginToVk ()
 		{
-			// Releases the view if it doesn't have a superview.
-			base.DidReceiveMemoryWarning ();
-			
-			// Release any cached data, images, etc that aren't in use.
-		}
-		VkAuthPage page;
-		UIViewController controller;
-		void LoginToVk ()
-		{
-			var auth = new OAuth2Authenticator (
+			var auth = new OAuth2Authenticator(
 				clientId: VkSettings.AppID,
 				scope: "friends,video,audio",
 				//clientSecret: VkSettings.SecureKey,
-				authorizeUrl: new Uri ("https://oauth.vk.com/authorize"),
-				redirectUrl: new Uri ("https://oauth.vk.com/blank.html"));
-			auth.AllowCancel = true;
+				authorizeUrl: new Uri("https://oauth.vk.com/authorize"),
+				redirectUrl: new Uri("https://oauth.vk.com/blank.html")) {AllowCancel = true};
 			auth.Completed += (s, ee) => {
-				if (!ee.IsAuthenticated) {					
-					return;
+				if (!ee.IsAuthenticated) {
+					#if DEBUG
+						Debug.WriteLine("Not authenticated! Try to relogin");
+						throw new AuthException("Not authenticated! In VkAuthController");
+					#endif
 				}
 				else
 				{
@@ -47,22 +44,18 @@ namespace Hubbl.Mobile.iOS.Auth
 					page.Navigation.PopAsync ();
 				}
 			};
-			auth.Error += (sender, e) => {
-				var a = 4;
+			auth.Error += (sender, e) =>
+			{
+				throw e.Exception;
 			};
 
 			var nav = auth.GetUI () as UINavigationController;
+			Debug.Assert(nav != null, "nav != null");
 			controller = nav.TopViewController;
-			this.AddChildViewController (controller);
-			this.View.AddSubview (controller.View);
+			AddChildViewController (controller);
+			View.AddSubview (controller.View);
 		}
 
-
-		public override void ViewDidLoad ()
-		{
-			
-			base.ViewDidLoad ();
-		}
 
 		public override void ViewWillAppear (bool animated)
 		{			
@@ -79,7 +72,7 @@ namespace Hubbl.Mobile.iOS.Auth
 		protected override void OnElementChanged (VisualElementChangedEventArgs e)
 		{
 			base.OnElementChanged (e);
-			page = e.NewElement as AuthPage;
+			page = e.NewElement as VkAuthPage;
 		}
 	}
 }

@@ -1,15 +1,42 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Hubbl.Mobile.Pages.CreateNewHubPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Hubbl.Mobile.Pages.CreateNewHubPage">
-	
-	<ContentPage.Content>
-		<StackLayout Spacing="20" Padding="5">
-			<Label Text="Введите название хаба" />
-			<Entry x:Name="Name" />
-			<Button x:Name="Done" Text="Готово" TextColor="Lime" FontSize="18" />
-		</StackLayout>
-	</ContentPage.Content>
+             Title="Создать хаб">
+
+    <ContentPage.Content>
+        <TableView HasUnevenRows="true" Intent="Settings">
+
+            <TableSection Title="">
+                <EntryCell Label="Название" Text="{Binding Name}" />
+            </TableSection>
+
+            <TableSection Title="ДОБАВИТЬ ТРЕКИ">
+                <ImageCell Detail="На устройстве"
+                           StyleId="disclosure"
+                           Text="Моя музыка" />
+                <ImageCell Detail="Подключить"
+                           ImageSource="dropbox.png"
+                           StyleId="disclosure"
+                           Text="Dropbox" />
+                <ImageCell Detail="Подключить"
+                           ImageSource="yandex.png"
+                           StyleId="disclosure"
+                           Text="Яндекс.Музыка" />
+                <ImageCell Detail=""
+                           ImageSource="vk.png"
+                           StyleId="disclosure"
+                           Text="ВКонтакте" />
+            </TableSection>
+            <TableSection>
+                <ViewCell>
+                    <Button Command="{Binding BecomeAHub}"
+                            Text="Готово"
+                            TextColor="Lime" />
+                </ViewCell>
+            </TableSection>
+        </TableView>
+    </ContentPage.Content>
 
 </ContentPage>
 

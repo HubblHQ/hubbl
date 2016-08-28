@@ -9,11 +9,13 @@ namespace Hubbl.Mobile
 	public class App : Application
 	{
 		public static INetworkMessageRouter Router { get; private set; }
+		public static IFreshIOC Container { get; private set; }
 
 
 		public App()
 		{
-			FreshIOC.Container.Register<IDatabaseService, DatabaseService>();
+			Container = FreshIOC.Container;
+			Container.Register<IDatabaseService, DatabaseService>();
 			
 			MainPage = FreshPageModelResolver.ResolvePageModel<NicknamePageModel>(); 
 		} 

@@ -1,29 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using AVFoundation;
 using Foundation;
 using UIKit;
-using AVFoundation;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 namespace Hubbl.Mobile.iOS
 {
-	[Register ("AppDelegate")]
-	public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+	[Register("AppDelegate")]
+	public class AppDelegate : FormsApplicationDelegate
 	{
 		public static AVAudioPlayer Player;
-		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
+
+		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			global::Xamarin.Forms.Forms.Init ();
+			Forms.Init();
 
 			// Code for starting up the Xamarin Test Cloud Agent
-			#if ENABLE_TEST_CLOUD
+#if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start();
-			#endif
+#endif
 
-			LoadApplication (new App ());
+			LoadApplication(new App());
 
-			return base.FinishedLaunching (app, options);
+			return base.FinishedLaunching(app, options);
 		}
 	}
 }

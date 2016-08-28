@@ -2,6 +2,7 @@
 using FreshMvvm;
 using Hubbl.Core.Model;
 using PropertyChanged;
+using Xamarin.Forms;
 
 namespace Hubbl.Mobile.PageModels
 {
@@ -14,5 +15,15 @@ namespace Hubbl.Mobile.PageModels
 		{
 			_hubs = new ObservableCollection<HubblUser>();
 		}
+
+		public Command SettingsCommand
+		{
+		    get { return new Command(() => CoreMethods.PushPageModel<SettingsPageModel>()); }
+		}
+
+	    public Command CreateNewHubCommand
+	    {
+	        get { return new Command(() => CoreMethods.PushPageModel<CreateNewHubPageModel>()); }
+	    }
 	}
 }

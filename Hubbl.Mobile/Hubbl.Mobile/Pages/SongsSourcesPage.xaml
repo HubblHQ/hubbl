@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
-	xmlns="http://xamarin.com/schemas/2014/forms"
-						 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-						 x:Class="Hubbl.Mobile.Pages.SongsSourcesPage">
-	<ContentPage.Content>
-		<ListView  x:Name="SourcesView">
-		</ListView>
-	</ContentPage.Content>
+<ContentPage x:Class="Hubbl.Mobile.Pages.SongsSourcesPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Выберите источник">
+    <ContentPage.Content>
+        <ListView x:Name="SourcesView" />
+    </ContentPage.Content>
 </ContentPage>
