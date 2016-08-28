@@ -7,8 +7,10 @@ namespace Hubbl.Mobile.PageModels
 	[ImplementPropertyChanged]
 	public class NicknamePageModel : FreshBasePageModel
 	{
-		public NicknamePageModel(){}
-
+	    public NicknamePageModel()
+	    {
+	    }
+	    public string Username { get; set; }
 		public string ButtonText { get { return "Пойдёт"; } }
 
 		public Command AcceptCommand

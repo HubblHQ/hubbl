@@ -1,4 +1,5 @@
 ﻿using AVFoundation;
+using FormsToolkit.iOS;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
@@ -14,11 +15,12 @@ namespace Hubbl.Mobile.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			Forms.Init();
+			Toolkit.Init();
 
 			// Code for starting up the Xamarin Test Cloud Agent
-#if ENABLE_TEST_CLOUD
+			#if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start();
-#endif
+			#endif
 
 			LoadApplication(new App());
 

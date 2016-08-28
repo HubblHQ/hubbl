@@ -97,6 +97,10 @@
     <BundleResource Include="Resources\cog_settings.png" />
     <BundleResource Include="Resources\cog_settings%402x.png" />
     <BundleResource Include="Resources\cog_settings%403x.png" />
+    <BundleResource Include="Resources\reloadblue.png" />
+    <BundleResource Include="Resources\reloadblue%402x.png" />
+    <BundleResource Include="Resources\airdrop_white.png" />
+    <BundleResource Include="Resources\reloadblue%403x.png" />
     <InterfaceDefinition Include="Auth\AuthController.xib" />
     <None Include="app.config" />
     <None Include="GettingStarted.Xamarin" />
