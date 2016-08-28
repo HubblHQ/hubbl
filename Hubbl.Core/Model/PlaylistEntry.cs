@@ -27,6 +27,11 @@ namespace Hubbl.Core.Model
 
 		[DataMember]
 		public double Priority { get; set; }
-	}
+
+        public override string ToString()
+        {
+            return "" + Id + ": " + Track + " +" + LikesNum + "|-" + DislikesNum;
+        }
+    }
 }
 

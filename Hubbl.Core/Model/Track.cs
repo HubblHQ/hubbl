@@ -31,5 +31,10 @@ namespace Hubbl.Core.Model
 		[DataMember]
 		public string Genre { get; set; }
 
+        public override string ToString()
+        {
+            return Artist + ": " + Name;
+        }
+
     }
 }
