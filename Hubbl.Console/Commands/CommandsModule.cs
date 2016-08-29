@@ -37,6 +37,15 @@ namespace Hubbl.Console.Commands
             builder.RegisterType<TrackListCommand>()
                 .As<ICommand>()
                 .SingleInstance();
+            builder.RegisterType<ServerPlayCommand>()
+                .As<ICommand>()
+                .SingleInstance();
+            builder.RegisterType<ServerPauseCommand>()
+                .As<ICommand>()
+                .SingleInstance();
+            builder.RegisterType<ServerVolumeChangeCommand>()
+                .As<ICommand>()
+                .SingleInstance();
         }
 	}
 }

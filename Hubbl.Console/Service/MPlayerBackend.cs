@@ -16,6 +16,7 @@ namespace Hubbl.Console.Service
 			_currentTrack = null;
 			_currentTask = null;
 			_taskCancellationTokenSource = new CancellationTokenSource ();
+		    _mplayer = null;
 		}
 
 		private Track _currentTrack;
@@ -23,15 +24,28 @@ namespace Hubbl.Console.Service
 		private CancellationTokenSource _taskCancellationTokenSource;
 		// private CancellationToken _currentTaskCancellationToken;
 		private TimeSpan _currentTrackStartTime;
+	    private Process _mplayer;
+	    private int _volume = 100;
 
-		public void PauseCurrentTrack ()
-		{
-			throw new NotImplementedException ();
-		}
+        #region IMusicPlayerBackend implementation
 
-		#region IMusicPlayerBackend implementation
+        void IMusicPlayerBackend.PauseCurrentTrack()
+        {
+            if (_mplayer != null && !_mplayer.HasExited)
+            {
+                _mplayer.StandardInput.Write("pause\n");
+            }
+        }
 
-		public Track GetTrackInfo (string path)
+	    void IMusicPlayerBackend.ResumeCurrentTrack()
+	    {
+            if (_mplayer != null && !_mplayer.HasExited)
+            {
+                _mplayer.StandardInput.Write("pause\n");
+            }
+        }
+
+        public Track GetTrackInfo (string path)
 		{
 			Process mplayer = new Process ();
 			mplayer.StartInfo.CreateNoWindow = true;
@@ -43,14 +57,15 @@ namespace Hubbl.Console.Service
 
 			mplayer.StartInfo.FileName = MPLAYER_COMMAND;
 			mplayer.StartInfo.Arguments = "-vo null -ao null -frames 0 -identify " + path; 
-			//mplayer.StartInfo.Arguments = "-identify " + filename; 
+			// mplayer.StartInfo.Arguments = "-identify " + filename; 
 
 			mplayer.Start ();
+            
 			// DANGER! WOLVES AHEAD!
 			//TODO: may take REALLY long time or never exit if the file is unreacheable through network for some reason
 			mplayer.WaitForExit ();
 
-			var result = new Track ();
+			var result = new Track();
 			result.Source = path;
 
 			while (!mplayer.StandardOutput.EndOfStream) {
@@ -90,7 +105,13 @@ namespace Hubbl.Console.Service
 
 		void IMusicPlayerBackend.PlayTrack (Track track)
 		{
-			if (_currentTrack != null)
+		    if (_mplayer != null)
+		    {
+                if (!_mplayer.HasExited)
+                	_mplayer.Kill ();
+		        _mplayer = null;
+		    }
+            if (_currentTrack != null)
 				_currentTrack = null;
 			if (_currentTask != null) {
 				_taskCancellationTokenSource.Cancel ();
@@ -112,7 +133,7 @@ namespace Hubbl.Console.Service
 				mplayer.StartInfo.RedirectStandardError = true;
 
 				mplayer.StartInfo.FileName = MPLAYER_COMMAND;
-				mplayer.StartInfo.Arguments = track.Source; 
+				mplayer.StartInfo.Arguments = "-slave -volume " + _volume + " " + track.Source; 
 
 				// cancellationToken.ThrowIfCancellationRequested ();
 			    try
@@ -124,19 +145,37 @@ namespace Hubbl.Console.Service
 			        System.Console.WriteLine(ex);
 			    }
 
-			    // while (!(cancellationToken.IsCancellationRequested || mplayer.HasExited)) {
-				while (!mplayer.HasExited) {
+                _mplayer = mplayer;
+                mplayer.WaitForExit();
+
+                // while (!(cancellationToken.IsCancellationRequested || mplayer.HasExited)) {
+                /*while (!mplayer.HasExited) {
 					Thread.Sleep (100);
+				    if (_doPauseAction)
+				    {
+                        mplayer.StandardInput.Write("pause\n");
+				        _doPauseAction = false;
+				    }
                     //MEGAZALEPA
                     System.Console.WriteLine (mplayer.StandardOutput.ReadToEnd ()); 
-				}
-
-				if (!mplayer.HasExited)
-					mplayer.Kill ();
+				}*/
+                
+			    //if (!mplayer.HasExited)
+			    //	mplayer.Kill ();
 			});
 		}
 
-		Track IMusicPlayerBackend.CurrentPlayedTrack { get {
+	    void IMusicPlayerBackend.ChangeVolume(int volume)
+	    {
+	        _volume = volume;
+            if (_mplayer != null && !_mplayer.HasExited)
+            {
+                _mplayer.StandardInput.Write("volume " + volume + " 1\n");
+            }
+        }
+
+
+        Track IMusicPlayerBackend.CurrentPlayedTrack { get {
 				if (_currentTrack != null && _currentTask.IsCompleted)
 					_currentTrack = null;
 				if (_currentTrack != null)

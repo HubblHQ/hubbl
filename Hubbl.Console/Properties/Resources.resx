@@ -153,4 +153,13 @@
   <data name="TrackListCommand" xml:space="preserve">
     <value>Shows tracklist</value>
   </data>
+  <data name="ServerPauseCommand" xml:space="preserve">
+    <value>Pauses playing if you are server</value>
+  </data>
+  <data name="ServerPlayCommand" xml:space="preserve">
+    <value>Resumes playing if you are server</value>
+  </data>
+  <data name="ServerVolumeChangeCommand" xml:space="preserve">
+    <value>Sets volume (0-100) if you are server</value>
+  </data>
 </root>

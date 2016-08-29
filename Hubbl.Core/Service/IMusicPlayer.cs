@@ -13,11 +13,15 @@ namespace Hubbl.Core.Service
 
 		void LikeTrack (HubblUser user, int entryId);
 		void DislikeTrack (HubblUser user, int entryId);
+
+	    void SetVolume(int volume);
 		
 
 		void Play ();
 		void Stop ();
-		//TODO: what a shame, player can't pause!
-		// void Pause ();
+	    bool Stoped();
+
+        void Pause ();
+	    bool Paused();
     }
 }

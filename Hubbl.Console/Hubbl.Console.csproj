@@ -58,6 +58,9 @@
     <Compile Include="Commands\QuitCommand.cs" />
     <Compile Include="Commands\SendFileCommand.cs" />
     <Compile Include="Commands\SendTextCommand.cs" />
+    <Compile Include="Commands\ServerPauseCommand.cs" />
+    <Compile Include="Commands\ServerPlayCommand.cs" />
+    <Compile Include="Commands\ServerVolumeChangeCommand.cs" />
     <Compile Include="Commands\TrackListCommand.cs" />
     <Compile Include="Commands\UserListCommand.cs" />
     <Compile Include="ConsoleSession.cs" />

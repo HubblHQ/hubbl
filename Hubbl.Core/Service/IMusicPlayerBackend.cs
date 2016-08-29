@@ -5,11 +5,15 @@ namespace Hubbl.Core.Service
 {
 	public interface IMusicPlayerBackend
 	{
-		Track GetTrackInfo (string path);
+		Track GetTrackInfo(string path);
 
-		void PlayTrack (Track track);
+		void PlayTrack(Track track);
 
-		void PauseCurrentTrack ();
+		void PauseCurrentTrack();
+
+	    void ResumeCurrentTrack();
+
+	    void ChangeVolume(int volume);
 
 		Track CurrentPlayedTrack { get; }
 	}

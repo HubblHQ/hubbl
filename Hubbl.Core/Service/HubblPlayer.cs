@@ -28,8 +28,13 @@ namespace Hubbl.Core.Service
 		private int _freeEntryId;
 
 		private bool _playing;
+	    private bool _paused;
+        private bool _needPause;
 
-		public HubblPlayer(IMusicPlayerBackend backend)
+        private int _volume = 100;
+	    private bool _needVolumeChange = false;
+
+        public HubblPlayer(IMusicPlayerBackend backend)
 		{
 			_backend = backend;
 			Playlist = new List<PlaylistEntry>();
@@ -42,6 +47,8 @@ namespace Hubbl.Core.Service
 			_freeEntryId = 0;
 
 			_playing = false;
+		    _paused = false;
+            _needPause = false;
 		}
 
 		#region IMusicPlayer implementation
@@ -184,7 +191,18 @@ namespace Hubbl.Core.Service
 			Playlist.Sort(comparePlaylistEntries);
 		}
 
-		private static int comparePlaylistEntries(PlaylistEntry e1, PlaylistEntry e2)
+	    void IMusicPlayer.SetVolume(int volume)
+	    {
+	        if (volume < 0) volume = 0;
+	        if (volume > 100) volume = 100;
+	        if (_volume != volume)
+	        {
+	            _volume = volume;
+	            _needVolumeChange = true;
+	        }
+	    }
+
+        private static int comparePlaylistEntries(PlaylistEntry e1, PlaylistEntry e2)
 		{
 			return Math.Abs(e1.Priority - e2.Priority) < 0.001
 				? e2.Id - e1.Id
@@ -198,25 +216,42 @@ namespace Hubbl.Core.Service
 
 		public void Play()
 		{
-			if (_playing)
+		    if (_paused)
+		    {
+                _backend.ResumeCurrentTrack();
+		        _paused = false;
+
+		    }
+		    if (_playing)
 				return;
 			var cancelTk = _cancellationTokenSource.Token;
 			UpdateUserPriorities();
 			Task.Run(() =>
 			{
+			    _playing = true;
+
 				if (cancelTk.IsCancellationRequested)
 					cancelTk.ThrowIfCancellationRequested();
 				// i copypaste string from msdn. Is `if' rly requered when the method called `throwIf..' /0
 
-				while (!(cancelTk.IsCancellationRequested || CurrentPlayedEntry == null && Playlist.Count == 0))
+				while (!(cancelTk.IsCancellationRequested || (CurrentPlayedEntry == null && Playlist.Count == 0)))
 				{
-					var track = _backend.CurrentPlayedTrack;
+				    if (_paused && _needPause)
+				    {
+                        _backend.PauseCurrentTrack();
+				        _needPause = false;
+				    }
+				    if (_needVolumeChange)
+				    {
+				        _backend.ChangeVolume(_volume);
+				    }
+                    var track = _backend.CurrentPlayedTrack;
 					if (track == null) NextTrack();
 					// Threa.Sleep (100);
 					Task.Delay(100).Wait();
 				}
 				CurrentPlayedEntry = null;
-				_backend.PlayTrack(null);
+				//_backend.PlayTrack(null);
 				_playing = false;
 			}, cancelTk);
 		}
@@ -226,9 +261,30 @@ namespace Hubbl.Core.Service
 			_cancellationTokenSource.Cancel();
 			_playerTask = null;
 			_cancellationTokenSource = new CancellationTokenSource();
-		}
+            _paused = false;
+        }
 
-		#endregion
-	}
+	    bool IMusicPlayer.Stoped()
+	    {
+	        return !_playing;
+	    }
+
+
+        void IMusicPlayer.Pause()
+	    {
+            if (!_paused)
+            {
+                _needPause = true;
+            }
+            _paused = true;
+	    }
+
+	    bool IMusicPlayer.Paused()
+	    {
+	        return _paused;
+	    }
+
+        #endregion
+    }
 }
 

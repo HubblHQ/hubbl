@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Autofac;
-using Hubbl.Console.Commands;
-using Hubbl.Console.Properties;
-using Hubbl.Console.Service;
-using Hubbl.Core.Messages;
 using Hubbl.Core.Model;
 using Hubbl.Core.Service;
-using Module.MessageRouter.Abstractions;
-using Module.MessageRouter.Abstractions.Network.Interfaces;
 
 namespace Hubbl.Console.Commands
 {
@@ -29,18 +19,25 @@ namespace Hubbl.Console.Commands
         public bool Execute(params string[] args)
         {
             List<PlaylistEntry> list;
+            PlaylistEntry current;
 
             if (MainClass._clientServer.IsServer())
             {
+                current = _container.Resolve<IMusicPlayer>().CurrentPlayedEntry;
                 list = _container.Resolve<IMusicPlayer>().Playlist;
             }
             else
             {
+                current = null;
                 list = new List<PlaylistEntry>();
                 System.Console.WriteLine("Not supported yet");
             }
 
             System.Console.WriteLine();
+            if (current != null)
+            {
+                System.Console.WriteLine(current);
+            }
             foreach (var el in list)
             {
                 System.Console.WriteLine(el);

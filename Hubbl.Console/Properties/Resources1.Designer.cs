@@ -142,6 +142,33 @@ namespace Hubbl.Console.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Pauses playing if you are server.
+        /// </summary>
+        internal static string ServerPauseCommand {
+            get {
+                return ResourceManager.GetString("ServerPauseCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Resumes playing if you are server.
+        /// </summary>
+        internal static string ServerPlayCommand {
+            get {
+                return ResourceManager.GetString("ServerPlayCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Sets volume (0-100) if you are server.
+        /// </summary>
+        internal static string ServerVolumeChangeCommand {
+            get {
+                return ResourceManager.GetString("ServerVolumeChangeCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Send all users text message.
         /// </summary>
         internal static string TextCommand {
