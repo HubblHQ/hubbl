@@ -49,6 +49,9 @@ namespace Hubbl.Console
                 .As<ISession>()
                 .SingleInstance();
 
+            builder.RegisterType<ServerSnapshotService>()
+                .SingleInstance();
+
             return builder.Build();
         }
 

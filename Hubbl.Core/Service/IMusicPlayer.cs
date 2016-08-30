@@ -8,10 +8,11 @@ namespace Hubbl.Core.Service
 
 		PlaylistEntry QueueTrack (HubblUser user, Track track);
 
-		PlaylistEntry CurrentPlayedEntry { get; }
-		List<PlaylistEntry> Playlist { get; }
-
-		void LikeTrack (HubblUser user, int entryId);
+		PlaylistEntry CurrentPlayedEntry { get; set; }
+		List<PlaylistEntry> Playlist { get; set; }
+        ServerStatus Status { get; set; }
+        
+        void LikeTrack (HubblUser user, int entryId);
 		void DislikeTrack (HubblUser user, int entryId);
 
 	    void SetVolume(int volume);

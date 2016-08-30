@@ -3,26 +3,13 @@ using System.Threading.Tasks;
 using Autofac;
 using Hubbl.Console.Properties;
 using Hubbl.Core.Messages;
-using Hubbl.Core.Service;
-using Module.MessageRouter.Abstractions.Network.Interfaces;
-using Module.MessageRouter.Desktop.Network;
-
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Hubbl.Console.Commands;
-using Hubbl.Console.Properties;
-using Hubbl.Console.Service;
-using Hubbl.Core.Messages;
 using Hubbl.Core.Model;
 using Hubbl.Core.Service;
-using Module.MessageRouter.Abstractions;
 using Module.MessageRouter.Abstractions.Network.Interfaces;
 using Module.MessageRouter.Desktop.Network;
-using System.Collections.ObjectModel;
-using Hubbl.Console.ClientServerModule;
+using System.Linq;
+using Hubbl.Console.Service;
+using System.Collections.Generic;
 
 namespace Hubbl.Console.ClientServerModule
 {
@@ -120,6 +107,19 @@ namespace Hubbl.Console.ClientServerModule
                         System.Console.WriteLine("Exception catched!\n" + e.Message);
                         throw e;
                     });
+            router.Subscribe<SnapshotMessage>()
+                .OnSuccess((rp, m) =>
+                {
+                    var player = _container.Resolve<IMusicPlayer>();
+                    player.Playlist = (List<PlaylistEntry>) m.Snapshot.Playlist;
+                    player.CurrentPlayedEntry = m.Snapshot.PlayingTrack;
+                    player.Status = m.Snapshot.Status;
+                }).OnException(
+                    e =>
+                    {
+                        System.Console.WriteLine("Exception catched!\n" + e.Message);
+                        throw e;
+                    });
 
             Task.Factory.StartNew(() => router.Start());
         }
@@ -165,6 +165,7 @@ namespace Hubbl.Console.ClientServerModule
                 {
                     System.Console.WriteLine("Cloud track request " + m.Track.Source);
                     var entry = _container.Resolve<IMusicPlayer>().QueueTrack(m.Sender, m.Track);
+
                     System.Console.WriteLine("added {0}", entry);
                 }).OnException(
                     e =>
@@ -175,26 +176,9 @@ namespace Hubbl.Console.ClientServerModule
                         throw e;
                     });
 
-
-            /*router.Subscribe<EchoMessage>()
-                .OnSuccess((ep, m) =>
-                {
-                    System.Console.WriteLine("Get message {0} from {1}:{2}", m, ep.Address, ep.Port);
-                    m.Sender.IpAddress = ep.Address;
-                    _container.Resolve<HubblUsersService>().Add(m.Sender);
-                }).OnException(
-                    e =>
-                {
-                    System.Console.WriteLine("Exception catched!");
-                    System.Console.WriteLine("	" + e.Message);
-
-                    throw e;
-                });
-            */
-
             Task.Factory.StartNew(() => router.Start());
+            _container.Resolve<ServerSnapshotService>().Run();
         }
-
         
     }
 }

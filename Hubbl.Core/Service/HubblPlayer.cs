@@ -13,6 +13,8 @@ namespace Hubbl.Core.Service
 		public DateTime lastActivityTime;
 	}
 
+    // TODO: Change whole bunch of bools with Status
+
 	public class HubblPlayer : IMusicPlayer
 	{
 		private const int AVG_TRACK_LENGTH_MS = 300000;
@@ -38,6 +40,7 @@ namespace Hubbl.Core.Service
 		{
 			_backend = backend;
 			Playlist = new List<PlaylistEntry>();
+            Status = ServerStatus.Stop;
 			_cancellationTokenSource = new CancellationTokenSource();
 
 			_usersActivities = new Dictionary<string, UserActivitiesRecord>();
@@ -51,9 +54,11 @@ namespace Hubbl.Core.Service
             _needPause = false;
 		}
 
-		#region IMusicPlayer implementation
+        #region IMusicPlayer implementation
 
-		public PlaylistEntry QueueTrack(HubblUser user, Track track)
+        //ServerStatus IMusicPlayer.Status { get; }
+
+        public PlaylistEntry QueueTrack(HubblUser user, Track track)
 		{
 			UpdateUserPriorities();
 
@@ -211,10 +216,11 @@ namespace Hubbl.Core.Service
 
 
 		//TODO: ask my c sharp guru about methods to make it immutable
-		public PlaylistEntry CurrentPlayedEntry { get; private set; }
-		public List<PlaylistEntry> Playlist { get; private set; }
+		public PlaylistEntry CurrentPlayedEntry { get; set; }
+		public List<PlaylistEntry> Playlist { get; set; }
+        public ServerStatus Status { get; set; }
 
-		public void Play()
+        public void Play()
 		{
 		    if (_paused)
 		    {
@@ -229,8 +235,9 @@ namespace Hubbl.Core.Service
 			Task.Run(() =>
 			{
 			    _playing = true;
+                Status = ServerStatus.Play;
 
-				if (cancelTk.IsCancellationRequested)
+                if (cancelTk.IsCancellationRequested)
 					cancelTk.ThrowIfCancellationRequested();
 				// i copypaste string from msdn. Is `if' rly requered when the method called `throwIf..' /0
 
@@ -247,13 +254,13 @@ namespace Hubbl.Core.Service
 				    }
                     var track = _backend.CurrentPlayedTrack;
 					if (track == null) NextTrack();
-					// Threa.Sleep (100);
 					Task.Delay(100).Wait();
 				}
 				CurrentPlayedEntry = null;
 				//_backend.PlayTrack(null);
 				_playing = false;
-			}, cancelTk);
+                Status = ServerStatus.Stop;
+            }, cancelTk);
 		}
 
 		void IMusicPlayer.Stop()
@@ -262,6 +269,7 @@ namespace Hubbl.Core.Service
 			_playerTask = null;
 			_cancellationTokenSource = new CancellationTokenSource();
             _paused = false;
+            Status = ServerStatus.Stop;
         }
 
 	    bool IMusicPlayer.Stoped()
@@ -272,6 +280,7 @@ namespace Hubbl.Core.Service
 
         void IMusicPlayer.Pause()
 	    {
+            Status = ServerStatus.Pause;
             if (!_paused)
             {
                 _needPause = true;

@@ -37,6 +37,9 @@
   <ItemGroup>
     <Compile Include="Messages\EchoMessage.cs" />
     <Compile Include="Messages\SendFileMessage.cs" />
+    <Compile Include="Messages\SnapshotMessage.cs" />
+    <Compile Include="Model\ServerSnapshot.cs" />
+    <Compile Include="Model\ServerStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Messages\AddCloudTrackMessage.cs" />
     <Compile Include="Messages\AddLocalTrackMessage.cs" />
@@ -67,6 +70,7 @@
     <Compile Include="Messages\HubMessagePlaylistWasUpdated.cs" />
     <Compile Include="Messages\HubMessageTrackWasChanged.cs" />
     <Compile Include="Messages\HubMessageHubWasCreated.cs" />
+    <Compile Include="Service\ServerSnapshotService.cs" />
     <Compile Include="Service\WebFileService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

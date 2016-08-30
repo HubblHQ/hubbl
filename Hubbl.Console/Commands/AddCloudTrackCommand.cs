@@ -30,7 +30,10 @@ namespace Hubbl.Console.Commands
             //t.SourceType = SourceType.VK;
             if (MainClass._clientServer.IsServer())
             {
-                _container.Resolve<IMusicPlayer>().QueueTrack(_container.Resolve<ISession>().CurrentUser, t);
+                lock (_container.Resolve<IMusicPlayer>().Playlist)
+                {
+                    _container.Resolve<IMusicPlayer>().QueueTrack(_container.Resolve<ISession>().CurrentUser, t);
+                }
             }
             else
             {

@@ -18,30 +18,24 @@ namespace Hubbl.Console.Commands
 
         public bool Execute(params string[] args)
         {
-            List<PlaylistEntry> list;
-            PlaylistEntry current;
-
-            if (MainClass._clientServer.IsServer())
-            {
-                current = _container.Resolve<IMusicPlayer>().CurrentPlayedEntry;
-                list = _container.Resolve<IMusicPlayer>().Playlist;
-            }
-            else
-            {
-                current = null;
-                list = new List<PlaylistEntry>();
-                System.Console.WriteLine("Not supported yet");
-            }
+            var player = _container.Resolve<IMusicPlayer>();
+            PlaylistEntry current = player.CurrentPlayedEntry;
+            List<PlaylistEntry>  list = player.Playlist;
 
             System.Console.WriteLine();
             if (current != null)
             {
-                System.Console.WriteLine(current);
+                System.Console.WriteLine("|> " + current);
             }
-            foreach (var el in list)
+            lock (list)
             {
-                System.Console.WriteLine(el);
+                foreach (var el in list)
+                {
+                    System.Console.WriteLine(el);
+                }
             }
+
+            System.Console.WriteLine(player.Status);
 
             return false;
         }
