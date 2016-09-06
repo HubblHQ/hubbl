@@ -24,7 +24,7 @@ namespace Hubbl.Console.Service
             _task = new Task(loop);
         }
 
-        private void loop()
+        private async void loop()
         {
             while (!_isInterrupted)
             {
@@ -34,7 +34,7 @@ namespace Hubbl.Console.Service
                 {
                     _router.Publish(new SnapshotMessage(snapshot)).Run();
                 }
-                Task.Delay(1000);
+                await Task.Delay(1000);
             }
         }
 
