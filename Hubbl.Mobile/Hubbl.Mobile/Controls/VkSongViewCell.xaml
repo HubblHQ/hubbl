@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell
+    x:Class="Hubbl.Mobile.Controls.VkSongViewCell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Hubbl.Mobile.Controls;assembly=Hubbl.Mobile">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Image
+            Grid.Column="0"
+            Margin="5"
+            HorizontalOptions="Center"
+            Source="{Binding CheckStatusImage}"
+            VerticalOptions="Center" />
+        <StackLayout
+            Grid.Column="1"
+            Margin="5"
+            HorizontalOptions="Start"
+            Spacing="2"
+            VerticalOptions="Center">
+            <Label Text="{Binding SongName}" />
+            <Label
+                FontSize="Micro"
+                Text="{Binding Author}"
+                TextColor="Silver" />
+        </StackLayout>
+    </Grid>
+
+</ViewCell>

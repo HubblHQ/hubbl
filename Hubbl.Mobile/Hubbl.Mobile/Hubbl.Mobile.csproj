@@ -36,6 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Controls\VkSongViewCell.xaml.cs">
+      <DependentUpon>VkSongViewCell.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MobileSession.cs" />
     <Compile Include="Models\Hub.cs" />
     <Compile Include="PageModels\CreateNewHubPageModel.cs" />
@@ -65,7 +68,7 @@
     <Compile Include="Pages\SongsSourcesPage.xaml.cs">
       <DependentUpon>SongsSourcesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Vkontakte\VkAuthPage.xaml.cs">
+    <Compile Include="Pages\VkAuthPage.xaml.cs">
       <DependentUpon>VkAuthPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Vkontakte\VkSongsSourcePage.xaml.cs">
@@ -137,9 +140,7 @@
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\..\MessageRouter\Module.MessageRouter.Abstractions\Module.MessageRouter.Abstractions.csproj">
       <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
@@ -185,7 +186,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Vkontakte\VkAuthPage.xaml">
+    <EmbeddedResource Include="Pages\VkAuthPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -198,6 +199,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Vkontakte\VkSongsSourcePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\VkSongViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

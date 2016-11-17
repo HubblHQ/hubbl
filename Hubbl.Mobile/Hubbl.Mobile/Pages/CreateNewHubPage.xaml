@@ -1,46 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage x:Class="Hubbl.Mobile.Pages.CreateNewHubPage"
-             xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Создать хаб">
+<ContentPage
+	x:Class="Hubbl.Mobile.Pages.CreateNewHubPage"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	Title="Создать хаб">
 
-    <ContentPage.Content>
-        <TableView HasUnevenRows="true" Intent="Settings">
+	<ContentPage.Content>
+		<TableView HasUnevenRows="true" Intent="Settings">
 
-            <TableSection Title="">
-                <EntryCell Label="Название" Text="{Binding Name}" />
-            </TableSection>
+			<TableSection Title="">
+				<EntryCell
+					Label="Название"
+					Placeholder="Введите название"
+					Text="{Binding Name}" />
+			</TableSection>
 
-            <TableSection Title="ДОБАВИТЬ ТРЕКИ">
-                <ImageCell Command="{Binding ShowVkSongs}"
-                           Detail="На устройстве"
-                           StyleId="disclosure"
-                           Text="Моя музыка" />
-                <ImageCell Command="{Binding ShowVkSongs}"
-                           Detail="Подключить"
-                           ImageSource="dropbox.png"
-                           StyleId="disclosure"
-                           Text="Dropbox" />
-                <ImageCell Command="{Binding ShowVkSongs}"
-                           Detail="Подключить"
-                           ImageSource="yandex.png"
-                           StyleId="disclosure"
-                           Text="Яндекс.Музыка" />
-                <ImageCell Command="{Binding ShowVkSongs}"
-                           Detail=""
-                           ImageSource="vk.png"
-                           StyleId="disclosure"
-                           Text="ВКонтакте" />
-            </TableSection>
-            <TableSection>
-                <ViewCell>
-                    <Button Command="{Binding BecomeAHub}"
-                            Text="Готово"
-                            TextColor="Lime" />
-                </ViewCell>
-            </TableSection>
-        </TableView>
-    </ContentPage.Content>
+			<TableSection Title="ДОБАВИТЬ ТРЕКИ">
+				<ImageCell
+					Command="{Binding ShowVkSongs}"
+					Detail="На устройстве"
+					StyleId="disclosure"
+					Text="Моя музыка" />
+				<ImageCell
+					Command="{Binding ShowVkSongs}"
+					Detail="Подключить"
+					ImageSource="dropbox.png"
+					StyleId="disclosure"
+					Text="Dropbox" />
+				<ImageCell
+					Command="{Binding ShowVkSongs}"
+					Detail="Подключить"
+					ImageSource="yandex.png"
+					StyleId="disclosure"
+					Text="Яндекс.Музыка" />
+				<ImageCell
+					Command="{Binding ShowVkSongs}"
+					Detail=""
+					ImageSource="vk.png"
+					StyleId="disclosure"
+					Text="ВКонтакте" />
+			</TableSection>
+			<TableSection>
+				<ViewCell>
+					<Button
+						Command="{Binding BecomeAHub}"
+						Text="Готово"
+						TextColor="Lime" />
+				</ViewCell>
+			</TableSection>
+		</TableView>
+	</ContentPage.Content>
 
 </ContentPage>
 

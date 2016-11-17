@@ -1,6 +1,7 @@
 ﻿using FreshMvvm;
 
-namespace Hubbl.Mobile.PageModels.Vkontakte
+// ReSharper disable once CheckNamespace
+namespace Hubbl.Mobile.PageModels
 {
     public  class VkSongsSourcePageModel : FreshBasePageModel
     {
