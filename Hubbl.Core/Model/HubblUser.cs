@@ -34,13 +34,13 @@ namespace Hubbl.Core.Model
 		[DataMember]
 		public string Hub {get; set; }
 
-		public void Save()
+		public async void Save()
 		{
 			var source = new System.Threading.CancellationTokenSource (10000);
 			var token = source.Token;
 			var file = FileSystem.Current.LocalStorage.CreateFileAsync ("user", CreationCollisionOption.ReplaceExisting, token).Result;
 			var jUser = JsonConvert.SerializeObject (this);
-			file.WriteAllTextAsync (jUser);
+			await file.WriteAllTextAsync (jUser);
 		}
 		public static HubblUser LoadUser()
 		{

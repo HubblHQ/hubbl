@@ -79,7 +79,7 @@ namespace Hubbl.Core.Service
 			_usersMarkedByEntryId[entry.Id].Add(user.Id);
 
 			Playlist.Add(entry);
-			Playlist.Sort(comparePlaylistEntries);
+			Playlist.Sort(_comparePlaylistEntries);
 
 			_playlistEntries.Add(entry);
 
@@ -152,7 +152,7 @@ namespace Hubbl.Core.Service
 			++entry.LikesNum;
 			entry.Priority *= _activeUsersCount/(_activeUsersCount - 1.0);
 
-			Playlist.Sort(comparePlaylistEntries);
+			Playlist.Sort(_comparePlaylistEntries);
 		}
 
 		public void DislikeTrack(HubblUser user, int entryId)
@@ -181,10 +181,10 @@ namespace Hubbl.Core.Service
 			++entry.DislikesNum;
 			entry.Priority *= (_activeUsersCount - 1.0)/_activeUsersCount;
 
-			Playlist.Sort(comparePlaylistEntries);
+			Playlist.Sort(_comparePlaylistEntries);
 		}
 
-		private static int comparePlaylistEntries(PlaylistEntry e1, PlaylistEntry e2)
+		private static int _comparePlaylistEntries(PlaylistEntry e1, PlaylistEntry e2)
 		{
 			return Math.Abs(e1.Priority - e2.Priority) < 0.001
 				? e2.Id - e1.Id

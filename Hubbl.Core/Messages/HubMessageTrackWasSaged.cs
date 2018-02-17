@@ -1,6 +1,6 @@
-﻿sing System;
+﻿using Module.MessageRouter.Abstractions.Message;
 
-namespace Hubbl.Core
+namespace hubbl.Core.Messages
 {
 	public class HubMessageTrackWasSaged:IMessage
 	{

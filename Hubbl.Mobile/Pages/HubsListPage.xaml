@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<ContentPage x:Class="Hubbl.Mobile.Pages.HubsListPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Найденные хабы">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding SettingsCommand}" Icon="cog_settings.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        
+        <RelativeLayout 
+            VerticalOptions="Fill"
+            BackgroundColor="LightGray">
+
+            <StackLayout 
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.4}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1,Constant=0}" >
+                <Label FontSize="12"
+                       HorizontalTextAlignment="Center"
+                       Text="Хабы, расположенные поблизости, будут отобраены здесь"
+                       TextColor="Gray" />
+                <Image HeightRequest="50"
+                       Source="airdrop_white.png"
+                       WidthRequest="50" />
+            </StackLayout>
+            
+            <ListView
+                RowHeight="120" 
+                IsVisible="False"
+                RelativeLayout.HeightConstraint=
+                "{ConstraintExpression Type=RelativeToParent, Property=Height,Factor=.8}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout BackgroundColor="White"
+                                         HeightRequest="100"
+                                         Orientation="Horizontal">
+                                <Image HeightRequest="100"
+                                       Source="album_artwork_missing.png"
+                                       WidthRequest="100" />
+                                <StackLayout Orientation="Vertical">
+                                    <Label FontSize="18"
+                                           Text="{Binding Hub}"
+                                           TextColor="Black" />
+                                    <Label FontSize="14"
+                                           Text="{Binding CurrentSong}"
+                                           TextColor="Gray" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ContentView
+                HorizontalOptions="Fill"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.8}"
+                >
+                <StackLayout
+                    Spacing="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center">
+                    <BoxView BackgroundColor="gray" HeightRequest="1" />
+                <Button 
+                    CornerRadius="0"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Center"
+                     BackgroundColor="White"
+                     Command="{Binding CreateNewHubCommand}"
+                     FontSize="18"
+                     Text="Создать хаб"
+                     TextColor="Green" />
+                    <BoxView BackgroundColor="gray" HeightRequest="1"/>
+                    </StackLayout>
+           </ContentView>
+        </RelativeLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>
